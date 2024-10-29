@@ -26,7 +26,7 @@ const Expertise = () => {
               alt=''
               width={320}
               height={320}
-              className='size-full absolute top-0 opacity-0 group-hover:opacity-100 object-cover duration-300'
+              className='size-[80%] absolute top-15 opacity-0 group-hover:opacity-100 object-cover duration-300'
             />
           </HoverSection>
 
@@ -40,7 +40,7 @@ const Expertise = () => {
               alt=''
               width={320}
               height={320}
-              className='size-full absolute top-0 opacity-0 group-hover:opacity-100 object-cover duration-300'
+              className='size-[80%] absolute top-15 opacity-0 group-hover:opacity-100 object-cover duration-300'
             />
           </HoverSection>
         </HoverSectionsContainer>

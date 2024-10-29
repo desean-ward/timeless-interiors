@@ -24,7 +24,7 @@ const Hero = () => {
 
           {/* Hero Tex */}
           <div className='flex flex-col'>
-            <h1 className='font-bold text-4xl loading-none text-white font-bebas'>
+            <h1 className='font-bold text-4xl leading-none text-white font-bebas'>
               Transforming Vision Into Reality
             </h1>
             <p className='text-white text-lg'>

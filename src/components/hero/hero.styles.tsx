@@ -1,4 +1,4 @@
-import tw from 'tailwind-styled-components' 
+import tw from "tailwind-styled-components";
 
 export const HeroWrapper = tw.section`
     h-screen 
@@ -6,15 +6,14 @@ export const HeroWrapper = tw.section`
     sm:py-24
     max-h-[1120px] 
     sm:max-h-screen 
-    relative 
     w-full 
     flex 
     justify-center
-`
+`;
 
 export const HeroContainer = tw.div`
     
-`
+`;
 
 export const ExploreBtnContainer = tw.div`
     relative 
@@ -29,7 +28,7 @@ export const ExploreBtnContainer = tw.div`
     w-full 
     bottom-0 
     h-full
-`
+`;
 
 export const ExploreBtn = tw.button`
     border-2 
@@ -43,4 +42,4 @@ export const ExploreBtn = tw.button`
     rounded-full 
     px-9 
     py-1
-`
+`;

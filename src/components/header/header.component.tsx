@@ -2,7 +2,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import headerData from "@/data/headerData.json";
-import { ContactUsButton, HeaderContainer, LinksContainer, MobileMenuButton } from "./header.styles";
+import {
+  ContactUsButton,
+  HeaderContainer,
+  LinksContainer,
+  MobileMenuButton,
+} from "./header.styles";
 
 const HeaderComponent = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -18,25 +23,17 @@ const HeaderComponent = () => {
         <Link href='/' className='font-bebas text-white text-xl'>
           Timeless Interiors
         </Link>
-
         {/* Header Links */}
-        <LinksContainer
-          className={` ${
-            showMenu ? "top-0" : "-top-[100vh]"
-          }`}
-        >
+        <LinksContainer className={` ${showMenu ? "top-0" : "-top-[100vh]"}`}>
           {/* Links */}
           {headerData.links.map((item, index) => {
             return (
-              <>
-                <li key={index} className='text-white text-base uppercase'>
-                  <Link href={item.href}>{item.label}</Link>
-                </li>
-              </>
+              <li key={index} className='text-white text-base uppercase'>
+                <Link href={item.href}>{item.label}</Link>
+              </li>
             );
           })}
         </LinksContainer>
-
         {/* Mobile Menu Button */}
         <div>
           <MobileMenuButton onClick={() => toggleMenu()}>

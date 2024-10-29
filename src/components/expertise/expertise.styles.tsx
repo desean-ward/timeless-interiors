@@ -28,7 +28,7 @@ export const HoverSectionsContainer = tw.div`
     sm:flex-row 
     justify-between 
     items-center
-`
+`;
 
 export const HoverSection = tw.div`
     w-full 
@@ -44,4 +44,4 @@ export const HoverSection = tw.div`
     bg-black 
     hover:border-black 
     hover:rounded-xl
-`
+`;
