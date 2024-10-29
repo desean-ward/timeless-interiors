@@ -1,3 +1,4 @@
+import Expertise from "@/components/expertise/expertise.component";
 import Hero from "@/components/hero/hero.component";
 import InfoSection1 from "@/components/info-section-1/info-section-1.component";
 import MarqueeComponent from "@/components/marquee/marquee.component";
@@ -10,6 +11,7 @@ export default function Home() {
       <InfoSection1 />
       <TiImageSection />
       <MarqueeComponent />
+      <Expertise />
     </main>
   );
 }
