@@ -9,7 +9,7 @@ const TiImageSection = () => {
   return (
     <TiImageSectionWrapper>
       <TiImageSectionContainer>
-        <p className='uppercase text-[100vh] leading-none tracking-tighter font-behas'>
+        <p className='uppercase text-[50vh] leading-none tracking-tighter font-behas'>
           Timeless Interiors
         </p>
 
@@ -18,7 +18,7 @@ const TiImageSection = () => {
           alt=''
           width={420}
           height={420}
-          className='size-3/4 absolute sm:w-fit sm:right-[15%] top-0 object-cover shadow-black shadow-2xl'
+          className='size-3/4 absolute sm:w-fit sm:right-[25%] top-0 object-cover shadow-black shadow-2xl'
         />
       </TiImageSectionContainer>
     </TiImageSectionWrapper>
