@@ -14,21 +14,21 @@ const MarqueeComponent = () => {
               alt='Image 1'
               width={320}
               height={320}
-              className='h-3/4 w-full sm:w-1/4 sm:right-[33%] top-0 object-cover sm:absolute'
+              className='h-3/4 w-full sm:w-1/4 sm:right-[33%] top-0 object-cover sm:absolute border-2'
             />
             <Image
               src='https://i.pinimg.com/564x/67/ca/81/67ca81b8b8344d9479b2bf10639aaf35.jpg'
               alt='Image 2'
               width={320}
               height={320}
-              className='h-3/4 w-full sm:w-1/4 sm:left-0 bottom-0 object-cover sm:absolute'
+              className='h-3/4 w-full sm:w-1/4 sm:left-0 bottom-0 object-cover sm:absolute border-2'
             />
             <Image
               src='https://i.pinimg.com/564x/c8/7e/91/c87e9121048980c179e8df6e15c1a705.jpg'
               alt='Image 3'
               width={320}
               height={320}
-              className='h-3/4 w-full sm:w-1/4 sm:right-0 bottom-0 object-cover sm:absolute'
+              className='h-3/4 w-full sm:w-1/4 sm:right-0 bottom-0 object-cover sm:absolute border-2'
             />
           </Marquee>
         </div>

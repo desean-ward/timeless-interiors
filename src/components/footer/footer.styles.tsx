@@ -1,11 +1,12 @@
-import tw from 'tailwind-styled-components' 
+import tw from "tailwind-styled-components";
 
 export const FooterContainer = tw.div`
     px-6 
     sm:px-24 
     overflow-hidden 
     size-full
-`
+
+`;
 
 export const FooterContent = tw.div`
     size-full 
@@ -15,15 +16,17 @@ export const FooterContent = tw.div`
     flex-col 
     mb-6 
     sm:mb-0
-`
+`;
 
 export const LinksContainer = tw.ul`
     flex 
     justify-center 
-    sm:flex-row 
+    lg:flex-row
+    flex-col
     items-center 
-    sm:gap-6
-`
+    gap-6
+    mt-8
+`;
 
 export const FooterLink = tw.li`
     flex 
@@ -38,4 +41,4 @@ export const FooterLink = tw.li`
     rounded-full
     px-3 
     py-1
-`
+`;
