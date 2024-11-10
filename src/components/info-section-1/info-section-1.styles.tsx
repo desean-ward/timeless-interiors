@@ -1,4 +1,4 @@
-import tw from 'tailwind-styled-components' 
+import tw from "tailwind-styled-components";
 
 export const InfoSection1Wrapper = tw.section`
     bg-white 
@@ -12,13 +12,13 @@ export const InfoSection1Wrapper = tw.section`
     flex 
     justify-center 
     items-center
-`
+`;
 
 export const InfoSection1Container = tw.div`
     px-6 
     sm:px-24 
     size-full
-`
+`;
 
 export const InfoSectionContent = tw.div`
     flex 
@@ -27,9 +27,10 @@ export const InfoSectionContent = tw.div`
     xl:gap-64 
     flex-col 
     h-full 
-    justify-center 
-    xl:items-center
-`
+    justify-center
+    items-start 
+    text-lg
+`;
 
 export const LeftContent = tw.div`
     flex 
@@ -39,19 +40,20 @@ export const LeftContent = tw.div`
     xl:justify-start 
     xl:gap-12 
     xl:text-center
-`
+`;
 
 export const RightContent = tw.div`
     flex 
     flex-col 
     gap-3 
-    items-start 
+    xl:items-start 
     sm:gap-9 
     xl:w-2/4
-`
+`;
 
 export const DetailsButton = tw.button`
-    border-2 
+    border
+    text-lg
     hover:bg-black 
     hover:text-white 
     duration-300 
@@ -62,4 +64,4 @@ export const DetailsButton = tw.button`
     px-6 
     font-bold 
     py-1
-`
+`;

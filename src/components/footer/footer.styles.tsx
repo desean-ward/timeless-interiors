@@ -34,6 +34,7 @@ export const FooterLink = tw.li`
     border-2 
     border-white 
     hover:bg-white 
+    text-lg
     text-white 
     hover:text-black 
     duration-300 

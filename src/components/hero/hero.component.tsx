@@ -18,7 +18,7 @@ const Hero = () => {
           className='w-full h-full object-cover absolute'
         />
 
-        {/* Eplore Button */}
+        {/* Explore Button */}
         <ExploreBtnContainer>
           <ExploreBtn>Explore</ExploreBtn>
 

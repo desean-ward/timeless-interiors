@@ -23,6 +23,6 @@ const getPostsQuery = `*[_type == "post"]{
 
 export async function getPosts() {
   return await client.fetch(getPostsQuery, {
-    revalidate: new Date().getHours(),
+    revalidate: new Date().getSeconds(),
   });
 }

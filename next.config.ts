@@ -32,10 +32,6 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "www.behance.net",
-      },
-      {
-        protocol: "https",
         hostname: "cdn.sanity.io",
       },
     ],

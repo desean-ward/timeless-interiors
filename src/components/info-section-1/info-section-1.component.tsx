@@ -18,7 +18,7 @@ const InfoSection1 = () => {
             <h2 className='uppercase text-xl font-semibold'>
               Timeless Interiors for comfort living
             </h2>
-            <p className='text-base'>
+            <p>
               Timeless Interiors is dedicated to shaping your ideas into
               beautifully crafted spaces that feel enduring and uniquely yours.
             </p>
@@ -26,7 +26,7 @@ const InfoSection1 = () => {
 
           {/* Right Side Content */}
           <RightContent>
-            <p className='text-base'>
+            <p>
               At Timeless Interiors, we believe every space should tell a
               story—your story. From concept to completion, our design team
               brings your unique vision to life with elegance and precision. We

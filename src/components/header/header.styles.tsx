@@ -1,5 +1,4 @@
-import tw from 'tailwind-styled-components' 
-
+import tw from "tailwind-styled-components";
 
 export const HeaderContainer = tw.div`
     flex 
@@ -9,7 +8,7 @@ export const HeaderContainer = tw.div`
     border-b-2 
     border-white 
     w-full
-`
+`;
 export const LinksContainer = tw.ul`
     flex 
     flex-col 
@@ -28,26 +27,27 @@ export const LinksContainer = tw.ul`
     gap-6 
     justify-center 
     items-center
-`
+`;
 
 export const MobileMenuButton = tw.button`
     text-white 
     sm:hidden 
     z-20 
     relative
-`
+`;
 
 export const ContactUsButton = tw.button`
     sm:block 
     font-bebas 
     hidden 
-    border-2 
+    border
     border-white 
     rounded-full 
     px-3 
     py-1 
     text-white 
+    text-lg
     hover:bg-white 
     hover:text-black 
     duration-300
-`
+`;
