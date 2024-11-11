@@ -28,13 +28,14 @@ export const ContentContainer = tw.div`
 
 export const ElementContainer = tw.div`
     flex 
-    justify-between 
+    justify-between
     flex-col 
-    gap-3 
+    gap-6
     col-span-1 
     p-6 
     border-white 
     border
+    rounded-xl
 `;
 
 export const ElementHeading = tw.h2`
@@ -44,15 +45,14 @@ export const ElementHeading = tw.h2`
     font-bebas
 `;
 
-
-
 export const CTALink = tw(Link)`
-    border-2 
+    border 
     border-white 
-    py-3 
     font-bebas 
     text-xl 
     text-center 
     hover:bg-white 
     hover:text-black
+    rounded-xl
+    my-4
 `;

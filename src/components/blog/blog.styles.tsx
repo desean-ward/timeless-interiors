@@ -13,15 +13,15 @@ export const BlogWrapper = tw.section`
     justify-center 
     items-center 
     bg-black
-`;
-
-export const BlogContainer = tw.div`
+    `;
+    
+    export const BlogContainer = tw.div`
     px-6 
     sm:px-24 
     size-full
-`;
-
-export const BlogContent = tw.div`
+    `;
+    
+    export const BlogContent = tw.div`
     grid 
     justify-between 
     w-full 
@@ -29,9 +29,9 @@ export const BlogContent = tw.div`
     grid-cols-1 
     sm:grid-cols-3
     cursor-pointer
-`;
-
-export const BlogPost = tw.div`
+    `;
+    
+    export const BlogPost = tw.div`
     w-full 
     col-span-1 
     group 
@@ -40,6 +40,7 @@ export const BlogPost = tw.div`
     border-white 
     px-3 
     py-2
+    rounded-xl
 `;
 
 export const PostHeader = tw.div`

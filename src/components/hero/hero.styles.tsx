@@ -39,7 +39,7 @@ export const ExploreBtn = tw.button`
     hover:text-black 
     duration-300 
     text-lg 
-    rounded-full 
+    rounded-xl 
     px-9 
     py-1
 `;

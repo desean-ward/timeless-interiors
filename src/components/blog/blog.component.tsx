@@ -19,7 +19,7 @@ const Blog = async () => {
       <BlogContainer>
         {/* Blog Title */}
         <div id='title' className='py-12'>
-          <h1 className='text-white text-3xl'>Our Blog</h1>
+          <h1 className='text-white text-6xl font-bebas'>Our Blog</h1>
         </div>
 
         {/* Blog Content */}

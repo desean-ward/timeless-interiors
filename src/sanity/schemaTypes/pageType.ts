@@ -41,6 +41,10 @@ export const pageType = defineType({
           type: "reference",
           to: [{ type: "promotion" }],
         }),
+        defineArrayMember({
+          name: "project",
+          type: "project",
+        }),
       ],
     }),
   ],

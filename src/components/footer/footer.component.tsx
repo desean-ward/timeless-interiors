@@ -13,7 +13,7 @@ const FooterComponent = () => {
       <FooterContainer id='container'>
         <FooterContent>
           <p className='font-bebas text-white text-[12vw] leading-none'>
-            Let's talk{" "}
+            Let's Connect{" "}
           </p>
 
           <LinksContainer>

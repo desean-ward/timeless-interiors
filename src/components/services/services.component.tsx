@@ -18,8 +18,6 @@ const Services = async () => {
 
   const { Heading, Content, Gallery, CallToAction } = data;
 
-  console.log("Fetched data: ", data);
-
   return (
     <ServicesWrapper>
       <ServicesContainer>

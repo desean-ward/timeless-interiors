@@ -10,6 +10,7 @@ import { pageType } from "./schemaTypes/pageType";
 import { promotionType } from "./schemaTypes/promotionType";
 import { textWithIllustrationType } from "./schemaTypes/textWithIllu";
 import { videoType } from "./schemaTypes/videoType";
+import { projectType } from "./schemaTypes/projectType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -22,6 +23,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     imageGalleryType,
     pageType,
     promotionType,
+    projectType,
     textWithIllustrationType,
     videoType,
   ],

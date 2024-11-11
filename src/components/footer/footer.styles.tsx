@@ -31,7 +31,7 @@ export const LinksContainer = tw.ul`
 export const FooterLink = tw.li`
     flex 
     gap-3 
-    border-2 
+    border
     border-white 
     hover:bg-white 
     text-lg
@@ -39,7 +39,7 @@ export const FooterLink = tw.li`
     hover:text-black 
     duration-300 
     mx-3 
-    rounded-full
-    px-3 
+    rounded-xl
+    px-8 
     py-1
 `;

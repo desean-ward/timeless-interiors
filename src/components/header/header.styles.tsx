@@ -42,8 +42,8 @@ export const ContactUsButton = tw.button`
     hidden 
     border
     border-white 
-    rounded-full 
-    px-3 
+    rounded-xl 
+    px-8
     py-1 
     text-white 
     text-lg
