@@ -1,10 +1,9 @@
 import tw from "tailwind-styled-components";
 
 export const MarqueeWrapper = tw.section`
-    h-fit 
-    sm:h-screen 
-    py-60
-    sm:py-24 
+    h-full
+    md:h-screen
+    md:py-24 
     relative 
     w-full 
     flex 

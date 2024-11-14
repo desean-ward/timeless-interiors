@@ -13,6 +13,7 @@
     "@sanity/image-url": "^1.0.2",
     "@sanity/react-loader": "^1.10.14",
     "@sanity/vision": "^3.62.3",
+    "@tailwindcss/typography": "^0.5.15",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
     "next": "15.0.1",

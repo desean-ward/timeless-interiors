@@ -12,22 +12,23 @@ export const HeroWrapper = tw.section`
 `;
 
 export const HeroContainer = tw.div`
-    
 `;
 
 export const ExploreBtnContainer = tw.div`
     relative 
     flex 
-    sm:flex-row 
+    lg:flex-row
+    lg:justify-between 
     flex-col-reverse 
-    items-start 
+    items-center 
     sm:items-end 
-    gap-3 
+    gap-8
+    sm:gap-8
     xl:gap-0 
-    sm:justify-between 
-    w-full 
-    bottom-0 
+    justify-center 
+    w-full
     h-full
+    bottom-0 
 `;
 
 export const ExploreBtn = tw.button`
@@ -42,4 +43,5 @@ export const ExploreBtn = tw.button`
     rounded-xl 
     px-9 
     py-1
+    mr-auto
 `;

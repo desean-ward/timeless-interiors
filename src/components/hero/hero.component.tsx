@@ -28,8 +28,7 @@ const Hero = () => {
               Transforming Vision Into Reality
             </h1>
             <p className='text-white text-lg'>
-              At Timeless Interiors, we bring your unique vision to life,
-              creating spaces that feel both personal and timeless.
+              At Timeless Interiors, we bring your unique vision to life.
             </p>
           </div>
         </ExploreBtnContainer>

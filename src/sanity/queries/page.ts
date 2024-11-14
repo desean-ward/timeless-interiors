@@ -25,8 +25,8 @@ export type ImageType = {
   url: string;
 };
 
-export async function getServicesPage(slug: string) {
-  const getPageQuery = groq`*[_type == "page" && slug.current == ${slug}][0]{
+export async function getServicesPage() {
+  const getPageQuery = groq`*[_type == "page"][slug == 'services'][0]{
     
     'Heading':title,
     'Content':pageBuilder[][_type == "textWithIllustration"]{
@@ -97,6 +97,24 @@ export async function getWorksPage() {
       }
     }
   }`;
+
+  return await client.fetch(getPageQuery, {
+    revalidate: new Date().getSeconds(),
+  });
+}
+
+export async function getGalleryPage() {
+  const getPageQuery = groq`*[_type == "page"][slug == 'gallery'][0]{
+    'Heading':title,
+    slug,
+    
+     'Gallery':pageBuilder[][_type == "gallery"][0]{
+      _type,
+      'imageUrls':images[].asset->{
+        'url':url
+      }
+    },
+}`;
 
   return await client.fetch(getPageQuery, {
     revalidate: new Date().getSeconds(),

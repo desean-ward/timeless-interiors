@@ -9,7 +9,7 @@ import {
 
 const FooterComponent = () => {
   return (
-    <footer className='relative top-0 sm:h-screen overflow-hidden py-24 bg-black'>
+    <footer className='relative top-0 sm:h-screen overflow-hidden py-24'>
       <FooterContainer id='container'>
         <FooterContent>
           <p className='font-bebas text-white text-[12vw] leading-none'>
@@ -43,6 +43,9 @@ const FooterComponent = () => {
           </LinksContainer>
         </FooterContent>
       </FooterContainer>
+      <span className='w-screen absolute bottom-0 mb-8 text-center'>
+        &copy; {new Date().getFullYear()} De Sean Ward | All rights reserved.
+      </span>
     </footer>
   );
 };

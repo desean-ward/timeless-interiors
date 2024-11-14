@@ -5,7 +5,6 @@ export const TiImageSectionWrapper = tw.section`
     bg-white 
     text-black 
     overflow-hidden
-    h-fit 
     relative 
     w-full 
     flex 
@@ -22,7 +21,7 @@ export const TiImage = tw(Image)`
     size-3/4 
     absolute 
     sm:w-fit
-    sm:right-[25%] 
+    lg:right-[25%] 
     top-0 
     object-cover 
     shadow-black 

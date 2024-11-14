@@ -16,7 +16,7 @@ const InfoSection1 = () => {
           {/* Left Side Content */}
           <LeftContent>
             <h2 className='uppercase text-xl font-semibold'>
-              Timeless Interiors for comfort living
+              Timeless Interiors | comfort living
             </h2>
             <p>
               Timeless Interiors is dedicated to shaping your ideas into
@@ -36,8 +36,6 @@ const InfoSection1 = () => {
               into a beautifully crafted reality.
             </p>
 
-            {/* Details Button */}
-            <DetailsButton>Details</DetailsButton>
           </RightContent>
         </InfoSectionContent>
       </InfoSection1Container>

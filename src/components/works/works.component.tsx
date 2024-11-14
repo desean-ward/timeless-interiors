@@ -1,6 +1,8 @@
 import { getWorksPage, ImageType, ProjectType } from "@/sanity/queries/page";
 import React from "react";
 import {
+  LeftSideContent,
+  MarqueeImages,
   ProjectContainer,
   ProjectsSectionWrapper,
   ProjectsWrapper,
@@ -13,7 +15,6 @@ import {
 import clsx from "clsx";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
-import Link from "next/link";
 
 export const revalidate = 0;
 
@@ -52,7 +53,7 @@ const Works = async () => {
 
       <ProjectsSectionWrapper>
         {Content.map((project: ProjectType, index: number) => {
-          const { location, url, imageUrls, excerpt, tagline, projectname } =
+          const { location, imageUrls, excerpt, tagline, projectname } =
             project;
 
           return (
@@ -67,7 +68,7 @@ const Works = async () => {
 
                 <div>
                   <h3 className='text-3xl font-bebas'>{projectname}</h3>
-                  <div className='flex md:flex-row flex-col gap-3 sm:gap-6 xl:items-center'>
+                  <LeftSideContent>
                     {/* Location */}
                     <span className='font-bold text-xl'>{location}</span>
 
@@ -82,7 +83,7 @@ const Works = async () => {
                     >
                       {tagline}
                     </span>
-                  </div>
+                  </LeftSideContent>
                 </div>
 
                 {/* Right Side Content */}
@@ -113,19 +114,16 @@ const Works = async () => {
                 >
                   {imageUrls?.map((image: ImageType, index: number) => {
                     return (
-                      <div
-                        key={index}
-                        className='w-[88vw] overflow-hidden shrink-0 cursor-pointer flex items-center justify-center sm:w-[450px] aspect-video'
-                      >
+                      <MarqueeImages key={index}>
                         <Image
                           loading='lazy'
                           src={image?.url || ""}
                           alt='Image'
                           width={200}
                           height={300}
-                          className='size-full object-cover px-1'
+                          className='size-full object-cover px-1 rounded-lg'
                         />
-                      </div>
+                      </MarqueeImages>
                     );
                   })}
                 </Marquee>

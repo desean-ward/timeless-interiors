@@ -68,13 +68,21 @@ export const ProjectContainer = tw.div`
     border-b-black
 `;
 
+export const LeftSideContent = tw.div`
+    flex 
+    md:flex-row 
+    flex-col 
+    gap-3 
+    sm:gap-6 
+    xl:items-center
+`
+
 export const RightSideContent = tw.div`
     flex 
     items-center
     gap-4
     my-3 
     sm:my-0 
-    
 `;
 
 export const SeeMoreLink = tw(Link)`
@@ -91,3 +99,15 @@ export const SeeMoreLink = tw(Link)`
     border-2
     duration-300
 `;
+
+export const MarqueeImages = tw.div`
+    w-[88vw] 
+    overflow-hidden 
+    shrink-0 
+    cursor-pointer 
+    flex 
+    items-center 
+    justify-center 
+    sm:w-[450px] 
+    aspect-video
+`

@@ -9,13 +9,11 @@ import {
   ServicesWrapper,
 } from "./services.styles";
 import { ContentType, getServicesPage, ImageType } from "@/sanity/queries/page";
-import { SERVICES } from "@/sanity/constants/services";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
 
 const Services = async () => {
-  const data = await getServicesPage(SERVICES.PATH);
-
+  const data = await getServicesPage();
   const { Heading, Content, Gallery, CallToAction } = data;
 
   return (

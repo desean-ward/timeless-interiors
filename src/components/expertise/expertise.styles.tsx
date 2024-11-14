@@ -1,14 +1,13 @@
+import Image from "next/image";
 import tw from "tailwind-styled-components";
 
 export const ExpertiseWrapper = tw.section`
     bg-white 
     text-black
-    h-fit 
     sm:h-screen 
-    py-6
-    sm:py-24 
-    relative 
-    mt-40
+    py-24
+    xl:pb-80
+    relative
     w-full 
     flex 
     justify-center 
@@ -25,23 +24,36 @@ export const HoverSectionsContainer = tw.div`
     flex 
     gap-6 
     flex-col 
-    sm:flex-row 
-    justify-between 
+    lg:flex-row 
+    lg:justify-between 
     items-center
 `;
 
 export const HoverSection = tw.div`
     w-full 
-    sm:w-1/2 
     flex 
     justify-center 
     relative 
     items-center 
     h-[330px] 
-    sm:h-full 
+    xl:h-[60vh]
     group 
     duration-300 
-    bg-black 
-    hover:border-black 
-    hover:rounded-xl
+    lg:bg-black 
+    lg:hover:bg-transparent 
+    bg-transparent 
+    shadow-black
+    shadow-md
+    rounded-xl
+`;
+
+export const SectionImage = tw(Image)`
+    size-full 
+    absolute 
+    lg:opacity-0 
+    rounded-lg 
+    md:rounded-xl 
+    lg:group-hover:opacity-100 
+    object-cover 
+    duration-300
 `;

@@ -1,43 +1,38 @@
 import tw from "tailwind-styled-components";
 
 export const BlogWrapper = tw.section`
-    py-6 
-    sm:py-24 
-    pt-24 
-    max-h-[1120px] 
-    sm:h-screen 
-    sm:max-h-screen 
-    relative 
+    py-24
+    overflow-hidden 
+    relative
     w-full 
-    flex 
+    flex
     justify-center 
-    items-center 
-    bg-black
-    `;
-    
-    export const BlogContainer = tw.div`
+    items-center
+`;
+
+export const BlogContainer = tw.div`
     px-6 
     sm:px-24 
     size-full
-    `;
-    
-    export const BlogContent = tw.div`
+`;
+
+export const BlogContent = tw.div`
     grid 
     justify-between 
     w-full 
     gap-6
     grid-cols-1 
-    sm:grid-cols-3
+    md:grid-cols-2
+    lg:grid-cols-3
     cursor-pointer
-    `;
-    
-    export const BlogPost = tw.div`
+`;
+
+export const BlogPost = tw.div`
     w-full 
     col-span-1 
     group 
     shrink-0 
     border 
-    border-white 
     px-3 
     py-2
     rounded-xl

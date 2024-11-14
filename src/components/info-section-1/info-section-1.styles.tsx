@@ -5,8 +5,6 @@ export const InfoSection1Wrapper = tw.section`
     text-black
     py-6 
     sm:py-24 
-    h-fit 
-    sm:h-[50vh] 
     sm:max-h-screen
     relative 
     flex 
@@ -22,11 +20,11 @@ export const InfoSection1Container = tw.div`
 
 export const InfoSectionContent = tw.div`
     flex 
-    xl:flex-row 
+    flex-col 
+    xl:grid 
+    xl:grid-cols-2 
     gap-6 
     xl:gap-64 
-    flex-col 
-    h-full 
     justify-center
     items-start 
     text-lg
@@ -38,8 +36,7 @@ export const LeftContent = tw.div`
     h-full 
     justify-center 
     xl:justify-start 
-    xl:gap-12 
-    xl:text-center
+    xl:gap-4 
 `;
 
 export const RightContent = tw.div`
@@ -48,7 +45,6 @@ export const RightContent = tw.div`
     gap-3 
     xl:items-start 
     sm:gap-9 
-    xl:w-2/4
 `;
 
 export const DetailsButton = tw.button`

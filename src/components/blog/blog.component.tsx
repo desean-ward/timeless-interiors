@@ -18,7 +18,7 @@ const Blog = async () => {
     <BlogWrapper>
       <BlogContainer>
         {/* Blog Title */}
-        <div id='title' className='py-12'>
+        <div id='title'>
           <h1 className='text-white text-6xl font-bebas'>Our Blog</h1>
         </div>
 
@@ -29,7 +29,7 @@ const Blog = async () => {
               <BlogPost key={idx}>
                 {/* Header */}
                 <PostHeader>
-                  <h2 className='text-white text-xl'>{post.title}</h2>
+                  <h2 className='text-white text-lg'>{post.title}</h2>
 
                   {/* Subheader */}
                   <PostSubHeader>

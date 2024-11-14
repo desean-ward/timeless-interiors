@@ -6,7 +6,7 @@ import TiImageSection from "@/components/ti-image-section/ti-image-section.compo
 
 export default function Home() {
   return (
-    <main className='no-scrollbar w-screen'>
+    <main className='no-scrollbar w-screen prose'>
       <Hero />
       <InfoSection1 />
       <TiImageSection />

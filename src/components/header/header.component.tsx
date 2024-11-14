@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import headerData from "@/data/headerData.json";
 import {
@@ -12,8 +12,21 @@ import {
 const HeaderComponent = () => {
   const [showMenu, setShowMenu] = useState(false);
 
+  // Toggle scroll lock based on menu state
+  useEffect(() => {
+    if (showMenu) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+    
+    // Cleanup function to remove the class when the component unmounts
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [showMenu]);
+
   const toggleMenu = () => {
-    console.log("click");
     setShowMenu((prev) => !prev);
   };
 
@@ -24,11 +37,11 @@ const HeaderComponent = () => {
           Timeless Interiors
         </Link>
         {/* Header Links */}
-        <LinksContainer className={` ${showMenu ? "top-0" : "-top-[100vh]"}`}>
+        <LinksContainer className={`${showMenu ? "top-0" : "-top-[100vh]"}`}>
           {/* Links */}
           {headerData.links.map((item, index) => {
             return (
-              <li key={index} className='text-white text-base uppercase'>
+              <li key={index} className='text-white text-base uppercase' onClick={() => toggleMenu()}>
                 <Link href={item.href}>{item.label}</Link>
               </li>
             );

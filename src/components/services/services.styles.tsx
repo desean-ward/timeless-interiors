@@ -2,7 +2,12 @@ import Link from "next/link";
 import tw from "tailwind-styled-components";
 
 export const ServicesWrapper = tw.section`
-    py-24 
+    py-24
+    relative 
+    w-full 
+    flex 
+    justify-center 
+    items-center 
     bg-black
 `;
 
@@ -19,22 +24,25 @@ export const HeadingContainer = tw.div`
 `;
 
 export const ContentContainer = tw.div`
-    md:grid 
-    md:grid-cols-3 
-    gap-3 
     grid
     grid-cols-1
+    sm:grid-cols-2 
+    md:grid 
+    xl:grid-cols-3 
+    gap-3  
 `;
 
 export const ElementContainer = tw.div`
+    text-white 
     flex 
-    justify-between
-    flex-col 
-    gap-6
-    col-span-1 
+    flex-col
+    justify-between  
+    gap-3 
+    col-span-2 
+    xl:col-span-1 
     p-6 
     border-white 
-    border
+    border 
     rounded-xl
 `;
 

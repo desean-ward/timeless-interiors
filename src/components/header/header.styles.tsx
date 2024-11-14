@@ -31,13 +31,13 @@ export const LinksContainer = tw.ul`
 
 export const MobileMenuButton = tw.button`
     text-white 
-    sm:hidden 
+    md:hidden 
     z-20 
     relative
 `;
 
 export const ContactUsButton = tw.button`
-    sm:block 
+    lg:block 
     font-bebas 
     hidden 
     border
