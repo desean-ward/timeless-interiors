@@ -51,3 +51,12 @@ export const ContactUsButton = tw.button`
     hover:text-black 
     duration-300
 `;
+
+export const BackToTopBtn = tw.div`
+    fixed
+    bottom-[2rem]
+    right-[2rem]
+    cursor-pointer
+    hover:opacity-50
+    duration-300
+`;
