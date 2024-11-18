@@ -1,10 +1,13 @@
-import GalleryComp from '@/components/gallery/gallery.component'
-import React from 'react'
+import GalleryComp from "@/components/gallery/gallery.component";
+import { getGalleryPage } from "@/sanity/queries/page";
+import React from "react";
 
-const GalleryPage = () => {
-  return (
-    <GalleryComp />
-  )
-}
+const GalleryPage = async () => {
+  const data = await getGalleryPage();
+  const { Gallery: galleryData } = data;
 
-export default GalleryPage
+  console.log("GALLERY: ", galleryData);
+  return <GalleryComp galleryData={galleryData} />;
+};
+
+export default GalleryPage;

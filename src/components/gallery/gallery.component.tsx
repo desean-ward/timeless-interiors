@@ -22,10 +22,15 @@ const randomColumns = () => {
   return columnSize[randomIndex];
 };
 
-const GalleryComp = async () => {
-  const data = await getGalleryPage();
-  const { Gallery } = data;
+type GalleryProps = {
+  galleryData: {
+    imageUrls: Array<{
+      url: string;
+    }>;
+  };
+};
 
+const GalleryComp = ({ galleryData }: GalleryProps) => {
   return (
     <GalleryWrapper data-bg-color='bg-black'>
       <GalleryContainer>
@@ -37,12 +42,12 @@ const GalleryComp = async () => {
 
         <ImagesContainer>
           {/* Images */}
-          {Gallery.imageUrls.map((image: ImageType, index: number) => {
+          {galleryData.imageUrls.map((image: ImageType, index: number) => {
             return (
               <div key={index} className={randomColumns()}>
                 <Image
                   src={image.url}
-                  alt=''
+                  alt='Gallery Image'
                   width={420}
                   height={240}
                   className='size-full object-cover rounded-lg'
