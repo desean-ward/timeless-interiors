@@ -1,5 +1,19 @@
 import tw from "tailwind-styled-components";
 
+export const HeaderWrapper = tw.header<{ $bgColor: string }>`
+    fixed
+    top-0
+    left-0
+    flex 
+    justify-between 
+    items-center 
+    px-12 
+    z-40 
+    w-full
+    transition-colors 
+    duration-500
+    ${({ $bgColor }) => $bgColor}
+`;
 export const HeaderContainer = tw.div`
     flex 
     justify-between 

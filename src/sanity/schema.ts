@@ -11,6 +11,8 @@ import { promotionType } from "./schemaTypes/promotionType";
 import { textWithIllustrationType } from "./schemaTypes/textWithIllu";
 import { videoType } from "./schemaTypes/videoType";
 import { projectType } from "./schemaTypes/projectType";
+import { sectionImageOverlay } from "./schemaTypes/sectionImageOverlayType";
+import { expertiseType } from "./schemaTypes/expertiseType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -20,11 +22,13 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     blockContentType,
     formType,
     heroType,
+    sectionImageOverlay,
     imageGalleryType,
     pageType,
     promotionType,
     projectType,
     textWithIllustrationType,
     videoType,
+    expertiseType,
   ],
 };

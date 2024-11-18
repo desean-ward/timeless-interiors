@@ -6,15 +6,74 @@ import {
   BackToTopBtn,
   ContactUsButton,
   HeaderContainer,
+  HeaderWrapper,
   LinksContainer,
   MobileMenuButton,
 } from "./header.styles";
 import { BsArrowUpSquareFill } from "react-icons/bs";
+import { usePathname } from "next/navigation";
 
 const HeaderComponent = () => {
+  // Header background color - dependent on scroll
+  const [bgColor, setBgColor] = useState<string>("bg-transparent");
+
+  // Mobile Menu State
   const [showMenu, setShowMenu] = useState(false);
 
-  // Toggle scroll lock based on menu state
+  // Back to top arrow visibility state
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Hold a reference to the current path name
+  const pathname = usePathname();
+
+  // Show / Hide Mobile Menu
+  const toggleMenu = () => {
+    setShowMenu((prev) => !prev);
+  };
+
+  // Scroll To Top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  // Listen for section change or pathname to determine the header's background color
+  useEffect(() => {
+    if (pathname === "/gallery") {
+      // Set back ground for the Gallery page
+      setBgColor("bg-black");
+      return;
+    }
+    else {
+      setBgColor("bg-transparent");
+    }
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const bgColor = entry.target.getAttribute("data-bg-color");
+            if (bgColor) setBgColor(bgColor);
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    // Observe 'sections' and 'footer' for header background color
+    const elementsToObserve =
+      document.querySelectorAll<HTMLElement>("section, footer");
+    elementsToObserve.forEach((element) => observer.observe(element));
+
+    // Clean up
+    return () => observer.disconnect();
+  }, []);
+
+  // Toggle scroll lock based when mobile menu is showing
   useEffect(() => {
     if (showMenu) {
       document.body.classList.add("no-scroll");
@@ -27,13 +86,6 @@ const HeaderComponent = () => {
       document.body.classList.remove("no-scroll");
     };
   }, [showMenu]);
-
-  const toggleMenu = () => {
-    setShowMenu((prev) => !prev);
-  };
-
-  // Back to top arrow visibility state
-  const [isVisible, setIsVisible] = useState(false);
 
   // useEffect to back to top arrow visibility
   useEffect(() => {
@@ -51,16 +103,8 @@ const HeaderComponent = () => {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  // Scroll To Top
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <header className='flex justify-between items-center px-12 absolute z-10 w-full'>
+    <HeaderWrapper $bgColor={bgColor}>
       <HeaderContainer>
         <Link href='/' className='font-bebas text-white text-xl'>
           Timeless Interiors
@@ -89,7 +133,10 @@ const HeaderComponent = () => {
           {/* Contact Us Button */}
           <ContactUsButton>Contact Us</ContactUsButton>
         </div>{" "}
-        <BackToTopBtn id='#backToTop' className={isVisible ? 'opacity-100' : 'opacity-0'}>
+        <BackToTopBtn
+          id='#backToTop'
+          className={isVisible ? "opacity-100" : "opacity-0"}
+        >
           <BsArrowUpSquareFill
             color='#766455'
             size={42}
@@ -97,7 +144,7 @@ const HeaderComponent = () => {
           />
         </BackToTopBtn>
       </HeaderContainer>
-    </header>
+    </HeaderWrapper>
   );
 };
 

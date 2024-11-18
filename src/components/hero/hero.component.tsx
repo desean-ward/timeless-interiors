@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   ExploreBtn,
@@ -7,12 +8,26 @@ import {
 } from "./hero.styles";
 import Image from "next/image";
 
-const Hero = () => {
+export const revalidate = 0;
+
+// Hero Props
+type HeroProps = {
+  heroData: {
+    heroImage: string;
+    altText?: string;
+    heading: string;
+    tagline: string;
+  };
+};
+
+const Hero = ({ heroData }: HeroProps) => {
+
   return (
-    <HeroWrapper id='section'>
+    <HeroWrapper id='section' data-bg-color='bg-transparent'>
       <HeroContainer id='container' className='size-full sm:px-24 px-6'>
         <Image
-          src='https://mir-s3-cdn-cf.behance.net/project_modules/fs/54098c96146799.5ea7f6d5a9050.jpg'
+          src={heroData?.heroImage || "/images/dark-bg.png"
+          }
           alt='Hero Image'
           fill
           className='w-full h-full object-cover absolute'
@@ -23,13 +38,11 @@ const Hero = () => {
           <ExploreBtn>Explore</ExploreBtn>
 
           {/* Hero Tex */}
-          <div className='flex flex-col'>
-            <h1 className='font-bold text-4xl leading-none text-white font-bebas'>
-              Transforming Vision Into Reality
+          <div className='flex flex-col shadow-2xl shadow-black py-4 px-4'>
+            <h1 className='font-bold text-4xl leading-none text-white font-bebas shadow-2xl shadow-black backdrop-blur-lg'>
+              {heroData.heading}
             </h1>
-            <p className='text-white text-lg'>
-              At Timeless Interiors, we bring your unique vision to life.
-            </p>
+            <p className='text-white text-lg'>{heroData?.tagline || ""}</p>
           </div>
         </ExploreBtnContainer>
       </HeroContainer>

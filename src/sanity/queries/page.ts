@@ -25,6 +25,51 @@ export type ImageType = {
   url: string;
 };
 
+export async function getHomePage() {
+  const getPageQuery = groq`*[_type == "page"][slug == "home"][0]{
+    "Heading": title,
+    slug,
+    'Hero': pageBuilder[][_type == "hero"][0]{
+      'heroImage': image.asset->url,
+      'altText': image.alt,
+      heading,
+      tagline
+    },
+
+    'Content': pageBuilder[][_type == "textWithIllustration"][0]{
+      "type": _type,
+      excerpt,
+      tagline,
+      heading,
+      image,
+    },
+
+    'SectionImageOverlay': pageBuilder[][_type == "sectionImageOverlay"][0]{
+      "type": _type,
+      heading,
+      'imageOverlay': image.asset->url,
+    },
+
+    "Expertise": pageBuilder[][_type == "expertise"]{
+      "type": _type,
+      excerpt,
+      heading,
+      'url':image.asset->url,
+    },
+
+     'Gallery':pageBuilder[][_type == "gallery"][0]{
+      _type,
+      'imageUrls':images[].asset->{
+        'url':url
+      }
+    },
+  }`;
+
+  return await client.fetch(getPageQuery, {
+    revalidate: new Date().getSeconds(),
+  });
+}
+
 export async function getServicesPage() {
   const getPageQuery = groq`*[_type == "page"][slug == 'services'][0]{
     
@@ -66,8 +111,8 @@ export async function getServicesPage() {
   });
 }
 
-export async function getWorksPage() {
-  const getPageQuery = groq`*[_type == "page"][slug =='works'][0] {
+export async function getProjectsPage() {
+  const getPageQuery = groq`*[_type == "page"][slug =='projects'][0] {
     "Heading": title,
     slug,
     'Hero': pageBuilder[][_type == "hero"][0] {

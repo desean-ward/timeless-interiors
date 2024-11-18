@@ -17,7 +17,7 @@ const Services = async () => {
   const { Heading, Content, Gallery, CallToAction } = data;
 
   return (
-    <ServicesWrapper>
+    <ServicesWrapper data-bg-color='bg-black'>
       <ServicesContainer>
         <HeadingContainer>
           <h1>{Heading}</h1>

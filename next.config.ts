@@ -34,6 +34,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.sanity.io",
       },
+      {
+        protocol: "https",
+        hostname: "www.pinterest.com",
+      },
     ],
   },
   env: {

@@ -45,7 +45,7 @@ export const ProjectsWrapper = tw.div`
     sticky 
     text-black 
     overflow-hidden 
-    top-0 
+    top-16 
     sm:h-[75vh] 
     pb-24 
     shrink-0 

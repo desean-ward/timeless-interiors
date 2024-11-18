@@ -2,30 +2,31 @@ import Image from "next/image";
 import tw from "tailwind-styled-components";
 
 export const TiImageSectionWrapper = tw.section`
-    bg-white 
+    bg-transparent 
     text-black 
     overflow-hidden
     relative 
     w-full 
     flex 
+    justify-center
     items-center
 `;
 
 export const TiImageSectionContainer = tw.div`
     px-6 
     sm:px-24 
-    size-full
+    size-full 
 `;
 
 export const TiImage = tw(Image)`
+    mx-auto
     size-3/4 
-    absolute 
     sm:w-fit
-    lg:right-[25%] 
-    top-0 
     object-cover 
     shadow-black 
     shadow-2xl
     border
     border-white
+    opacity-90
+    rounded-xl
 `;

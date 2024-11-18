@@ -45,6 +45,8 @@ export const HoverSection = tw.div`
     shadow-black
     shadow-md
     rounded-xl
+    text-shadow-md
+    lg:hover:text-shadow-md
 `;
 
 export const SectionImage = tw(Image)`

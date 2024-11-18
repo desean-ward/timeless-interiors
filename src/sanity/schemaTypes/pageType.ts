@@ -38,6 +38,12 @@ export const pageType = defineType({
         defineArrayMember({
           type: "project",
         }),
+        defineArrayMember({
+          type: "sectionImageOverlay",
+        }),
+        defineArrayMember({
+          type: "expertise",
+        }),
       ],
     }),
   ],

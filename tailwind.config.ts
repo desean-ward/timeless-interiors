@@ -6,6 +6,32 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    "sm:h-full",
+    "lg:h-3/4",
+    "md:h-[60%]",
+    "md:w-[80%]",
+    "sm:w-1/4",
+    "lg:w-3/4",
+    "md:right-[10%]",
+    "lg:left-[12.5%]",
+    "md:top-0",
+    "object-cover",
+    "md:rounded-full",
+    "sm:absolute",
+    "shadow-md",
+    "shadow-white",
+    "absolute",
+    "lg:h-2/4",
+    "md:w-[40%]",
+    "sm:lg:w-1/4",
+    "sm:left-0",
+    "sm:right-0",
+    "md:bottom-0",
+    "shadow-2xl",
+    "shadow-black",
+    "z-10",
+  ],
   theme: {
     extend: {
       colors: {
@@ -13,6 +39,7 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       backgroundImage: {
+        "grid-pattern": "url('/images/grid-background.jpg')",
         "hero-background":
           "url('https://cdn.dribbble.com/userupload/4270087/file/original-dd685e687e629f85a09d662b41578434.png?resize=1024x1024')",
       },
@@ -32,6 +59,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("@designbycode/tailwindcss-text-shadow"),
+  ],
 };
 export default config;

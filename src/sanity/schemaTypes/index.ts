@@ -12,6 +12,8 @@ import { promotionType } from "./promotionType";
 import { textWithIllustrationType } from "./textWithIllu";
 import { videoType } from "./videoType";
 import { projectType } from "./projectType";
+import { sectionImageOverlay } from "./sectionImageOverlayType";
+import { expertiseType } from "./expertiseType";
 
 // Register all types in the schema
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -24,9 +26,11 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     promotionType,
     formType,
     heroType,
+    sectionImageOverlay,
     imageGalleryType,
     textWithIllustrationType,
     videoType,
-    projectType
+    projectType,
+    expertiseType,
   ],
 };

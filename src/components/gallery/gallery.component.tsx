@@ -22,13 +22,12 @@ const randomColumns = () => {
   return columnSize[randomIndex];
 };
 
-const Gallery = async () => {
+const GalleryComp = async () => {
   const data = await getGalleryPage();
-  console.log("GALLERY DATA: ", data);
   const { Gallery } = data;
 
   return (
-    <GalleryWrapper>
+    <GalleryWrapper data-bg-color='bg-black'>
       <GalleryContainer>
         <h1 className='text-6xl font-bebas'>Gallery</h1>
 
@@ -57,4 +56,4 @@ const Gallery = async () => {
   );
 };
 
-export default Gallery;
+export default GalleryComp;

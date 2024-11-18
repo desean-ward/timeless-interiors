@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   ExpertiseContainer,
   ExpertiseWrapper,
@@ -7,46 +7,59 @@ import {
   HoverSectionsContainer,
   SectionImage,
 } from "./expertise.styles";
-import Image from "next/image";
+import { getHomePage } from "@/sanity/queries/page";
+import Link from "next/link";
 
-const Expertise = () => {
+export const revalidate = 0;
+
+// Type the Expertise Data props
+type ExpertiseProps = {
+  expertiseData: Array<{
+    heading: string;
+    url: string;
+  }>;
+};
+
+const ExpertiseComp = ({ expertiseData }: ExpertiseProps) => {
+  // Capture the index of the hovered expertise
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
-    <ExpertiseWrapper>
+    <ExpertiseWrapper data-bg-color='bg-black'>
       <ExpertiseContainer>
         <div className='flex flex-col justify-center items-center'>
           <h3 className='text-5xl font-bebas'>Our Expertise</h3>
         </div>
 
         <HoverSectionsContainer>
-          <HoverSection>
-            <span className='text-white text-2xl relative z-10 font-bebas'>
-              Design Interior
-            </span>
+          {expertiseData.map((expertise, index) => {
+            return (
+              <HoverSection
+                key={index}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <Link href='/projects'>
+                  <span className='text-white hover:text-gray-300 text-2xl relative z-10 font-bebas '>
+                    {hoveredIndex === index
+                      ? "View Our Projects"
+                      : expertise.heading}
+                  </span>
+                </Link>
 
-            <SectionImage
-              src='https://i.pinimg.com/564x/48/6d/ea/486dea15b02c62b8e0d541c1a305c902.jpg'
-              alt=''
-              width={320}
-              height={320}
-            />
-          </HoverSection>
-
-          <HoverSection>
-            <span className='text-white text-2xl relative z-10 font-bebas'>
-              Design Architecture
-            </span>
-
-            <SectionImage
-              src='https://i.pinimg.com/564x/1a/81/fe/1a81fe40904fd6327df7f17911e0e4ad.jpg'
-              alt=''
-              width={320}
-              height={320}
-            />
-          </HoverSection>
+                <SectionImage
+                  src={expertise.url}
+                  alt={expertise.heading}
+                  width={320}
+                  height={320}
+                />
+              </HoverSection>
+            );
+          })}
         </HoverSectionsContainer>
       </ExpertiseContainer>
     </ExpertiseWrapper>
   );
 };
 
-export default Expertise;
+export default ExpertiseComp;

@@ -1,4 +1,4 @@
-import { getWorksPage, ImageType, ProjectType } from "@/sanity/queries/page";
+import { getProjectsPage, ImageType, ProjectType } from "@/sanity/queries/page";
 import React from "react";
 import {
   LeftSideContent,
@@ -11,21 +11,21 @@ import {
   VideoContainer,
   WorksContainer,
   WorksWrapper,
-} from "./works.styles";
+} from "./projects.styles";
 import clsx from "clsx";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
 
 export const revalidate = 0;
 
-const Works = async () => {
-  const data = await getWorksPage();
+const Projects = async () => {
+  const data = await getProjectsPage();
 
   const { Content, Hero, CallToAction } = data;
 
   return (
     <>
-      <WorksWrapper>
+      <WorksWrapper data-bg-color="bg-black">
         <WorksContainer>
           <h1 className='text-white text-6xl font-bebas'>{Hero.heading}</h1>
 
@@ -33,7 +33,7 @@ const Works = async () => {
           <VideoContainer>
             {/* Tagline */}
             <span className='text-md block italic font-bold text-white'>
-              {Hero.tagline}
+              {Hero.tagline} {new Date().getFullYear()}
             </span>
 
             {/* Video */}
@@ -81,7 +81,7 @@ const Works = async () => {
                           : "bg-black text-white border-white"
                       )}
                     >
-                      {tagline}
+                      {tagline} {new Date().getFullYear()}
                     </span>
                   </LeftSideContent>
                 </div>
@@ -136,4 +136,4 @@ const Works = async () => {
   );
 };
 
-export default Works;
+export default Projects;

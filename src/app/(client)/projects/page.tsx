@@ -1,9 +1,9 @@
-import Works from '@/components/works/works.component'
+import Projects from '@/components/projects/projects.component'
 import React from 'react'
 
 const WorksPage = () => {
   return (
-    <Works />
+    <Projects />
   )
 }
 

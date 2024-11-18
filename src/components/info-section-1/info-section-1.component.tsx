@@ -8,34 +8,34 @@ import {
   RightContent,
 } from "./info-section-1.styles";
 
-const InfoSection1 = () => {
+export const revalidate = 0;
+
+// Info Section Props
+type InfoSectionProps = {
+  infoSectionData: {
+    heading: string;
+    tagline: string;
+    excerpt: string;
+  };
+};
+
+const InfoSection1 = ({ infoSectionData }: InfoSectionProps) => {
+
   return (
-    <InfoSection1Wrapper id='section'>
+    <InfoSection1Wrapper id='section' data-bg-color='bg-black'>
       <InfoSection1Container id='container'>
         <InfoSectionContent>
           {/* Left Side Content */}
           <LeftContent>
             <h2 className='uppercase text-xl font-semibold'>
-              Timeless Interiors | comfort living
+              {infoSectionData.heading}
             </h2>
-            <p>
-              Timeless Interiors is dedicated to shaping your ideas into
-              beautifully crafted spaces that feel enduring and uniquely yours.
-            </p>
+            <p>{infoSectionData.tagline}</p>
           </LeftContent>
 
           {/* Right Side Content */}
           <RightContent>
-            <p>
-              At Timeless Interiors, we believe every space should tell a
-              story—your story. From concept to completion, our design team
-              brings your unique vision to life with elegance and precision. We
-              specialize in creating interiors that blend functionality with
-              timeless beauty, ensuring that every room we design reflects both
-              your style and our dedication to excellence. Let’s turn your dream
-              into a beautifully crafted reality.
-            </p>
-
+            <p>{infoSectionData.excerpt}</p>
           </RightContent>
         </InfoSectionContent>
       </InfoSection1Container>
