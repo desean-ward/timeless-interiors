@@ -1,4 +1,3 @@
-import Link from "next/link";
 import tw from "tailwind-styled-components";
 
 export const WorksWrapper = tw.section`
@@ -47,7 +46,6 @@ export const ProjectsWrapper = tw.div`
     overflow-hidden 
     top-16 
     sm:h-[75vh] 
-    pb-24 
     shrink-0 
     w-full
 `;
@@ -63,8 +61,8 @@ export const ProjectContainer = tw.div`
     grid-cols-1 
     md:grid-cols-2 
     justify-between 
-    py-6 
-    px-6 
+    py-8 
+    px-12 
     border-b-black
 `;
 
@@ -75,29 +73,12 @@ export const LeftSideContent = tw.div`
     gap-3 
     sm:gap-6 
     xl:items-center
-`
+`;
 
 export const RightSideContent = tw.div`
     flex 
     items-center
-    gap-4
-    my-3 
     sm:my-0 
-`;
-
-export const SeeMoreLink = tw(Link)`
-    bg-black 
-    font-bebas
-    text-lg
-    w-fit 
-    h-fit 
-    shrink-0 
-    border-solid 
-    px-6 
-    py-2 
-    rounded-xl
-    border-2
-    duration-300
 `;
 
 export const MarqueeImages = tw.div`
@@ -110,4 +91,4 @@ export const MarqueeImages = tw.div`
     justify-center 
     sm:w-[450px] 
     aspect-video
-`
+`;

@@ -1,7 +1,7 @@
 import tw from "tailwind-styled-components";
 
 export const InfoSection1Wrapper = tw.section`
-    bg-white 
+    bg-white
     text-black
     py-6 
     sm:py-24 

@@ -38,11 +38,11 @@ const Hero = ({ heroData }: HeroProps) => {
           <ExploreBtn>Explore</ExploreBtn>
 
           {/* Hero Tex */}
-          <div className='flex flex-col shadow-2xl shadow-black py-4 px-4'>
-            <h1 className='font-bold text-4xl leading-none text-white font-bebas shadow-2xl shadow-black backdrop-blur-lg'>
+          <div className='flex flex-col py-4 px-4'>
+            <h1 className='font-bold text-4xl leading-none text-white font-bebas text-shadow-sm text-shadow-black backdrop-blur-lg'>
               {heroData.heading}
             </h1>
-            <p className='text-white text-lg'>{heroData?.tagline || ""}</p>
+            <p className='text-white text-lg text-shadow-sm bg-gradient-to-r from-black to-transparent p-4 rounded-lg'>{heroData?.tagline || ""}</p>
           </div>
         </ExploreBtnContainer>
       </HeroContainer>

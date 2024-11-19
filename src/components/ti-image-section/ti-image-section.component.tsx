@@ -5,7 +5,6 @@ import {
   TiImageSectionContainer,
   TiImageSectionWrapper,
 } from "./ti-image-section.styles";
-import { getHomePage } from "@/sanity/queries/page";
 import Image from "next/image";
 
 export const revalidate = 0;

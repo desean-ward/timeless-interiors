@@ -44,4 +44,6 @@ export const ExploreBtn = tw.button`
     px-9 
     py-1
     mr-auto
+    shadow-md
+    shadow-black
 `;

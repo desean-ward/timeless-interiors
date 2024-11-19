@@ -1,6 +1,4 @@
-import React from "react";
 import {
-  DetailsButton,
   InfoSection1Container,
   InfoSection1Wrapper,
   InfoSectionContent,

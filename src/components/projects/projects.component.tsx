@@ -1,4 +1,4 @@
-import { getProjectsPage, ImageType, ProjectType } from "@/sanity/queries/page";
+import { ImageType, ProjectType } from "@/sanity/queries/page";
 import React from "react";
 import {
   LeftSideContent,
@@ -7,7 +7,6 @@ import {
   ProjectsSectionWrapper,
   ProjectsWrapper,
   RightSideContent,
-  SeeMoreLink,
   VideoContainer,
   WorksContainer,
   WorksWrapper,
@@ -18,22 +17,26 @@ import Image from "next/image";
 
 export const revalidate = 0;
 
-const Projects = async () => {
-  const data = await getProjectsPage();
+type ProjectTypeProps = {
+  heroData: {
+    heading: string;
+    tagline: string;
+  };
+  contentData: ProjectType[];
+};
 
-  const { Content, Hero, CallToAction } = data;
-
+const Projects = ({ heroData, contentData }: ProjectTypeProps) => {
   return (
     <>
-      <WorksWrapper data-bg-color="bg-black">
+      <WorksWrapper data-bg-color='bg-black'>
         <WorksContainer>
-          <h1 className='text-white text-6xl font-bebas'>{Hero.heading}</h1>
+          <h1 className='text-white text-6xl font-bebas'>{heroData.heading}</h1>
 
           {/* Hero Video */}
           <VideoContainer>
             {/* Tagline */}
             <span className='text-md block italic font-bold text-white'>
-              {Hero.tagline} {new Date().getFullYear()}
+              {heroData.tagline} {new Date().getFullYear()}
             </span>
 
             {/* Video */}
@@ -52,7 +55,7 @@ const Projects = async () => {
       </WorksWrapper>
 
       <ProjectsSectionWrapper>
-        {Content.map((project: ProjectType, index: number) => {
+        {contentData.map((project, index: number) => {
           const { location, imageUrls, excerpt, tagline, projectname } =
             project;
 
@@ -89,19 +92,6 @@ const Projects = async () => {
                 {/* Right Side Content */}
                 <RightSideContent>
                   <p>{excerpt}</p>
-
-                  {/*
-                    <SeeMoreLink
-                      href='#'
-                      className={clsx(
-                        index % 2 == 0
-                          ? "bg-black text-white border-white hover:bg-white hover:text-black hover:border-black"
-                          : "bg-white text-black border-black hover:bg-black hover:text-white hover:border-white"
-                      )}
-                    >
-                      See More
-                    </SeeMoreLink>
-                    */}
                 </RightSideContent>
               </ProjectContainer>
 
