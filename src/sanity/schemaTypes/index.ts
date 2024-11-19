@@ -14,6 +14,7 @@ import { videoType } from "./videoType";
 import { projectType } from "./projectType";
 import { sectionImageOverlay } from "./sectionImageOverlayType";
 import { expertiseType } from "./expertiseType";
+import { callToActionType } from "./callToActionType";
 
 // Register all types in the schema
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -32,5 +33,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     videoType,
     projectType,
     expertiseType,
+    callToActionType,
   ],
 };

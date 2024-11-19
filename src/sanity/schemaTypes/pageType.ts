@@ -29,6 +29,9 @@ export const pageType = defineType({
           type: "form",
         }),
         defineArrayMember({
+          type: "callToAction",
+        }),
+        defineArrayMember({
           type: "video",
         }),
         defineArrayMember({

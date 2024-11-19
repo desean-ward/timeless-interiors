@@ -1,4 +1,3 @@
-import React from "react";
 import {
   ContentContainer,
   CTALink,
@@ -8,24 +7,46 @@ import {
   ServicesContainer,
   ServicesWrapper,
 } from "./services.styles";
-import { ContentType, getServicesPage, ImageType } from "@/sanity/queries/page";
+import { ContentType, ImageType } from "@/sanity/queries/page";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
 
-const Services = async () => {
-  const data = await getServicesPage();
-  const { Heading, Content, Gallery, CallToAction } = data;
+type ServicesProps = {
+  headingData: string;
+
+  contentData: Record<string, ContentType>;
+
+  ctaData: {
+    title: string;
+    link: string;
+  };
+
+  galleryData: {
+    imageUrls: Array<{
+      url: string;
+    }>;
+  };
+};
+const Services = ({
+  headingData,
+  contentData,
+  ctaData,
+  galleryData,
+}: ServicesProps) => {
+  console.log("CTA DATA: ", ctaData);
 
   return (
     <ServicesWrapper data-bg-color='bg-black'>
       <ServicesContainer>
         <HeadingContainer>
-          <h1>{Heading}</h1>
+          <h1>{headingData}</h1>
         </HeadingContainer>
 
         {/* Content */}
         <ContentContainer>
-          {Content.map((element: ContentType, index: number) => {
+          {Object.keys(contentData).map((key: string, index: number) => {
+            const element = contentData[key];
+
             return (
               <ElementContainer key={index}>
                 <div>
@@ -36,9 +57,9 @@ const Services = async () => {
                 {/* Element Text */}
                 <div className='text-sm'>{element.excerpt}</div>
 
-                {/* Call to Action */}
-                <CTALink href={CallToAction.link} target='_blank'>
-                  {CallToAction.title}
+                {/* Call to Action  */}
+                <CTALink href={ctaData.link} target='_blank'>
+                  {ctaData.title}
                 </CTALink>
               </ElementContainer>
             );
@@ -47,7 +68,7 @@ const Services = async () => {
           {/* Gallery Marquee */}
           <div className='col-span-1 md:col-span-3'>
             <Marquee className='h-full w-full' loop={50}>
-              {Gallery.imageUrls?.map((image: ImageType, index: number) => {
+              {galleryData.imageUrls.map((image: ImageType, index: number) => {
                 return (
                   <div className='h-[450px] aspect-auto w-full' key={index}>
                     <Image

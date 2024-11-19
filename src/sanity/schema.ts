@@ -13,6 +13,7 @@ import { videoType } from "./schemaTypes/videoType";
 import { projectType } from "./schemaTypes/projectType";
 import { sectionImageOverlay } from "./schemaTypes/sectionImageOverlayType";
 import { expertiseType } from "./schemaTypes/expertiseType";
+import { callToActionType } from "./schemaTypes/callToActionType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -30,5 +31,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     textWithIllustrationType,
     videoType,
     expertiseType,
+    callToActionType,
   ],
 };

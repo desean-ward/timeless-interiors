@@ -74,13 +74,14 @@ export async function getServicesPage() {
   const getPageQuery = groq`*[_type == "page"][slug == 'services'][0]{
     
     'Heading':title,
+
     'Content':pageBuilder[][_type == "textWithIllustration"]{
       "type": _type,
       excerpt,
       heading,
       image
-    
     },
+    
     'Gallery':pageBuilder[][_type == "gallery"][0]{
       _type,
       'imageUrls':images[].asset->{
