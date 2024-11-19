@@ -1,3 +1,4 @@
+import Link from "next/link";
 import tw from "tailwind-styled-components";
 
 export const BlogWrapper = tw.section`
@@ -27,7 +28,7 @@ export const BlogContent = tw.div`
     cursor-pointer
 `;
 
-export const BlogPost = tw.div`
+export const BlogPost = tw(Link)`
     w-full 
     col-span-1 
     group 

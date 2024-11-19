@@ -26,7 +26,7 @@ const Blog = async () => {
         <BlogContent>
           {postData.map((post, idx) => {
             return (
-              <BlogPost key={idx}>
+              <BlogPost key={idx} href={`/blog/${post.slug?.current}` || ""}>
                 {/* Header */}
                 <PostHeader>
                   <h2 className='text-white text-lg'>{post.title}</h2>
