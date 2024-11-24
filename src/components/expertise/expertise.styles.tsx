@@ -38,8 +38,7 @@ export const HoverSection = tw.div`
     h-[330px] 
     xl:h-[60vh]
     group 
-    duration-300 
-    lg:bg-black 
+    lg:bg-[#0A0A0A] 
     lg:hover:bg-transparent 
     bg-transparent 
     shadow-black
@@ -47,6 +46,8 @@ export const HoverSection = tw.div`
     rounded-xl
     text-shadow-md
     lg:hover:text-shadow-md
+    transition-opacity
+    duration-300
 `;
 
 export const SectionImage = tw(Image)`
@@ -57,5 +58,4 @@ export const SectionImage = tw(Image)`
     md:rounded-xl 
     lg:group-hover:opacity-100 
     object-cover 
-    duration-300
 `;

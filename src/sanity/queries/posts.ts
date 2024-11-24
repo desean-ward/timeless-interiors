@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { groq } from "next-sanity";
 import { client } from "../lib/client";
 
@@ -10,16 +11,17 @@ export type PostType = {
   imageUrl: string;
   publishedAt: string;
   author: string;
+  smallDescription: string;
 };
 
-const getPostsQuery = `*[_type == "post"]{
+const getPostsQuery = `*[_type == "post"] | order(publishedAt desc) {
     title,
     slug,
+    smallDescription,
     "author": author->name,
     "imageUrl": mainImage.asset->url,
     categories,
     publishedAt,
-    body
 }`;
 
 export async function getPosts() {
@@ -30,15 +32,15 @@ export async function getPosts() {
 
 const getPostDetailQuery = groq`*[_type == "post"][slug.current == $slug][0]{
     title,
-    slug,
     "author": author->name,
     "imageUrl": mainImage.asset->url,
     'categories': categories[] -> title,
     publishedAt,
-    body
+    content,
+    smallDescription,
 }`;
 
-export async function getPostDetail(slug: string) {
+export async function getPostDetails(slug: string) {
   return await client.fetch(getPostDetailQuery, {
     slug,
     revalidate: new Date().getSeconds(),

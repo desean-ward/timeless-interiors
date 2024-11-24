@@ -41,15 +41,14 @@ const HeaderComponent = () => {
 
   // Listen for section change or pathname to determine the header's background color
   useEffect(() => {
-    if (pathname === "/gallery") {
+    if (pathname === "/gallery" || pathname === "/blog") {
       // Set back ground for the Gallery page
-      setBgColor("bg-black");
+      setBgColor("bg-[#0A0A0A]");
       return;
-    }
-    else {
+    } else {
       setBgColor("bg-transparent");
     }
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -107,7 +106,7 @@ const HeaderComponent = () => {
     <HeaderWrapper $bgColor={bgColor}>
       <HeaderContainer>
         <Link href='/' className='font-bebas text-white text-xl'>
-          Timeless Interiors
+          Timeless <span className='text-[tan]'>Interiors</span>
         </Link>
         {/* Header Links */}
         <LinksContainer className={`${showMenu ? "top-0" : "-top-[100vh]"}`}>
@@ -116,7 +115,7 @@ const HeaderComponent = () => {
             return (
               <li
                 key={index}
-                className='text-white text-base uppercase'
+                className='hover:text-[tan] text-base uppercase'
                 onClick={() => toggleMenu()}
               >
                 <Link href={item.href}>{item.label}</Link>
@@ -131,19 +130,19 @@ const HeaderComponent = () => {
           </MobileMenuButton>
 
           {/* Contact Us Button */}
-          <ContactUsButton>Contact Us</ContactUsButton>
+          <ContactUsButton href="mailto:dward@desean-ward.me" target="_blank">Contact Us</ContactUsButton>
         </div>{" "}
-        <BackToTopBtn
-          id='#backToTop'
-          className={isVisible ? "opacity-100" : "opacity-0"}
-        >
-          <BsArrowUpSquareFill
-            color='#766455'
-            size={42}
-            onClick={() => scrollToTop()}
-          />
-        </BackToTopBtn>
       </HeaderContainer>
+      <BackToTopBtn
+        id='#backToTop'
+        className={isVisible ? "opacity-100" : "opacity-0"}
+      >
+        <BsArrowUpSquareFill
+          color='#D2B48C'
+          size={42}
+          onClick={() => scrollToTop()}
+        />
+      </BackToTopBtn>
     </HeaderWrapper>
   );
 };

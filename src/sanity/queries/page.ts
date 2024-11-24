@@ -154,6 +154,7 @@ export async function getGalleryPage() {
     'Heading':title,
     slug,
     
+    
      'Gallery':pageBuilder[][_type == "gallery"][0]{
       _type,
       'imageUrls':images[].asset->{

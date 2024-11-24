@@ -11,7 +11,8 @@ export const WorksWrapper = tw.section`
     justify-center 
     flex 
     items-center 
-    bg-black
+    bg-[#0A0A0A]
+
 `;
 
 export const WorksContainer = tw.div`
@@ -37,7 +38,8 @@ export const ProjectsSectionWrapper = tw.section`
     flex 
     flex-col 
     items-center 
-    bg-black
+    bg-[#0A0A0A]
+
 `;
 
 export const ProjectsWrapper = tw.div`

@@ -1,54 +1,82 @@
-import { getPosts, PostType } from "@/sanity/queries/posts";
+import { PostType } from "@/sanity/queries/posts";
 import Image from "next/image";
 import React from "react";
 import {
   BlogContainer,
   BlogContent,
-  BlogPost,
+  BlogTitle,
   BlogWrapper,
   ImageContainer,
   PostHeader,
   PostSubHeader,
+  ReadMoreBtn,
+  SmallDescription,
 } from "./blog.styles";
+import { Card, CardContent } from "../ui/card";
+import Link from "next/link";
 
-const Blog = async () => {
-  const postData: PostType[] = await getPosts();
-
+const Blog = ({ postsData }: { postsData: PostType[] }) => {
   return (
     <BlogWrapper>
       <BlogContainer>
         {/* Blog Title */}
         <div id='title'>
-          <h1 className='text-white text-6xl font-bebas'>Our Blog</h1>
+          <BlogTitle>Our Blog</BlogTitle>
         </div>
 
         {/* Blog Content */}
         <BlogContent>
-          {postData.map((post, idx) => {
+          {postsData.map((post, idx) => {
+            const fullDate = new Date(post.publishedAt)
+              .toDateString()
+              .split(" ");
+            const day = fullDate[0];
+            const date = new Date(post.publishedAt).toLocaleDateString();
+            const time = new Date(post.publishedAt).toLocaleTimeString();
+            const { title, smallDescription, imageUrl, slug } = post;
+
             return (
-              <BlogPost key={idx} href={`/blog/${post.slug?.current}` || ""}>
-                {/* Header */}
-                <PostHeader>
-                  <h2 className='text-white text-lg'>{post.title}</h2>
-
-                  {/* Subheader */}
-                  <PostSubHeader>
-                    <span>{post.author}</span>
-                    <span>{post.publishedAt}</span>
-                  </PostSubHeader>
-                </PostHeader>
-
+              <Card key={idx} className='group'>
                 {/* Post Image */}
                 <ImageContainer>
                   <Image
-                    src={post.imageUrl}
-                    alt={post.title || ""}
-                    width={300}
-                    height={450}
-                    className='absolute w-full group-hover:scale-110 duration-300 h-full object-cover'
+                    src={imageUrl}
+                    alt={title || ""}
+                    width={500}
+                    height={500}
+                    className='w-full group-hover:scale-150 ease-in-out duration-1000 h-full object-cover'
                   />
                 </ImageContainer>
-              </BlogPost>
+
+                {/* Title */}
+                <CardContent className='relative prose prose-a:no-underline'>
+                  <PostHeader>
+                    <h2 className='text-black text-lg'>{title}</h2>
+
+                    {/* Subheader */}
+                    <PostSubHeader>
+                      <span>{post.author}</span>
+                      <span className='text-[tan]'> | </span>
+                      <span>
+                        {day} {date} {time}
+                      </span>
+                    </PostSubHeader>
+                  </PostHeader>
+
+                  {/* Small Description */}
+                  <SmallDescription>{smallDescription}</SmallDescription>
+
+                  {/* Button */}
+                  <ReadMoreBtn asChild>
+                    <Link
+                      href={`/blog/${slug?.current}` || ""}
+                      className='py-5 text-decoration-none'
+                    >
+                      Read More
+                    </Link>
+                  </ReadMoreBtn>
+                </CardContent>
+              </Card>
             );
           })}
         </BlogContent>

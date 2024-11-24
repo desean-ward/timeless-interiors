@@ -20,7 +20,7 @@ const TiImageSection = ({sectionImgOLData}: ImageOverlayProps) => {
 
 
   return (
-    <TiImageSectionWrapper data-bg-color='bg-black'>
+    <TiImageSectionWrapper data-bg-color='bg-[#0A0A0A]'>
       <div className='absolute inset-0 -z-10'>
         <Image
           src={sectionImgOLData.imageOverlay}

@@ -8,7 +8,7 @@ export const ServicesWrapper = tw.section`
     flex 
     justify-center 
     items-center 
-    bg-black
+    bg-[#0A0A0A]
 `;
 
 export const ServicesContainer = tw.div`
@@ -18,7 +18,7 @@ export const ServicesContainer = tw.div`
 `;
 
 export const HeadingContainer = tw.div`
-    text-white
+    text-[tan]
     text-6xl 
     font-bebas
 `;
@@ -47,7 +47,7 @@ export const ElementContainer = tw.div`
 `;
 
 export const ElementHeading = tw.h2`
-    text-white 
+    text-[tan] 
     text-xl 
     font-bold 
     font-bebas
@@ -56,7 +56,8 @@ export const ElementHeading = tw.h2`
 export const CTALink = tw(Link)`
     border 
     border-white 
-    font-bebas 
+    font-bebas
+    text-[tan] 
     text-xl 
     text-center 
     hover:bg-white 

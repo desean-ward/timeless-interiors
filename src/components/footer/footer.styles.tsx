@@ -5,6 +5,7 @@ export const FooterContainer = tw.div`
     sm:px-24 
     overflow-hidden 
     size-full
+    bg-transparent
 `;
 
 export const FooterContent = tw.div`
@@ -15,19 +16,21 @@ export const FooterContent = tw.div`
     flex-col 
     mb-6 
     sm:mb-0
+    border-t
+    border-white/20
 `;
 
-export const LinksContainer = tw.ul`
+export const LinksContainer = tw.div`
     flex 
     justify-center 
     md:flex-row
     flex-col
     items-center 
     gap-6
-    mt-8
+    mt-8 
 `;
 
-export const FooterLink = tw.li`
+export const FooterLink = tw.button`
     flex 
     items-center
     gap-3 
@@ -35,14 +38,14 @@ export const FooterLink = tw.li`
     border-white 
     hover:bg-white 
     text-lg
+    hover:text-black
     md:text-base
-    text-white 
-    hover:text-black 
     duration-300 
     mx-3 
     rounded-xl
     px-8 
     py-1
+    hover:cursor-pointer
 `;
 
 export const SocialLinks = tw.ul`
@@ -66,7 +69,7 @@ export const FooterInfo = tw.div`
     items-start
     lg:flex-row
     lg:justify-around
-    lg:items-center
+    lg:items-start
     py-6
     gap-8
     top-32 

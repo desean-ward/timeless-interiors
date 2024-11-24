@@ -25,7 +25,7 @@ const ExpertiseComp = ({ expertiseData }: ExpertiseProps) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <ExpertiseWrapper data-bg-color='bg-black'>
+    <ExpertiseWrapper data-bg-color='bg-[#0A0A0A]'>
       <ExpertiseContainer>
         <div className='flex flex-col justify-center items-center'>
           <h3 className='text-5xl font-bebas'>Our Expertise</h3>

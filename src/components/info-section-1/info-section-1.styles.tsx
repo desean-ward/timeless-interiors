@@ -50,7 +50,7 @@ export const RightContent = tw.div`
 export const DetailsButton = tw.button`
     border
     text-lg
-    hover:bg-black 
+    hover:bg-[#0A0A0A] 
     hover:text-white 
     duration-300 
     font-bebas 

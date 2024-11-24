@@ -4,7 +4,7 @@ import {
   GalleryWrapper,
   ImagesContainer,
 } from "./gallery.styles";
-import { getGalleryPage, ImageType } from "@/sanity/queries/page";
+import { ImageType } from "@/sanity/queries/page";
 import Image from "next/image";
 
 export const revalidate = 0;
@@ -32,9 +32,11 @@ type GalleryProps = {
 
 const GalleryComp = ({ galleryData }: GalleryProps) => {
   return (
-    <GalleryWrapper data-bg-color='bg-black'>
+    <GalleryWrapper data-bg-color='bg-[#0A0A0A]'>
       <GalleryContainer>
-        <h1 className='text-6xl font-bebas'>Gallery</h1>
+        <h1 className='text-6xl text-[tan] font-bebas'>
+          Gallery
+        </h1>
 
         <div className='text-base- font-bold italic mb-8'>
           Our entire works are showcased here.

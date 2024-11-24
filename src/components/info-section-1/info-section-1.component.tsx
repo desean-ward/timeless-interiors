@@ -20,7 +20,7 @@ type InfoSectionProps = {
 const InfoSection1 = ({ infoSectionData }: InfoSectionProps) => {
 
   return (
-    <InfoSection1Wrapper id='section' data-bg-color='bg-black'>
+    <InfoSection1Wrapper id='section' data-bg-color='bg-[#0A0A0A]'>
       <InfoSection1Container id='container'>
         <InfoSectionContent>
           {/* Left Side Content */}

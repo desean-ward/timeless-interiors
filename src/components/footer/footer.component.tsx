@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
 import {
   FooterBottom,
@@ -12,90 +14,98 @@ import {
 } from "./footer.styles";
 import { FaGithub, FaGlobe, FaLinkedin } from "react-icons/fa";
 
+import footerLinks from "@/data/footerLinks.json";
+
 /* eslint-disable react/no-unescaped-entities */
 
 const FooterComponent = () => {
+  const [isHovered, setIsHovered] = useState<number | null>(null);
+
   return (
     <footer
       className='relative top-0 sm:h-screen overflow-hidden py-24'
-      data-bg-color='bg-black'
+      data-bg-color='bg-[#0A0A0A]'
     >
       <FooterContainer id='container'>
         <FooterContent>
           <p className='font-bebas text-white text-[12vw] leading-none'>
-            Let's Connect{" "}
+            Let's <span className='text-[tan]'>Connect</span>{" "}
           </p>
 
           <LinksContainer>
-            {/* My Website */}
-            <FooterLink>
-              <FaGlobe />
-              <Link href='https://www.desean-ward.me/' target='_blank'>
-                Visit Me
-              </Link>
-            </FooterLink>
+            {footerLinks.links.map((link, index) => (
+              <Link key={index} href={link.href} target='_blank'>
+                <FooterLink
+                  onMouseEnter={() => setIsHovered(index)}
+                  onMouseLeave={() => setIsHovered(null)}
+                >
+                  <span>
+                    {index === 0 ? (
+                      <FaGlobe />
+                    ) : index === 1 ? (
+                      <FaLinkedin />
+                    ) : (
+                      <FaGithub />
+                    )}
+                  </span>
 
-            {/* LinkedIn */}
-            <FooterLink>
-              <FaLinkedin />
-              <Link
-                href='https://www.linkedin.com/in/desean-ward'
-                target='_blank'
-              >
-                LinkedIn
+                  <span
+                    className={
+                      isHovered === index ? "text-black" : "text-[tan]"
+                    }
+                  >
+                    {link.label}
+                  </span>
+                </FooterLink>
               </Link>
-            </FooterLink>
-
-            {/* Github */}
-            <FooterLink>
-              <FaGithub />
-              <Link href='https://www.github.com/desean-ward' target='_blank'>
-                Github
-              </Link>
-            </FooterLink>
+            ))}
           </LinksContainer>
+
           {/* Footer Bottom */}
           <FooterBottom>
             <FooterInfo>
               <FooterColumn>
-                <h2 className='font-semibold'>Timeless Interiors</h2>
+                <p className='font-semibold'>
+                  Timeless{" "}
+                  <span className='text-[tan] hover:text-black'>Interiors</span>
+                </p>
                 <p>Transforming Vision into Reality</p>
 
                 <NavLinks>
                   <li className='no-underline hover:text-underline '>
-                    <a href='/' className='text-blue-500'>
+                    <Link href='/' className='text-blue-500'>
                       Home
-                    </a>
+                    </Link>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <a href='/blog' className='text-blue-500'>
+                    <Link href='/blog' className='text-blue-500'>
                       Blog
-                    </a>
+                    </Link>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <a href='/Projects' className='text-blue-500'>
+                    <Link href='/Projects' className='text-blue-500'>
                       Projects
-                    </a>
+                    </Link>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <a href='/services' className='text-blue-500'>
+                    <Link href='/services' className='text-blue-500'>
                       Services
-                    </a>
+                    </Link>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <a href='/gallery' className='text-blue-500'>
+                    <Link href='/gallery' className='text-blue-500'>
                       Gallery
-                    </a>
+                    </Link>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <a href='#' className='text-blue-500'>
+                    <Link href='mailto:dward@desean-ward.me' className='text-blue-500'>
                       Contact Us
-                    </a>
+                    </Link>
                   </li>
                 </NavLinks>
               </FooterColumn>
@@ -108,7 +118,7 @@ const FooterComponent = () => {
                 <p>
                   <strong>📧 Email:</strong>{" "}
                   <a
-                    href='mailto:contact@timelessinteriors.com'
+                    href='mailto:dward@desean-ward.me'
                     className='text-blue-500'
                   >
                     contact@timelessinteriors.com
@@ -121,7 +131,7 @@ const FooterComponent = () => {
 
               {/* Social Links */}
               <FooterColumn>
-                <p>✨ Follow us:</p>
+                <p>✨ Follow us</p>
                 <SocialLinks>
                   <li className='no-underline hover:text-underline'>
                     <a href='#' className='text-blue-500'>
@@ -152,8 +162,9 @@ const FooterComponent = () => {
 
             {/* Copyright */}
             <div className='w-full absolute bottom-0 left-0 mb-8 text-center'>
-              &copy; {new Date().getFullYear()} De Sean Ward | All rights
-              reserved.
+              &copy; {new Date().getFullYear()} De Sean Ward{" "}
+              <span className='text-[tan]'>|</span> Timeless Interiors{" "}
+              <span className='text-[tan]'>|</span> All rights reserved.
             </div>
           </FooterBottom>
         </FooterContent>

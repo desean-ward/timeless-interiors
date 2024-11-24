@@ -33,10 +33,9 @@ const Services = ({
   ctaData,
   galleryData,
 }: ServicesProps) => {
-  console.log("CTA DATA: ", ctaData);
-
-  return (
-    <ServicesWrapper data-bg-color='bg-black'>
+  
+   return (
+    <ServicesWrapper data-bg-color='bg-[#0A0A0A]'>
       <ServicesContainer>
         <HeadingContainer>
           <h1>{headingData}</h1>

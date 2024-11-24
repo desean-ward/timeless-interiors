@@ -1,5 +1,5 @@
-import Link from "next/link";
 import tw from "tailwind-styled-components";
+import { Button } from "../ui/button";
 
 export const BlogWrapper = tw.section`
     py-24
@@ -9,12 +9,20 @@ export const BlogWrapper = tw.section`
     flex
     justify-center 
     items-center
+    text-black
 `;
 
 export const BlogContainer = tw.div`
     px-6 
     sm:px-24 
     size-full
+`;
+
+export const BlogTitle = tw.h1`
+    text-[tan] 
+    text-6xl 
+    font-bebas
+    text-balance
 `;
 
 export const BlogContent = tw.div`
@@ -25,32 +33,47 @@ export const BlogContent = tw.div`
     grid-cols-1 
     md:grid-cols-2
     lg:grid-cols-3
-    cursor-pointer
 `;
 
-export const BlogPost = tw(Link)`
+export const ReadMoreBtn = tw(Button)`
     w-full 
-    col-span-1 
-    group 
-    shrink-0 
-    border 
-    px-3 
-    py-2
-    rounded-xl
+    mt-7 
+    font-bebas 
+    text-[tan] 
+    text-lg 
+    hover:bg-white
+    hover:text-black 
+    hover:border 
+    hover:shadow-2xl 
+    hover:shadow-black
 `;
 
 export const PostHeader = tw.div`
+    relative
     flex 
     flex-col 
     mb-6
+    line-clamp-1
+    -mt-8
+    text-balance
 `;
 
 export const PostSubHeader = tw.div`
+    relative
     flex 
-    justify-between 
+    gap-2 
     w-full
-    text-white 
     text-sm
+    -mt-4
+    italic
+`;
+
+export const SmallDescription = tw.div`
+    line-clamp-2 
+    text-md 
+    text-black
+    mt-2
+    mb-auto 
 `;
 
 export const ImageContainer = tw.div`
