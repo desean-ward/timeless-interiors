@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import Link from "next/link";
 import headerData from "@/data/headerData.json";
 import {
@@ -70,7 +72,7 @@ const HeaderComponent = () => {
 
     // Clean up
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   // Toggle scroll lock based when mobile menu is showing
   useEffect(() => {
@@ -102,10 +104,81 @@ const HeaderComponent = () => {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
+  // Animate the 'backToTop' button
+  useGSAP(() => {
+    gsap.to("#backToTop", {
+      bottom: isVisible ? "2rem" : "0rem",
+      opacity: isVisible ? 1 : 0,
+      duration: 0.2,
+      delay: 0.3,
+      ease: "none",
+    });
+  }, [isVisible]);
+
+  // Slide in the logo from the left
+  useGSAP(() => {
+    gsap.fromTo(
+      "#logo",
+      {
+        opacity: 0,
+        x: -200,
+        duration: 1,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+      }
+    );
+  }, []);
+
+  // Slide in the Contact Us button from the right
+  useGSAP(() => {
+    gsap.fromTo(
+      "#contactUs",
+      {
+        opacity: 0,
+        x: 200,
+        duration: 1,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+      }
+    );
+  }, []);
+
+  // Stagger in the header links
+  useGSAP(() => {
+    gsap.fromTo(
+      "#navLink",
+      {
+        opacity: 0,
+        y: "100vh",
+        duration: 1,
+        scale: 96,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scale: 1,
+        ease: "power3.inout",
+        stagger: 0.2,
+        delay: 1,
+      }
+    );
+  }, []);
+
   return (
     <HeaderWrapper $bgColor={bgColor}>
       <HeaderContainer>
-        <Link href='/' className='font-bebas text-white text-xl'>
+        <Link
+          id='logo'
+          href='/'
+          className='font-bebas text-white text-xl opacity-0'
+        >
           Timeless <span className='text-[tan]'>Interiors</span>
         </Link>
         {/* Header Links */}
@@ -115,7 +188,8 @@ const HeaderComponent = () => {
             return (
               <li
                 key={index}
-                className='hover:text-[tan] text-base uppercase'
+                id='navLink'
+                className='hover:text-[tan] text-base uppercase opacity-0'
                 onClick={() => toggleMenu()}
               >
                 <Link href={item.href}>{item.label}</Link>
@@ -130,17 +204,21 @@ const HeaderComponent = () => {
           </MobileMenuButton>
 
           {/* Contact Us Button */}
-          <ContactUsButton href="mailto:dward@desean-ward.me" target="_blank">Contact Us</ContactUsButton>
+          <div id='contactUs' className='opacity-0'>
+            <ContactUsButton href='mailto:dward@desean-ward.me' target='_blank'>
+              Contact Us
+            </ContactUsButton>
+          </div>
         </div>{" "}
       </HeaderContainer>
-      <BackToTopBtn
-        id='#backToTop'
-        className={isVisible ? "opacity-100" : "opacity-0"}
-      >
+
+      {/* Back To Top Button */}
+      <BackToTopBtn id='backToTop'>
         <BsArrowUpSquareFill
           color='#D2B48C'
           size={42}
           onClick={() => scrollToTop()}
+          className='hover:opacity-70'
         />
       </BackToTopBtn>
     </HeaderWrapper>

@@ -72,9 +72,9 @@ export const ContactUsButton = tw(Link)`
 
 export const BackToTopBtn = tw.div`
     fixed
-    bottom-[2rem]
+    bottom-0
     right-[2rem]
     cursor-pointer
-    hover:opacity-50
     duration-300
+    z-50
 `;
