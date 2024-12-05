@@ -21,6 +21,7 @@ const HeaderComponent = () => {
 
   // Mobile Menu State
   const [showMenu, setShowMenu] = useState(false);
+  console.log("showMenu:", showMenu);
 
   // Back to top arrow visibility state
   const [isVisible, setIsVisible] = useState(false);
@@ -110,74 +111,88 @@ const HeaderComponent = () => {
       bottom: isVisible ? "2rem" : "0rem",
       opacity: isVisible ? 1 : 0,
       duration: 0.2,
-      delay: 0.3,
+      delay: 0.1,
       ease: "none",
     });
   }, [isVisible]);
 
-  // Slide in the logo from the left
   useGSAP(() => {
-    gsap.fromTo(
-      "#logo",
-      {
+    /* ****** Header Container ****** */
+    gsap
+      .timeline()
+      .from("#headerContainer", {
+        top: "100vh",
+        display: "flex",
         opacity: 0,
-        x: -200,
-        duration: 1,
-      },
-      {
+      })
+      .to("#headerContainer", {
+        top: 0,
+        display: "flex",
         opacity: 1,
-        x: 0,
-        duration: 1,
-      }
-    );
-  }, []);
+        duration: 0.3,
+      })
+      .to("#headerContainer", {
+        width: "100%",
+        duration: 0.3,
+      })
 
-  // Slide in the Contact Us button from the right
-  useGSAP(() => {
-    gsap.fromTo(
-      "#contactUs",
-      {
-        opacity: 0,
-        x: 200,
-        duration: 1,
-      },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-      }
-    );
-  }, []);
+      /* ******* Logo ******** */
+      .fromTo(
+        "#logo",
+        {
+          display: "block",
+          opacity: 0,
+          x: -200,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+        }
+      )
 
-  // Stagger in the header links
-  useGSAP(() => {
-    gsap.fromTo(
-      "#navLink",
-      {
-        opacity: 0,
-        y: "100vh",
-        duration: 1,
-        scale: 96,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        scale: 1,
-        ease: "power3.inout",
-        stagger: 0.2,
-        delay: 1,
-      }
-    );
+      /* ****** Contact Us ****** */
+      .fromTo(
+        "#contactUs",
+        {
+          display: "none",
+          opacity: 0,
+          x: 200,
+        },
+        {
+          display: "block",
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          delay: -0.4,
+        }
+      )
+
+      /* ****** Nav Links ****** */
+      .fromTo(
+        ".nav-link",
+        {
+          opacity: 0,
+          y: "100vh",
+          scale: 120,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          scale: 1,
+          stagger: 0.2,
+        }
+      );
   }, []);
 
   return (
     <HeaderWrapper $bgColor={bgColor}>
-      <HeaderContainer>
+      <HeaderContainer id='headerContainer'>
         <Link
           id='logo'
           href='/'
-          className='font-bebas text-white text-xl opacity-0'
+          className='relative font-bebas text-white text-xl opacity-0'
         >
           Timeless <span className='text-[tan]'>Interiors</span>
         </Link>
@@ -188,8 +203,7 @@ const HeaderComponent = () => {
             return (
               <li
                 key={index}
-                id='navLink'
-                className='hover:text-[tan] text-base uppercase opacity-0'
+                className='nav-link relative z-5 hover:text-[tan] text-base uppercase'
                 onClick={() => toggleMenu()}
               >
                 <Link href={item.href}>{item.label}</Link>
@@ -204,7 +218,7 @@ const HeaderComponent = () => {
           </MobileMenuButton>
 
           {/* Contact Us Button */}
-          <div id='contactUs' className='opacity-0'>
+          <div id='contactUs' style={{ opacity: 0 }}>
             <ContactUsButton href='mailto:dward@desean-ward.me' target='_blank'>
               Contact Us
             </ContactUsButton>

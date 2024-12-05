@@ -12,6 +12,7 @@ export const HeroWrapper = tw.section`
 `;
 
 export const HeroContainer = tw.div`
+    overflow-hidden
 `;
 
 export const ExploreBtnContainer = tw.div`
@@ -32,6 +33,7 @@ export const ExploreBtnContainer = tw.div`
 `;
 
 export const ExploreBtn = tw.button`
+    opaacity-0
     border-2 
     font-bebas 
     text-white 
@@ -46,4 +48,22 @@ export const ExploreBtn = tw.button`
     mr-auto
     shadow-md
     shadow-black
+`;
+
+export const GridOverlay = tw.div`
+    grid 
+    grid-cols-[repeat(auto-fill,minmax(150px,1fr))] 
+    w-full 
+    absolute 
+    inset-0
+`;
+
+export const GridItem = tw.div`
+    bg-[#0A0A0A] 
+    flex items-center 
+    justify-center 
+    text-xl 
+    font-semibold 
+    shadow-lg
+    aspect-square
 `;

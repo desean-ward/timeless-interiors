@@ -11,22 +11,24 @@ export const HeaderWrapper = tw.header<{ $bgColor: string }>`
     px-12 
     z-40 
     w-full
+    bg-red-400
     ${({ $bgColor }) => $bgColor}
     transition-colors 
     duration-1000
     
 `;
 export const HeaderContainer = tw.div`
+    relative
     flex 
     justify-between 
     items-center 
-    py-3 
-    border-b-2 
-    border-white 
-    w-full
-    backdrop-blur-lg
-
+    border-b
+    py-3
+    mx-auto
+    backdrop-blur-lg 
+    hidden   
 `;
+
 export const LinksContainer = tw.ul`
     flex 
     flex-col 
@@ -34,7 +36,6 @@ export const LinksContainer = tw.ul`
     duration-300 
     sm:flex-row 
     absolute 
-    right-0 
     bg-[#0A0A0A] 
     w-screen 
     h-screen 
@@ -59,7 +60,6 @@ export const MobileMenuButton = tw.button`
 export const ContactUsButton = tw(Link)`
     lg:block 
     font-bebas 
-    hidden 
     rounded-xl 
     px-6
     text-[tan] 
@@ -67,7 +67,10 @@ export const ContactUsButton = tw(Link)`
     border
     hover:bg-white 
     hover:text-black 
-    duration-300
+    hover:duration-300
+    hidden 
+    md:block
+    
 `;
 
 export const BackToTopBtn = tw.div`

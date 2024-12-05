@@ -33,6 +33,7 @@ const config: Config = {
     "shadow-2xl",
     "shadow-black",
     "z-10",
+    "grid-cols-[repeat(auto-fill,minmax(150px, 150px))]",
   ],
   theme: {
     extend: {

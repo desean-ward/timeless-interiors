@@ -3,11 +3,14 @@ import React from "react";
 import {
   ExploreBtn,
   ExploreBtnContainer,
+  GridItem,
+  GridOverlay,
   HeroContainer,
   HeroWrapper,
 } from "./hero.styles";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export const revalidate = 0;
 
@@ -24,29 +27,83 @@ type HeroProps = {
 const Hero = ({ heroData }: HeroProps) => {
   // Text Animation
   useGSAP(() => {
-    gsap.fromTo("#text", { 
-      y: "50vh" }, { x: 0, duration: 1, delay: 1 });
+    gsap
+      .timeline()
+      .fromTo(
+        "#text",
+        {
+          yPercent: 100,
+          opacity: 0,
+        },
+        { yPercent: 0, opacity: 1, duration: 0.5, delay: 3 }
+      )
+      .fromTo(
+        "#tagline",
+        {
+          xPercent: -100,
+          opacity: 0,
+        },
+        {
+          xPercent: 0,
+          opacity: 1,
+          duration: 0.3,
+        }
+      )
+      .to(".grid-item", {
+        rotateY: "90deg",
+        opacity: 0,
+        borderBottom: "1px solid gray",
+        duration: 1,
+        delay: 0.2,
+        ease: "easeOut",
+      })
+      .fromTo(
+        ["#explore"],
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 0.3,
+          delay: 0,
+        }
+      );
   });
 
   return (
     <HeroWrapper id='section' data-bg-color='bg-transparent'>
       <HeroContainer id='container' className='size-full sm:px-24 px-6'>
-        <Image
-          src={heroData?.heroImage || "/images/dark-bg.png"}
-          alt='Hero Image'
-          fill
-          className='w-full h-full object-cover absolute'
-        />
+        <div id='bg-image'>
+          <Image
+            src={heroData?.heroImage || "/images/dark-bg.png"}
+            alt='Hero Image'
+            fill
+            className='w-full h-full object-cover absolute -z-10'
+          />
+        </div>
+
+        {/* Grid Overlay */}
+        <GridOverlay id='grid-overlay'>
+          {" "}
+          {Array.from({ length: 100 }).map((_, index) => (
+            <GridItem className='grid-item' key={index} />
+          ))}
+        </GridOverlay>
 
         {/* Explore Button */}
         <ExploreBtnContainer>
-          <ExploreBtn>Explore</ExploreBtn>
+          <ExploreBtn id='explore' className='relative z-1'>
+            Explore
+          </ExploreBtn>
 
-          {/* Hero Tex */}
-          <div id='text' className='flex flex-col py-4 px-4'>
+          {/* Hero Text */}
+          <div
+            id='text'
+            className='flex flex-col py-4 px-4 opacity-0 overflow-hidden'
+          >
             <h1
               id='heading'
-              className='font-bold text-4xl leading-none text-white font-bebas text-shadow-sm text-shadow-black backdrop-blur-lg'
+              className='font-bold text-4xl leading-none text-white font-bebas text-shadow-sm text-shadow-black'
             >
               {heroData.heading}
             </h1>
@@ -54,7 +111,7 @@ const Hero = ({ heroData }: HeroProps) => {
               id='tagline'
               className='text-white text-lg text-shadow-sm bg-gradient-to-r from-black to-transparent p-4 rounded-lg'
             >
-              {heroData?.tagline || ""}
+              <span id='tagline-text'>{heroData?.tagline || ""}</span>
             </p>
           </div>
         </ExploreBtnContainer>
