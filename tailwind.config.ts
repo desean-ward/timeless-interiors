@@ -103,7 +103,7 @@ const config: Config = {
   },
   plugins: [
     require("@tailwindcss/typography"),
-    require("@designbycode/tailwindcss-text-shadow"),
+    // require("@designbycode/tailwindcss-text-shadow"),
     require("tailwindcss-animate"),
     require("tailwind-merge"),
   ],

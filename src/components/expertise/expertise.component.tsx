@@ -7,7 +7,7 @@ import {
   HoverSectionsContainer,
   SectionImage,
 } from "./expertise.styles";
-import { getHomePage } from "@/sanity/queries/page";
+// import { getHomePage } from "@/sanity/queries/page";
 import Link from "next/link";
 
 export const revalidate = 0;
@@ -25,7 +25,7 @@ const ExpertiseComp = ({ expertiseData }: ExpertiseProps) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <ExpertiseWrapper data-bg-color='bg-[#0A0A0A]'>
+    <ExpertiseWrapper data-bg-color='bg-background'>
       <ExpertiseContainer>
         <div className='flex flex-col justify-center items-center'>
           <h3 className='text-5xl font-bebas'>Our Expertise</h3>

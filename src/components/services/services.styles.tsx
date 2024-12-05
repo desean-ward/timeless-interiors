@@ -8,7 +8,7 @@ export const ServicesWrapper = tw.section`
     flex 
     justify-center 
     items-center 
-    bg-[#0A0A0A]
+    bg-background
 `;
 
 export const ServicesContainer = tw.div`

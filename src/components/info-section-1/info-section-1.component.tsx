@@ -35,14 +35,14 @@ const InfoSection1 = ({ infoSectionData }: InfoSectionProps) => {
           toggleActions: "play reverse play reverse", // Automatically reverse on scroll up
         },
         opacity: 0,
-        y: 100,
-        duration: 0.5,
+        y: 300,
+        duration: 0.7,
       });
     }
   }, []);
 
   return (
-    <InfoSection1Wrapper id='section' data-bg-color='bg-[#0A0A0A]'>
+    <InfoSection1Wrapper id='section' data-bg-color='bg-background'>
       <InfoSection1Container id='container'>
         <InfoSectionContent id='info-content'>
           {/* Left Side Content */}

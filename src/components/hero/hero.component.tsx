@@ -30,12 +30,17 @@ const Hero = ({ heroData }: HeroProps) => {
     gsap
       .timeline()
       .fromTo(
-        "#text",
+        "#heading",
         {
-          yPercent: 100,
+          y: 100,
           opacity: 0,
         },
-        { yPercent: 0, opacity: 1, duration: 0.5, delay: 3 }
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          delay: 3,
+        }
       )
       .fromTo(
         "#tagline",
@@ -64,9 +69,9 @@ const Hero = ({ heroData }: HeroProps) => {
         },
         {
           opacity: 1,
-          duration: 0.3,
-          delay: 0,
-        }
+          duration: 0.5,
+        },
+        "<" // Start with the previous animation
       );
   });
 
@@ -97,10 +102,7 @@ const Hero = ({ heroData }: HeroProps) => {
           </ExploreBtn>
 
           {/* Hero Text */}
-          <div
-            id='text'
-            className='flex flex-col py-4 px-4 opacity-0 overflow-hidden'
-          >
+          <div id='text' className='flex flex-col py-4 px-4 overflow-hidden'>
             <h1
               id='heading'
               className='font-bold text-4xl leading-none text-white font-bebas text-shadow-sm text-shadow-black'

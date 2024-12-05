@@ -24,7 +24,7 @@ const FooterComponent = () => {
   return (
     <footer
       className='relative top-0 sm:h-screen overflow-hidden py-24'
-      data-bg-color='bg-[#0A0A0A]'
+      data-bg-color='bg-background'
     >
       <FooterContainer id='container'>
         <FooterContent>
@@ -103,7 +103,10 @@ const FooterComponent = () => {
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <Link href='mailto:dward@desean-ward.me' className='text-blue-500'>
+                    <Link
+                      href='mailto:dward@desean-ward.me'
+                      className='text-blue-500'
+                    >
                       Contact Us
                     </Link>
                   </li>

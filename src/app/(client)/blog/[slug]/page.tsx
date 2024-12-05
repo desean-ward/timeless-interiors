@@ -26,7 +26,7 @@ const PostDetailPage = () => {
 
   if (!data)
     return (
-      <div className='absolute size-ful inset-0 flex items-center justify-center text-3xl bg-[#0A0A0A]/80 backdrop-blur-lg z-50'>
+      <div className='absolute size-ful inset-0 flex items-center justify-center text-3xl bg-background backdrop-blur-lg z-50'>
         <Loader
           color="rgba(210, 180, 140, 1)"
           size={50}

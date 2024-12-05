@@ -36,7 +36,7 @@ export const LinksContainer = tw.ul`
     duration-300 
     sm:flex-row 
     absolute 
-    bg-[#0A0A0A] 
+    bg-background 
     w-screen 
     h-screen 
     sm:h-fit 
@@ -58,7 +58,6 @@ export const MobileMenuButton = tw.button`
 `;
 
 export const ContactUsButton = tw(Link)`
-    lg:block 
     font-bebas 
     rounded-xl 
     px-6
@@ -68,8 +67,10 @@ export const ContactUsButton = tw(Link)`
     hover:bg-white 
     hover:text-black 
     hover:duration-300
-    hidden 
     md:block
+    lg:block 
+    xs:hidden
+
     
 `;
 

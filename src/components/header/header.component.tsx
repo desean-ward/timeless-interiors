@@ -46,7 +46,7 @@ const HeaderComponent = () => {
   useEffect(() => {
     if (pathname === "/gallery" || pathname === "/blog") {
       // Set back ground for the Gallery page
-      setBgColor("bg-[#0A0A0A]");
+      setBgColor("bg-background");
       return;
     } else {
       setBgColor("bg-transparent");
@@ -164,8 +164,8 @@ const HeaderComponent = () => {
           opacity: 1,
           x: 0,
           duration: 0.5,
-          delay: -0.4,
-        }
+        },
+        "<" // Start with the previous animation
       )
 
       /* ****** Nav Links ****** */
@@ -218,7 +218,7 @@ const HeaderComponent = () => {
           </MobileMenuButton>
 
           {/* Contact Us Button */}
-          <div id='contactUs' style={{ opacity: 0 }}>
+          <div id='contactUs'>
             <ContactUsButton href='mailto:dward@desean-ward.me' target='_blank'>
               Contact Us
             </ContactUsButton>

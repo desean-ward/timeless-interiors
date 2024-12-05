@@ -38,7 +38,7 @@ export const HoverSection = tw.div`
     h-[330px] 
     xl:h-[60vh]
     group 
-    lg:bg-[#0A0A0A] 
+    lg:bg-background 
     lg:hover:bg-transparent 
     bg-transparent 
     shadow-black

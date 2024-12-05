@@ -11,7 +11,7 @@ export const WorksWrapper = tw.section`
     justify-center 
     flex 
     items-center 
-    bg-[#0A0A0A]
+    bg-background
 
 `;
 
@@ -38,7 +38,7 @@ export const ProjectsSectionWrapper = tw.section`
     flex 
     flex-col 
     items-center 
-    bg-[#0A0A0A]
+    bg-background
 
 `;
 

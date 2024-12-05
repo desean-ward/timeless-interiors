@@ -41,7 +41,7 @@ body {
     --radius: 0.5rem;
   }
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 0 0% 7%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -79,4 +79,15 @@ body {
 
 .hidden {
   opacity: 0;
+}
+
+.text-shadow {
+  text-shadow: 6px 2px 4px black;
+}
+.text-shadow-lg {
+  text-shadow: 6px 2px 16px black;
+}
+
+.text-outline {
+  text-shadow: 1px 1px 2px black;
 }

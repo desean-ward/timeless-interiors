@@ -28,7 +28,7 @@ type ProjectTypeProps = {
 const Projects = ({ heroData, contentData }: ProjectTypeProps) => {
   return (
     <>
-      <WorksWrapper data-bg-color='bg-[#0A0A0A]'>
+      <WorksWrapper data-bg-color='bg-background'>
         <WorksContainer>
           <h1 className='text-[tan] text-6xl font-bebas'>{heroData.heading}</h1>
 
@@ -63,7 +63,9 @@ const Projects = ({ heroData, contentData }: ProjectTypeProps) => {
             <ProjectsWrapper
               key={index}
               className={clsx(
-                index % 2 == 0 ? "bg-white text-black" : " bg-[#0A0A0A] text-white"
+                index % 2 == 0
+                  ? "bg-white text-black"
+                  : " bg-background text-white"
               )}
             >
               <ProjectContainer>
@@ -81,7 +83,7 @@ const Projects = ({ heroData, contentData }: ProjectTypeProps) => {
                         "border-2 italic rounded-xl px-2 py-2 max-w-fit",
                         index % 2 == 0
                           ? "bg-white text-black border-black"
-                          : "bg-[#0A0A0A] text-white border-white"
+                          : "bg-background text-white border-white"
                       )}
                     >
                       {tagline} {new Date().getFullYear()}

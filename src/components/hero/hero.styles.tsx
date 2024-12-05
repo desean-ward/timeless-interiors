@@ -59,7 +59,7 @@ export const GridOverlay = tw.div`
 `;
 
 export const GridItem = tw.div`
-    bg-[#0A0A0A] 
+    bg-background 
     flex items-center 
     justify-center 
     text-xl 
