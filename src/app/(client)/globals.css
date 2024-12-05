@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -75,4 +75,8 @@ body {
   body {
     @apply bg-background text-white;
   }
+}
+
+.hidden {
+  opacity: 0;
 }
