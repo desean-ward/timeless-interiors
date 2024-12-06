@@ -25,53 +25,99 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
   useEffect(() => {
     const section = document.getElementById("ti-image-section");
     const smallImage = document.getElementById("small-image");
+    const smWords = document.getElementById("sm-words");
 
-    if (section && smallImage) {
-      // Heading animation starts as soon as the section enters the viewport
+    if (section && smallImage && smWords) {
+      // Ensure smallImage and sm-words start hidden
+      gsap.set(smallImage, { opacity: 0, scale: 0 });
+      gsap.set(smWords, { opacity: 0, scaleX: 0, display: "none" });
+
+      // ScrollTrigger for pinning the section
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "+=160%",
+          pin: section,
+          scrub: false,
+          markers: false,
+        },
+      });
+
+      // SmallImage animation with dependent sm-words animation
       gsap
         .timeline({
           scrollTrigger: {
             trigger: section,
-            start: "top 70%", // Trigger when the section's top is 30% into the viewport
-            toggleActions: "play none none none", // Play animation only once
-            markers: false, // Enable markers for debugging (set to false in production)
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+            toggleActions: "play none none reset",
+            markers: false,
+            onLeaveBack: () => {
+              // Reset sm-words to hidden when leaving viewport
+              gsap.set(smWords, { display: "none", opacity: 0, scaleX: 0 });
+            },
+            onEnterBack: () => {
+              // Reverse animation for sm-words
+              gsap
+                .timeline()
+                .set(smWords, { display: "block" }) // Ensure it's visible before animating
+                .to(smWords, {
+                  opacity: 0,
+                  scaleX: 0,
+                  duration: 0.5,
+                  ease: "power2.out",
+                });
+            },
           },
         })
-        .from("#timeless", {
-          opacity: 0,
-          x: 100, // Slide in from right
-          duration: 1,
-          ease: "power2.in",
-        })
-        .from(
-          "#interiors",
+        .fromTo(
+          smallImage,
+          { scale: 0, opacity: 0 },
           {
-            opacity: 0,
-            x: -100, // Slide in from left
+            scale: 1,
+            opacity: 1,
             duration: 1,
-            ease: "power2.in",
-          },
-          "<" // Start this animation at the same time as the previous one
+            ease: "power2.inOut",
+            onComplete: () => {
+              // Animation for sm-words, timeless-sm, and interiors-sm (independent of scrolling)
+              gsap
+                .timeline()
+                .set("#sm-words", { display: "block" }) // Show the element before animating
+                .fromTo(
+                  "#sm-words",
+                  { opacity: 0, scaleX: 0 },
+                  {
+                    opacity: 1,
+                    scaleX: 1,
+                    duration: 0.5,
+                    ease: "power2.out",
+                  }
+                )
+                .from(
+                  ["#timeless-sm"],
+                  {
+                    opacity: 0,
+                    right: -100, // Slide in from the right
+                    duration: 1,
+                    ease: "power2.in",
+                  },
+                  "-=0.5" // Start this animation 0.5 seconds before the previous one ends
+                )
+                .from(
+                  ["#interiors-sm"],
+                  {
+                    opacity: 0,
+                    left: -100, // Slide in from the left
+                    duration: 1,
+                    ease: "power2.in",
+                  },
+                  "<" // Start this animation at the same time as the previous one
+                );
+            },
+          }
         );
-
-      // Small Image animation tied to scrolling
-      gsap.fromTo(
-        smallImage,
-        { scale: 0, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: section,
-            start: "top top", // Start when section reaches the top of the viewport
-            end: "bottom top", // End when the bottom of the section reaches the top
-            scrub: true, // Smooth animation tied to scrolling
-            pin: section, // Stick the section to the top
-            markers: false, // Debug markers (set to false in production)
-          },
-        }
-      );
     }
   }, []);
 
@@ -118,11 +164,14 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
             fill
             className='object-cover size-full relative'
           />
-          <div className='flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bebas gap-2 text-5xl shadow-black p-8 shadow-xl rounded-xl backdrop-blur-lg'>
-            <span id='timeless' className='text-primary'>
+          <div
+            id='sm-words'
+            className='font-bebas gap-2 text-5xl shadow-black p-8 shadow-xl rounded-xl backdrop-blur-lg hidden'
+          >
+            <span id='timeless-sm' className='text-primary relative'>
               {words[0]}
             </span>{" "}
-            <span id='interiors' className='text-[tan] text-shadow'>
+            <span id='interiors-sm' className='text-[tan] text-shadow relative'>
               {words[1]}
             </span>
           </div>

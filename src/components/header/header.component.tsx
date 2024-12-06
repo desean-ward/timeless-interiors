@@ -118,22 +118,27 @@ const HeaderComponent = () => {
 
   useGSAP(() => {
     /* ****** Header Container ****** */
+    gsap.set("#headerContainer", { top: "100vh", visibility: "visible" });
     gsap
       .timeline()
-      .from("#headerContainer", {
-        top: "100vh",
-        display: "flex",
-        opacity: 0,
-      })
+      .fromTo(
+        "#headerContainer",
+        {
+          top: "100vh",
+          opacity: 0,
+          width: "2.5%",
+        },
+        {
+          top: 0,
+          display: "flex",
+          opacity: 1,
+          duration: 1,
+        }
+      )
       .to("#headerContainer", {
-        top: 0,
-        display: "flex",
         opacity: 1,
-        duration: 0.3,
-      })
-      .to("#headerContainer", {
         width: "100%",
-        duration: 0.3,
+        duration: 0.5,
       })
 
       /* ******* Logo ******** */

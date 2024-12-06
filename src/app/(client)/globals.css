@@ -8,10 +8,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.no-scroll {
-  overflow: hidden;
-}
-
 @layer base {
   :root {
     --background: 0, 0%, 4%;
@@ -77,6 +73,10 @@ body {
   }
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .hidden {
   opacity: 0;
 }
@@ -91,3 +91,8 @@ body {
 .text-outline {
   text-shadow: 1px 1px 2px black;
 }
+
+/* #sm-words {
+  display: block;
+  visibility: "hidden";
+} */

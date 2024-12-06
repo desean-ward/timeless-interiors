@@ -26,7 +26,8 @@ export const HeaderContainer = tw.div`
     py-3
     mx-auto
     backdrop-blur-lg 
-    hidden   
+    z-[9999]
+      
 `;
 
 export const LinksContainer = tw.ul`

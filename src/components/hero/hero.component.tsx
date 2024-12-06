@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import {
   ExploreBtn,
   ExploreBtnContainer,
@@ -73,10 +72,10 @@ const Hero = ({ heroData }: HeroProps) => {
         },
         "<" // Start with the previous animation
       );
-  });
+  }, []);
 
   return (
-    <HeroWrapper id='section' data-bg-color='bg-transparent'>
+    <HeroWrapper id='hero-section' data-bg-color='bg-transparent'>
       <HeroContainer id='container' className='size-full sm:px-24 px-6'>
         <div id='bg-image'>
           <Image
