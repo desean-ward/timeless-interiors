@@ -21,7 +21,7 @@ const Blog = ({ postsData }: { postsData: PostType[] }) => {
       <BlogContainer>
         {/* Blog Title */}
         <div id='title'>
-          <BlogTitle>Our Blog</BlogTitle>
+          <BlogTitle className="text-[tan]">Our Blog</BlogTitle>
         </div>
 
         {/* Blog Content */}

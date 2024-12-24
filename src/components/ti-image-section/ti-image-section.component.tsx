@@ -33,16 +33,37 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
       gsap.set(smWords, { opacity: 0, scaleX: 0, display: "none" });
 
       // ScrollTrigger for pinning the section
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "+=160%",
-          pin: section,
-          scrub: false,
-          markers: false,
-        },
-      });
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "+=160%",
+            pin: section,
+            scrub: false,
+            toggleActions: "play none reverse restart",
+            markers: false,
+          },
+        })
+
+        .from("#heading", {
+          opacity: 0,
+          duration: 0.5,
+        })
+        .from("#timeless", {
+          opacity: 0,
+          x: -100,
+          duration: 1,
+        })
+        .from(
+          "#interiors",
+          {
+            opacity: 0,
+            x: 100,
+            duration: 1,
+          },
+          "<"
+        );
 
       // SmallImage animation with dependent sm-words animation
       gsap
@@ -52,7 +73,7 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
             start: "top top",
             end: "bottom top",
             scrub: true,
-            toggleActions: "play none none reset",
+            toggleActions: "play none reverse reset",
             markers: false,
             onLeaveBack: () => {
               // Reset sm-words to hidden when leaving viewport
@@ -62,7 +83,7 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
               // Reverse animation for sm-words
               gsap
                 .timeline()
-                .set(smWords, { display: "block" }) // Ensure it's visible before animating
+                .set(smWords, { display: "flex" }) // Ensure it's visible before animating
                 .to(smWords, {
                   opacity: 0,
                   scaleX: 0,
@@ -84,7 +105,7 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
               // Animation for sm-words, timeless-sm, and interiors-sm (independent of scrolling)
               gsap
                 .timeline()
-                .set("#sm-words", { display: "block" }) // Show the element before animating
+                .set("#sm-words", { display: "flex" }) // Show the element before animating
                 .fromTo(
                   "#sm-words",
                   { opacity: 0, scaleX: 0 },

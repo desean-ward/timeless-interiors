@@ -11,6 +11,7 @@ import {
   HeaderWrapper,
   LinksContainer,
   MobileMenuButton,
+  MobileMenuContainer,
 } from "./header.styles";
 import { BsArrowUpSquareFill } from "react-icons/bs";
 import { usePathname } from "next/navigation";
@@ -21,7 +22,6 @@ const HeaderComponent = () => {
 
   // Mobile Menu State
   const [showMenu, setShowMenu] = useState(false);
-  console.log("showMenu:", showMenu);
 
   // Back to top arrow visibility state
   const [isVisible, setIsVisible] = useState(false);
@@ -117,8 +117,16 @@ const HeaderComponent = () => {
   }, [isVisible]);
 
   useGSAP(() => {
+    // Get the screen width
+    const screenWidth = window.innerWidth;
+
     /* ****** Header Container ****** */
-    gsap.set("#headerContainer", { top: "100vh", visibility: "visible" });
+    gsap.set("#headerContainer", {
+      top: "100vh",
+      visibility: "hidden",
+      position: "relative",
+    });
+
     gsap
       .timeline()
       .fromTo(
@@ -126,17 +134,16 @@ const HeaderComponent = () => {
         {
           top: "100vh",
           opacity: 0,
+          visibility: "visible",
           width: "2.5%",
         },
         {
           top: 0,
-          display: "flex",
           opacity: 1,
           duration: 1,
         }
       )
       .to("#headerContainer", {
-        opacity: 1,
         width: "100%",
         duration: 0.5,
       })
@@ -158,23 +165,52 @@ const HeaderComponent = () => {
 
       /* ****** Contact Us ****** */
       .fromTo(
-        "#contactUs",
+        ["#contactUs", "#menuBtn"],
         {
-          display: "none",
           opacity: 0,
           x: 200,
         },
         {
-          display: "block",
           opacity: 1,
           x: 0,
           duration: 0.5,
         },
         "<" // Start with the previous animation
-      )
+      );
 
-      /* ****** Nav Links ****** */
-      .fromTo(
+    /* ****** Nav Links ****** */
+    if (screenWidth >= 900) {
+      gsap.fromTo(
+        ".nav-link",
+        {
+          opacity: 0,
+          y: "100vh",
+          scale: 120,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          scale: 1,
+          stagger: 0.2,
+          delay: 2,
+        }
+      );
+    }
+  }, []);
+
+  /* ****** Mobile Menu ****** */
+  useGSAP(() => {
+    // Open and close animations
+    if (showMenu) {
+      gsap.to("#mobileMenu", {
+        opacity: 1,
+        visibility: "visible", // Make it visible
+        left: 0,
+        duration: 0.3,
+      });
+
+      gsap.fromTo(
         ".nav-link",
         {
           opacity: 0,
@@ -189,7 +225,19 @@ const HeaderComponent = () => {
           stagger: 0.2,
         }
       );
-  }, []);
+    } else {
+      // Close menu animation
+      gsap.to("#mobileMenu", {
+        opacity: 0,
+        left: "100%",
+        duration: 0.3,
+        onComplete: () => {
+          // Hide the menu after the animation completes
+          gsap.set("#mobileMenu", { visibility: "hidden" });
+        },
+      });
+    }
+  }, [showMenu]);
 
   return (
     <HeaderWrapper $bgColor={bgColor}>
@@ -202,7 +250,10 @@ const HeaderComponent = () => {
           Timeless <span className='text-[tan]'>Interiors</span>
         </Link>
         {/* Header Links */}
-        <LinksContainer className={`${showMenu ? "top-0" : "-top-[100vh]"}`}>
+        <LinksContainer
+          id='linksContainer'
+          className={`${showMenu ? "top-0" : "-top-[100vh]"}`}
+        >
           {/* Links */}
           {headerData.links.map((item, index) => {
             return (
@@ -216,20 +267,24 @@ const HeaderComponent = () => {
             );
           })}
         </LinksContainer>
+
+        {/* Contact Us Button */}
+        <div id='contactUs'>
+          <ContactUsButton href='mailto:dward@desean-ward.me' target='_blank'>
+            Contact Us
+          </ContactUsButton>
+        </div>
+
         {/* Mobile Menu Button */}
-        <div>
+        <div id='menuBtn'>
           <MobileMenuButton onClick={() => toggleMenu()}>
             {showMenu ? "Close" : "Menu"}
           </MobileMenuButton>
-
-          {/* Contact Us Button */}
-          <div id='contactUs'>
-            <ContactUsButton href='mailto:dward@desean-ward.me' target='_blank'>
-              Contact Us
-            </ContactUsButton>
-          </div>
-        </div>{" "}
+        </div>
       </HeaderContainer>
+
+      {/* Mobile Menu */}
+      <MobileMenuContainer id='mobileMenu' className='bg-black' />
 
       {/* Back To Top Button */}
       <BackToTopBtn id='backToTop'>
