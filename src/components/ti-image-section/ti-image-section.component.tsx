@@ -38,8 +38,9 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: "+=160%",
+            end: "+260%",
             pin: section,
+            pinSpacing: false,
             scrub: false,
             toggleActions: "play none reverse restart",
             markers: false,

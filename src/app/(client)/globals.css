@@ -92,7 +92,57 @@ body {
   text-shadow: 1px 1px 2px black;
 }
 
-/* #sm-words {
-  display: block;
-  visibility: "hidden";
-} */
+.card {
+  margin: 0 auto;
+  padding: 1em;
+  background: black;
+  text-align: center;
+  border-radius: 10px;
+  /* border: 1px solid #D2B48C; */
+  position: relative;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.card::after,
+.card::before {
+  --angle: 0deg;
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(
+    from var(--angle),
+    #D2B48C 25%,
+    black 25%,
+    #73909D 25%,
+    black
+  );
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3em;
+  border-radius: 10px;
+  animation: 6s go linear infinite;
+}
+
+.card::before {
+  filter: blur(1rem);
+  opacity: 1;
+}
+
+@keyframes go {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+

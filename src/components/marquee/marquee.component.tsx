@@ -1,9 +1,11 @@
-import React from "react";
+"use client";
 import { MarqueeContainer, MarqueeWrapper } from "./marquee.styles";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { ImageType } from "@/sanity/queries/page";
 import imgClasses from "@/data/imgClasses.json";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export const revalidate = 0;
 
@@ -24,20 +26,42 @@ type ClassesType = {
 const classes = imgClasses.classes as ClassesType;
 
 const MarqueeComponent = ({ marqueeData }: MarqueeProps) => {
+  useGSAP(() => {
+    gsap.from("#marquee-section", {
+      scrollTrigger: {
+        trigger: "#marquee-section",
+        start: "top 80%",
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
+        markers: false,
+      },
+      y: 100,
+      opacity: 0,
+      duration: 1,
+    });
+  });
+
   return (
-    <MarqueeWrapper data-bg-color='bg-transparent'>
+    <MarqueeWrapper id='marquee-section' data-bg-color='bg-transparent'>
       <MarqueeContainer>
         <div className='size-full flex justify-center items-center'>
           <Marquee className='size-full'>
             {marqueeData.imageUrls.map((image: ImageType, idx: number) => {
+              const screenWidth = window.innerWidth;
               return (
-                <div key={idx}>
+                <div
+                  key={idx}
+                  className={
+                    screenWidth >= 768
+                      ? `card ${classes[`image${idx}`] || ""}`
+                      : `size-full ${classes[`image${idx}`] || ""}`
+                  }
+                >
                   <Image
                     src={image.url}
-                    alt='Image'
-                    width={320}
-                    height={320}
-                    className={classes[`image${idx}`] || ""}
+                    alt='marquee image'
+                    fill
+                    className='object-cover'
                   />
                 </div>
               );

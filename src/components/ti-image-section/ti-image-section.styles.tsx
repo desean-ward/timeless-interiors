@@ -2,13 +2,14 @@ import Image from "next/image";
 import tw from "tailwind-styled-components";
 
 export const TiImageSectionWrapper = tw.section`
-    overflow-hidden
     sticky 
-    top-0 
+    top-0
+    overflow-hidden
     w-full 
     flex 
     justify-center
     items-center 
+    mb-[155vh]
 `;
 
 export const TiImageSectionContainer = tw.div`

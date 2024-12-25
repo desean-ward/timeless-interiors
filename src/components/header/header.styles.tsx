@@ -8,15 +8,16 @@ export const HeaderWrapper = tw.header<{ $bgColor: string }>`
     flex 
     justify-between 
     items-center 
-    px-4 
+    px-4
     md:px-12 
     z-40 
     w-full
+    py-4
     bg-red-400
     ${({ $bgColor }) => $bgColor}
     transition-colors 
     duration-1000
-    
+    backdrop-blur-lg
 `;
 
 export const HeaderContainer = tw.div`
@@ -25,9 +26,7 @@ export const HeaderContainer = tw.div`
     justify-between
     items-center 
     border-b
-    py-3
     mx-auto
-    backdrop-blur-lg 
     z-[9999]
 `;
 
@@ -102,4 +101,5 @@ export const BackToTopBtn = tw.div`
     cursor-pointer
     duration-300
     z-50
+    opacity-0
 `;

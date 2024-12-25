@@ -24,6 +24,9 @@ type HeroProps = {
 };
 
 const Hero = ({ heroData }: HeroProps) => {
+  // Get screen width to determine if on mobile
+  const screenWidth = window.innerWidth;
+
   // Text Animation
   useGSAP(() => {
     gsap
@@ -38,7 +41,7 @@ const Hero = ({ heroData }: HeroProps) => {
           y: 0,
           opacity: 1,
           duration: 0.5,
-          delay: 3,
+          delay: screenWidth < 900 ? 2 : 3,
         }
       )
       .fromTo(
@@ -61,17 +64,15 @@ const Hero = ({ heroData }: HeroProps) => {
         delay: 0.2,
         ease: "easeOut",
       })
-      .fromTo(
-        ["#explore"],
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          duration: 0.5,
-        },
-        "<" // Start with the previous animation
-      );
+      .set("#explore", {
+        opacity: 0,
+        visibility: "hidden",
+      })
+      .to(["#explore"], {
+        opacity: 1,
+        visibility: "visible",
+        duration: 0.5,
+      });
   }, []);
 
   return (
@@ -95,8 +96,8 @@ const Hero = ({ heroData }: HeroProps) => {
         </GridOverlay>
 
         {/* Explore Button */}
-        <ExploreBtnContainer>
-          <ExploreBtn id='explore' className='relative z-1'>
+        <ExploreBtnContainer id='explore-container'>
+          <ExploreBtn id='explore' className='opacity-0 relative z-1'>
             Explore
           </ExploreBtn>
 

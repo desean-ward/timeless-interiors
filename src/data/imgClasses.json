@@ -1,10 +1,9 @@
 {
-    "classes": {
-      "image0": "sm:h-full lg:h-3/4 md:h-[60%] md:w-[80%] sm:w-1/4 lg:w-3/4 md:right-[10%] lg:left-[12.5%] md:top-0 object-cover md:rounded-xl sm:absolute border",
+  "classes": {
+    "image0": "sm:h-full lg:h-3/4 md:h-[60%] md:w-[80%] sm:w-1/4 lg:w-3/4 md:right-[10%] lg:left-[12.5%] md:top-1 object-cover md:rounded-xl sm:absolute ",
 
-      "image1": "absolute sm:h-full lg:h-2/4 md:h-[60%] md:w-[40%] sm:lg:w-1/4 sm:left-0 md:bottom-0 object-cover md:rounded-xl sm:absolute shadow-2xl shadow-black z-10 border",
-      
-      "image2": "absolute sm:h-full lg:h-3/4 md:h-[60%] md:w-[40%] sm:lg:w-1/4 sm:right-0 md:bottom-0 object-cover md:rounded-xl sm:absolute shadow-2xl shadow-black z-10 border"
-    }
+    "image1": "absolute sm:h-full lg:h-2/4 md:h-[60%] md:w-[40%] sm:lg:w-1/4 sm:left-0 md:bottom-1 object-cover md:rounded-xl sm:absolute shadow-2xl shadow-black z-20",
+    
+    "image2": "absolute sm:h-full lg:h-3/4 md:h-[60%] md:w-[40%] sm:lg:w-1/4 sm:right-0 md:bottom-1 object-cover md:rounded-xl sm:absolute shadow-2xl shadow-black z-10"
   }
-  
+}

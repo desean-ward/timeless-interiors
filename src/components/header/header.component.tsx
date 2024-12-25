@@ -107,13 +107,20 @@ const HeaderComponent = () => {
 
   // Animate the 'backToTop' button
   useGSAP(() => {
-    gsap.to("#backToTop", {
-      bottom: isVisible ? "2rem" : "0rem",
-      opacity: isVisible ? 1 : 0,
-      duration: 0.2,
-      delay: 0.1,
-      ease: "none",
-    });
+    gsap
+      .timeline()
+      .set("#backToTop", {
+        opacity: 0,
+        visibility: "hidden",
+      })
+      .to("#backToTop", {
+        bottom: isVisible ? "2rem" : "0rem",
+        opacity: isVisible ? 1 : 0,
+        visibility: "visible",
+        duration: 0.2,
+        delay: 0.1,
+        ease: "none",
+      });
   }, [isVisible]);
 
   useGSAP(() => {
@@ -121,24 +128,28 @@ const HeaderComponent = () => {
     const screenWidth = window.innerWidth;
 
     /* ****** Header Container ****** */
-    gsap.set("#headerContainer", {
-      top: "100vh",
-      visibility: "hidden",
-      position: "relative",
-    });
-
     gsap
       .timeline()
+      .set("#headerContainer", {
+        top: "100vh",
+        visibility: "hidden",
+        opacity: 0,
+        position: "relative",
+      })
       .fromTo(
         "#headerContainer",
         {
           top: "100vh",
           opacity: 0,
           visibility: "visible",
-          width: "2.5%",
+          width: "1.5%",
+          height: "1px",
+          backgroundColor: "transparent",
+          paddingBottom: "2rem",
+          delay: 2,
         },
         {
-          top: 0,
+          top: "1rem",
           opacity: 1,
           duration: 1,
         }
@@ -180,22 +191,27 @@ const HeaderComponent = () => {
 
     /* ****** Nav Links ****** */
     if (screenWidth >= 900) {
-      gsap.fromTo(
-        ".nav-link",
-        {
-          opacity: 0,
-          y: "100vh",
-          scale: 120,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          scale: 1,
-          stagger: 0.2,
-          delay: 2,
-        }
-      );
+      gsap
+        .timeline()
+        .set(".nav-link", { pointerEvents: "none", opacity: 0 })
+        .fromTo(
+          ".nav-link",
+          {
+            opacity: 0,
+            y: "100vh",
+            scale: 120,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            scale: 1,
+            stagger: 0.2,
+            delay: 2,
+          }
+        )
+
+        .set(".nav-link", { pointerEvents: "all" });
     }
   }, []);
 
@@ -240,51 +256,53 @@ const HeaderComponent = () => {
   }, [showMenu]);
 
   return (
-    <HeaderWrapper $bgColor={bgColor}>
-      <HeaderContainer id='headerContainer'>
-        <Link
-          id='logo'
-          href='/'
-          className='relative font-bebas text-white text-xl opacity-0'
-        >
-          Timeless <span className='text-[tan]'>Interiors</span>
-        </Link>
-        {/* Header Links */}
-        <LinksContainer
-          id='linksContainer'
-          className={`${showMenu ? "top-0" : "-top-[100vh]"}`}
-        >
-          {/* Links */}
-          {headerData.links.map((item, index) => {
-            return (
-              <li
-                key={index}
-                className='nav-link relative z-5 hover:text-[tan] text-base uppercase'
-                onClick={() => toggleMenu()}
-              >
-                <Link href={item.href}>{item.label}</Link>
-              </li>
-            );
-          })}
-        </LinksContainer>
+    <>
+      <HeaderWrapper id='headerWrapper' $bgColor={bgColor}>
+        <HeaderContainer id='headerContainer' className='opacity-0'>
+          <Link
+            id='logo'
+            href='/'
+            className='relative font-bebas text-white text-xl opacity-0'
+          >
+            Timeless <span className='text-[tan]'>Interiors</span>
+          </Link>
+          {/* Header Links */}
+          <LinksContainer
+            id='linksContainer'
+            className={`${showMenu ? "top-0" : "top-[100vh]"}`}
+          >
+            {/* Links */}
+            {headerData.links.map((item, index) => {
+              return (
+                <li
+                  key={index}
+                  className='nav-link relative z-5 hover:text-[tan] text-base uppercase'
+                  onClick={() => toggleMenu()}
+                >
+                  <Link href={item.href}>{item.label}</Link>
+                </li>
+              );
+            })}
+          </LinksContainer>
 
-        {/* Contact Us Button */}
-        <div id='contactUs'>
-          <ContactUsButton href='mailto:dward@desean-ward.me' target='_blank'>
-            Contact Us
-          </ContactUsButton>
-        </div>
+          {/* Contact Us Button */}
+          <div id='contactUs'>
+            <ContactUsButton href='mailto:dward@desean-ward.me' target='_blank'>
+              Contact Us
+            </ContactUsButton>
+          </div>
 
-        {/* Mobile Menu Button */}
-        <div id='menuBtn'>
-          <MobileMenuButton onClick={() => toggleMenu()}>
-            {showMenu ? "Close" : "Menu"}
-          </MobileMenuButton>
-        </div>
-      </HeaderContainer>
+          {/* Mobile Menu Button */}
+          <div id='menuBtn'>
+            <MobileMenuButton onClick={() => toggleMenu()}>
+              {showMenu ? "Close" : "Menu"}
+            </MobileMenuButton>
+          </div>
+        </HeaderContainer>
 
-      {/* Mobile Menu */}
-      <MobileMenuContainer id='mobileMenu' className='bg-black' />
+        {/* Mobile Menu */}
+        <MobileMenuContainer id='mobileMenu' className='bg-black' />
+      </HeaderWrapper>
 
       {/* Back To Top Button */}
       <BackToTopBtn id='backToTop'>
@@ -295,7 +313,7 @@ const HeaderComponent = () => {
           className='hover:opacity-70'
         />
       </BackToTopBtn>
-    </HeaderWrapper>
+    </>
   );
 };
 
