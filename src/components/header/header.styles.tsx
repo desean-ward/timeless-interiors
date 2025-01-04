@@ -84,6 +84,7 @@ export const ContactUsButton = tw(Link)`
     font-bebas 
     rounded-xl 
     px-6
+    py-1
     text-[tan] 
     text-lg
     border

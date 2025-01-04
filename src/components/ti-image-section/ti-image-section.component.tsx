@@ -188,7 +188,7 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
           />
           <div
             id='sm-words'
-            className='font-bebas gap-2 text-5xl shadow-black p-8 shadow-xl rounded-xl backdrop-blur-lg hidden'
+            className=' font-bebas gap-2 text-5xl shadow-black p-8 shadow-xl rounded-xl backdrop-blur-lg hidden'
           >
             <span id='timeless-sm' className='text-primary relative'>
               {words[0]}
