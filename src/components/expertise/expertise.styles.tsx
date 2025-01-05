@@ -27,6 +27,7 @@ export const HoverSectionsContainer = tw.div`
     lg:flex-row 
     lg:justify-between 
     items-center
+    overflow-hidden
 `;
 
 export const HoverSection = tw.div`

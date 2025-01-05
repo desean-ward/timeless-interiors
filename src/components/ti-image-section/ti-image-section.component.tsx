@@ -165,7 +165,7 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
         {/* Heading */}
         <p
           id='ti-heading'
-          className='uppercase text-[50vh] leading-none tracking-tighter font-behas  absolute top-12 flex flex-col'
+          className='uppercase text-[10vh] md:text-[20vh] lg:text-[50vh] leading-none tracking-tighter font-behas  absolute h-full flex flex-col justify-center lg:top-10'
         >
           <span id='timeless' className='text-primary'>
             {words[0]}

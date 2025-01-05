@@ -5,7 +5,7 @@ export const FooterContainer = tw.div`
     sm:px-24 
     overflow-hidden 
     size-full
-    bg-transparent
+    bg-background
 `;
 
 export const FooterContent = tw.div`
@@ -18,6 +18,8 @@ export const FooterContent = tw.div`
     sm:mb-0
     border-t
     border-white/20
+    pt-24 
+    md:pt-0
 `;
 
 export const LinksContainer = tw.div`

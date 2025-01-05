@@ -80,7 +80,7 @@ const FooterComponent = () => {
           <div className='overflow-hidden'>
             <p
               id='lets-connect'
-              className='font-bebas text-white text-[12vw] leading-none relative'
+              className='font-bebas text-white text-[12vw] leading-none relative text-center'
             >
               Let's <span className='text-[tan]'>Connect</span>{" "}
             </p>
