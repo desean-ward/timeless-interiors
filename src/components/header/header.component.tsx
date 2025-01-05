@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Link from "next/link";
@@ -28,6 +28,9 @@ const HeaderComponent = () => {
 
   // Hold a reference to the current path name
   const pathname = usePathname();
+
+  // Reference to the Header animations
+  const headerAnimation = useRef<gsap.core.Timeline | null>(null);
 
   // Show / Hide Mobile Menu
   const toggleMenu = () => {
@@ -128,90 +131,92 @@ const HeaderComponent = () => {
     const screenWidth = window.innerWidth;
 
     /* ****** Header Container ****** */
-    gsap
-      .timeline()
-      .set("#headerContainer", {
-        top: "100vh",
-        visibility: "hidden",
-        opacity: 0,
-        position: "relative",
-      })
-      .fromTo(
-        "#headerContainer",
-        {
+    if (!headerAnimation.current) {
+      headerAnimation.current = gsap.timeline();
+
+      headerAnimation.current
+        .set("#headerContainer", {
           top: "100vh",
+          visibility: "hidden",
           opacity: 0,
-          visibility: "visible",
-          width: "1.5%",
-          height: "1px",
-          backgroundColor: "transparent",
-          paddingBottom: "2rem",
-          delay: 2,
-        },
-        {
-          top: "1rem",
-          opacity: 1,
-          duration: 1,
-        }
-      )
-      .to("#headerContainer", {
-        width: "100%",
-        duration: 0.5,
-      })
-
-      /* ******* Logo ******** */
-      .fromTo(
-        "#logo",
-        {
-          display: "block",
-          opacity: 0,
-          x: -200,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.5,
-        }
-      )
-
-      /* ****** Contact Us ****** */
-      .fromTo(
-        ["#contactUs", "#menuBtn"],
-        {
-          opacity: 0,
-          x: 200,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.5,
-        },
-        "<" // Start with the previous animation
-      );
-
-    /* ****** Nav Links ****** */
-    if (screenWidth >= 900) {
-      gsap
-        .timeline()
-        .set(".nav-link", { pointerEvents: "none", opacity: 0 })
+          position: "relative",
+        })
         .fromTo(
-          ".nav-link",
+          "#headerContainer",
           {
+            top: "100vh",
             opacity: 0,
-            y: "100vh",
-            scale: 120,
+            visibility: "visible",
+            width: "1.5%",
+            height: "1px",
+            backgroundColor: "transparent",
+            paddingBottom: "2rem",
+            delay: 2,
+          },
+          {
+            top: "1rem",
+            opacity: 1,
+            duration: 1,
+          }
+        )
+        .to("#headerContainer", {
+          width: "100%",
+          duration: 0.5,
+        })
+
+        /* ******* Logo ******** */
+        .fromTo(
+          "#logo",
+          {
+            display: "block",
+            opacity: 0,
+            x: -200,
           },
           {
             opacity: 1,
-            y: 0,
+            x: 0,
             duration: 0.5,
-            scale: 1,
-            stagger: 0.2,
-            delay: 2,
           }
         )
 
-        .set(".nav-link", { pointerEvents: "all" });
+        /* ****** Contact Us ****** */
+        .fromTo(
+          ["#contactUs", "#menuBtn"],
+          {
+            opacity: 0,
+            x: 200,
+          },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.5,
+          },
+          "<" // Start with the previous animation
+        );
+
+      /* ****** Nav Links ****** */
+      if (screenWidth >= 900) {
+        headerAnimation.current
+          .set(".nav-link", { pointerEvents: "none", opacity: 0 })
+          .fromTo(
+            ".nav-link",
+            {
+              opacity: 0,
+              y: "100vh",
+              scale: 120,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              scale: 1,
+              stagger: 0.2,
+              // delay: 2,
+            }
+          )
+
+          .set(".nav-link", { pointerEvents: "all" });
+      }
     }
   }, []);
 
@@ -277,9 +282,15 @@ const HeaderComponent = () => {
                 <li
                   key={index}
                   className='nav-link relative z-5 hover:text-[tan] text-base uppercase'
-                  onClick={() => toggleMenu()}
                 >
-                  <Link href={item.href}>{item.label}</Link>
+                  <Link
+                    href={item.href}
+                    onClick={() => {
+                      if (showMenu) toggleMenu();
+                    }}
+                  >
+                    {item.label}
+                  </Link>
                 </li>
               );
             })}

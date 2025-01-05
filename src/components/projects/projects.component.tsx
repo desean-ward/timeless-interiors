@@ -1,3 +1,4 @@
+"use client";
 import { ImageType, ProjectType } from "@/sanity/queries/page";
 import React from "react";
 import {
@@ -59,9 +60,14 @@ const Projects = ({ heroData, contentData }: ProjectTypeProps) => {
           const { location, imageUrls, excerpt, tagline, projectname } =
             project;
 
+          // Generate unique id for each project
+          const idx = "project-" + index;
+
           return (
             <ProjectsWrapper
+              id={idx}
               key={index}
+              // Alternate background color
               className={clsx(
                 index % 2 == 0
                   ? "bg-white text-black"
@@ -80,10 +86,10 @@ const Projects = ({ heroData, contentData }: ProjectTypeProps) => {
                     {/* Tagline */}
                     <span
                       className={clsx(
-                        "border-2 italic rounded-xl px-2 py-2 max-w-fit",
+                        "border-2 italic rounded-xl px-2 py-2 max-w-fit mb-8 lg:mb-0",
                         index % 2 == 0
-                          ? "bg-white text-black border-black"
-                          : "bg-background text-white border-white"
+                          ? "bg-white text-black border-black/60"
+                          : "bg-background text-white border-white/50"
                       )}
                     >
                       {tagline} {new Date().getFullYear()}
