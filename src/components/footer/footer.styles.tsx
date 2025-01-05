@@ -16,8 +16,6 @@ export const FooterContent = tw.div`
     flex-col 
     mb-6 
     sm:mb-0
-    border-t
-    border-white/20
     pt-24 
     md:pt-0
 `;
@@ -29,7 +27,7 @@ export const LinksContainer = tw.div`
     flex-col
     items-center 
     gap-6
-    mt-8 
+    mb-20
 `;
 
 export const FooterLink = tw.button`
@@ -37,7 +35,7 @@ export const FooterLink = tw.button`
     items-center
     gap-3 
     border
-    border-white 
+    border-white/50 
     hover:bg-white 
     text-lg
     hover:text-black
@@ -60,7 +58,7 @@ export const FooterBottom = tw.div`
     flex 
     flex-col
     gap-4
-    pb-24
+    
 `;
 
 export const FooterInfo = tw.div`
@@ -75,7 +73,8 @@ export const FooterInfo = tw.div`
     py-6
     gap-8
     top-32 
-    border-t
+    border-t 
+    border-white/50
 `;
 
 export const FooterColumn = tw.div`

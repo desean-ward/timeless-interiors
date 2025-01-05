@@ -35,7 +35,6 @@ const MarqueeComponent = ({ marqueeData }: MarqueeProps) => {
         toggleActions: "play reverse play reverse",
         markers: false,
       },
-      y: 100,
       opacity: 0,
       duration: 1,
     });

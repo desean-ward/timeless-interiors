@@ -35,6 +35,7 @@ const InfoSection1 = ({ infoSectionData }: InfoSectionProps) => {
           markers: false,
         },
         opacity: 0,
+        y: 100,
         duration: 1,
       });
     }
@@ -53,7 +54,7 @@ const InfoSection1 = ({ infoSectionData }: InfoSectionProps) => {
               {infoSectionData.heading}
             </h2>
           </div>
-          
+
           {/* Left Side Content */}
           <LeftContent id='left'>
             <p>{infoSectionData.tagline}</p>

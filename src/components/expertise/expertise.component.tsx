@@ -53,7 +53,7 @@ const ExpertiseComp = ({ expertiseData }: ExpertiseProps) => {
       gsap.from(expertise[0], {
         opacity: 0,
         x: "-100%",
-        duration: 0.5,
+        duration: 1,
         ease: "power4.out",
         scrollTrigger: {
           trigger: expertise[0], // Use the DOM element, not a string
@@ -69,7 +69,7 @@ const ExpertiseComp = ({ expertiseData }: ExpertiseProps) => {
       gsap.from(expertise[1], {
         opacity: 0,
         x: "100%",
-        duration: 0.5,
+        duration: 1,
         ease: "power4.out",
         scrollTrigger: {
           trigger: expertise[1], // Use the DOM element, not a string

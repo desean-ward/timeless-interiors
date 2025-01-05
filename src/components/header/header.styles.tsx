@@ -26,6 +26,7 @@ export const HeaderContainer = tw.div`
     justify-between
     items-center 
     border-b
+    border-white/50
     mx-auto
     z-[9999]
 `;
@@ -87,7 +88,7 @@ export const ContactUsButton = tw(Link)`
     py-1
     text-[tan] 
     text-lg
-    border
+    border 
     hover:bg-white 
     hover:text-black 
     hover:duration-300
