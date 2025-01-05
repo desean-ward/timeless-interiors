@@ -38,11 +38,11 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: "+260%",
+            end: "+250%",
             pin: section,
             pinSpacing: false,
             scrub: false,
-            toggleActions: "play none reverse restart",
+            toggleActions: "play reverse play reverse",
             markers: false,
           },
         })
@@ -55,7 +55,7 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
           opacity: 0,
           x: -100,
           duration: 1,
-        })
+        }, '<')
         .from(
           "#interiors",
           {

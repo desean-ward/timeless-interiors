@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import { useState } from "react";
 import Link from "next/link";
@@ -15,56 +16,114 @@ import {
 import { FaGithub, FaGlobe, FaLinkedin } from "react-icons/fa";
 
 import footerLinks from "@/data/footerLinks.json";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
+import gsap from "gsap";
 
-/* eslint-disable react/no-unescaped-entities */
+gsap.registerPlugin(ScrollTrigger);
 
 const FooterComponent = () => {
   const [isHovered, setIsHovered] = useState<number | null>(null);
 
+  useGSAP(() => {
+    const footerlinks = document.querySelectorAll(".footer-link");
+
+    gsap.from("#lets-connect", {
+      y: 500,
+      opacity: 0,
+      duration: 1,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: "#footer-container",
+        start: "top 50%",
+        end: "bottom bottom",
+        toggleActions: "play none reverse none",
+        markers: false,
+      },
+    });
+
+    gsap.from(footerlinks, {
+      opacity: 0,
+      stagger: 0.2,
+      duration: 1,
+      scrollTrigger: {
+        trigger: "#footer-container",
+        start: "top 15%",
+        end: "bottom bottom",
+        toggleActions: "play none reverse none",
+        markers: false,
+      },
+    });
+
+    gsap.from(".footer-column", {
+      opacity: 0,
+      duration: 1,
+      delay: 1,
+      scrollTrigger: {
+        trigger: "#footer-container",
+        start: "top 15%",
+        end: "bottom bottom",
+        toggleActions: "play none reverse none",
+        markers: false,
+      },
+    });
+  });
+
   return (
     <footer
+      id='footer-wrapper'
       className='relative top-0 sm:h-screen overflow-hidden py-24'
       data-bg-color='bg-background'
     >
-      <FooterContainer id='container'>
+      <FooterContainer id='footer-container'>
         <FooterContent>
-          <p className='font-bebas text-white text-[12vw] leading-none'>
-            Let's <span className='text-[tan]'>Connect</span>{" "}
-          </p>
+          <div className='overflow-hidden'>
+            <p
+              id='lets-connect'
+              className='font-bebas text-white text-[12vw] leading-none relative'
+            >
+              Let's <span className='text-[tan]'>Connect</span>{" "}
+            </p>
 
-          <LinksContainer>
-            {footerLinks.links.map((link, index) => (
-              <Link key={index} href={link.href} target='_blank'>
-                <FooterLink
-                  onMouseEnter={() => setIsHovered(index)}
-                  onMouseLeave={() => setIsHovered(null)}
+            <LinksContainer>
+              {footerLinks.links.map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.href}
+                  target='_blank'
+                  className='footer-link'
                 >
-                  <span>
-                    {index === 0 ? (
-                      <FaGlobe />
-                    ) : index === 1 ? (
-                      <FaLinkedin />
-                    ) : (
-                      <FaGithub />
-                    )}
-                  </span>
-
-                  <span
-                    className={
-                      isHovered === index ? "text-black" : "text-[tan]"
-                    }
+                  <FooterLink
+                    onMouseEnter={() => setIsHovered(index)}
+                    onMouseLeave={() => setIsHovered(null)}
                   >
-                    {link.label}
-                  </span>
-                </FooterLink>
-              </Link>
-            ))}
-          </LinksContainer>
+                    <span>
+                      {index === 0 ? (
+                        <FaGlobe />
+                      ) : index === 1 ? (
+                        <FaLinkedin />
+                      ) : (
+                        <FaGithub />
+                      )}
+                    </span>
+
+                    <span
+                      className={
+                        isHovered === index ? "text-black" : "text-[tan]"
+                      }
+                    >
+                      {link.label}
+                    </span>
+                  </FooterLink>
+                </Link>
+              ))}
+            </LinksContainer>
+          </div>
 
           {/* Footer Bottom */}
-          <FooterBottom>
+          <FooterBottom id='footer-bottom'>
             <FooterInfo>
-              <FooterColumn>
+              <FooterColumn className='footer-column'>
                 <p className='font-semibold'>
                   Timeless{" "}
                   <span className='text-[tan] hover:text-black'>Interiors</span>
@@ -114,7 +173,7 @@ const FooterComponent = () => {
               </FooterColumn>
 
               {/* Location */}
-              <FooterColumn>
+              <FooterColumn className='footer-column'>
                 <p>
                   <strong>📍 Location:</strong> Chicago, Il USA
                 </p>
@@ -133,7 +192,7 @@ const FooterComponent = () => {
               </FooterColumn>
 
               {/* Social Links */}
-              <FooterColumn>
+              <FooterColumn className='footer-column'>
                 <p>✨ Follow us</p>
                 <SocialLinks>
                   <li className='no-underline hover:text-underline'>

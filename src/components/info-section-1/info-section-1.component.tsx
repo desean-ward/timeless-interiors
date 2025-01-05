@@ -9,7 +9,6 @@ import {
   RightContent,
 } from "./info-section-1.styles";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import { useEffect } from "react";
 
 export const revalidate = 0;
 
@@ -28,28 +27,35 @@ const InfoSection1 = ({ infoSectionData }: InfoSectionProps) => {
     if (infoContentElement) {
       gsap.registerPlugin(ScrollTrigger);
 
-      gsap.from(["#left", "#right"], {
+      gsap.from(["#info-section-heading", "#left", "#right"], {
         scrollTrigger: {
           trigger: infoContentElement,
-          start: "top 70%", // Start animation when the top of the element reaches 30% of the viewport
+          start: "top 50%",
           toggleActions: "play reverse play reverse", // Automatically reverse on scroll up
+          markers: false,
         },
         opacity: 0,
-        y: 300,
-        duration: 0.7,
+        duration: 1,
       });
     }
   }, []);
 
   return (
-    <InfoSection1Wrapper id='section' data-bg-color='bg-background'>
+    <InfoSection1Wrapper id='info-section' data-bg-color='bg-background'>
       <InfoSection1Container id='container'>
         <InfoSectionContent id='info-content'>
-          {/* Left Side Content */}
-          <LeftContent id='left'>
-            <h2 className='uppercase text-xl font-semibold'>
+          {/* Heading */}
+          <div className='text-center'>
+            <h2
+              id='info-section-heading'
+              className='uppercase text-xl font-semibold text-center'
+            >
               {infoSectionData.heading}
             </h2>
+          </div>
+          
+          {/* Left Side Content */}
+          <LeftContent id='left'>
             <p>{infoSectionData.tagline}</p>
           </LeftContent>
 

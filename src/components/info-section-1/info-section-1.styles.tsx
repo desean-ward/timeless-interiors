@@ -21,12 +21,8 @@ export const InfoSection1Container = tw.div`
 export const InfoSectionContent = tw.div`
     flex 
     flex-col 
-    xl:grid 
-    xl:grid-cols-2 
     gap-6 
-    xl:gap-64 
     justify-center
-    items-start 
     text-lg
 `;
 
