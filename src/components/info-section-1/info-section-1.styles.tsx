@@ -19,10 +19,9 @@ export const InfoSection1Container = tw.div`
 `;
 
 export const InfoSectionContent = tw.div`
-    flex 
-    flex-col 
-    gap-6 
-    justify-center
+    grid 
+    md:grid-cols-2
+    gap-16 
     text-lg
 `;
 
@@ -33,6 +32,10 @@ export const LeftContent = tw.div`
     justify-center 
     xl:justify-start 
     xl:gap-4 
+    text-balance 
+    border-l-2
+    border-black/40
+    lg:pl-24
 `;
 
 export const RightContent = tw.div`
@@ -41,6 +44,9 @@ export const RightContent = tw.div`
     gap-3 
     xl:items-start 
     sm:gap-9 
+    text-balance 
+    border-r-2 
+    border-black/40
 `;
 
 export const DetailsButton = tw.button`

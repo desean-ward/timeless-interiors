@@ -21,7 +21,8 @@ export const ExpertiseContainer = tw.div`
 export const HoverSectionsContainer = tw.div`
     size-full 
     absolute 
-    top-0 
+    top-3/8 
+    lg:top-0
     left-0
     flex 
     gap-6 

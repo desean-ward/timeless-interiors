@@ -27,7 +27,8 @@ export const LinksContainer = tw.div`
     flex-col
     items-center 
     gap-6
-    mb-20
+    mb-20 
+    relative
 `;
 
 export const FooterLink = tw.button`

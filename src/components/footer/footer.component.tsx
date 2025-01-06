@@ -77,7 +77,7 @@ const FooterComponent = () => {
     // Cleanup on unmount
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      // gsap.globalTimeline.clear(); // Clear timelines
+      gsap.globalTimeline.clear(); // Clear timelines
     };
   }, []);
 

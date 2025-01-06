@@ -52,7 +52,7 @@ export const LinksContainer = tw.ul`
     lg:h-fit 
     lg:w-fit 
     bg-transparent 
-    mx-auto
+    mx-auto 
 `;
 
 export const MobileMenuContainer = tw.section`

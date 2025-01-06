@@ -120,7 +120,7 @@ const Hero = ({ heroData }: HeroProps) => {
 
         {/* Explore Button */}
         <ExploreBtnContainer id='explore-container'>
-          <ExploreBtn id='explore-btn' className='opacity-1 relative z-1'>
+          <ExploreBtn id='explore-btn' className={isHeroHidden ? "opacity-1" : ""}>
             Explore
           </ExploreBtn>
 
@@ -130,13 +130,20 @@ const Hero = ({ heroData }: HeroProps) => {
               id='hero-heading'
               className='font-bold text-4xl leading-none text-white font-bebas text-shadow-sm text-shadow-black'
             >
-              Transforming <span className="text-[tan] text-shadow text-shadow-lg">Vision</span> Into Reality
+              Transforming{" "}
+              <span className='text-[tan] text-shadow text-shadow-lg'>
+                Vision
+              </span>{" "}
+              Into Reality
             </h1>
             <p
               id='hero-tagline'
               className='text-white text-lg text-shadow-sm bg-gradient-to-r from-black to-transparent p-4 rounded-lg'
             >
-              <span id='hero-tagline-text'>At Timeless <span className="text-[tan]">Interiors</span>, we bring your unique vision to life.</span>
+              <span id='hero-tagline-text'>
+                At Timeless <span className='text-[tan]'>Interiors</span>, we
+                bring your unique vision to life.
+              </span>
             </p>
           </div>
         </ExploreBtnContainer>

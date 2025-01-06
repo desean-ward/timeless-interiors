@@ -47,6 +47,10 @@ export const ExploreBtn = tw.button`
     mr-auto
     shadow-md
     shadow-black
+    relative 
+    -top-6
+    left-4 
+    lg:left-0
 `;
 
 export const GridOverlay = tw.div`
