@@ -27,3 +27,29 @@ export const TiImage = tw(Image)`
     shadow-2xl
     rounded-xl
 `;
+
+export const DescriptiveTextGrid = tw.div`
+    grid 
+    grid-cols-1
+    grid-rows-2
+    gap-4 
+    size-full
+    relative 
+    z-10
+`
+
+export const DescriptiveGridItem = tw.div`
+    size-full 
+    flex 
+    justify-between
+`
+
+export const DescriptiveText = tw.p`
+    font-bebas 
+    font-bold
+    text-black 
+    text-[12rem]
+    text-shadow 
+    text-shadow-lg
+    opacity-0
+`

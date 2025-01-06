@@ -27,13 +27,12 @@ export const ExploreBtnContainer = tw.div`
     sm:gap-8
     xl:gap-0 
     justify-center 
-    w-full
-    h-full
+    size-full
     bottom-0 
 `;
 
 export const ExploreBtn = tw.button`
-    opaacity-0
+    opacity-0
     border-2 
     font-bebas 
     text-white 

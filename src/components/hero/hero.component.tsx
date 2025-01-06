@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import useAnimationStore from "@/app/stores/heroAnimation";
 
 export const revalidate = 0;
 
@@ -27,53 +28,67 @@ const Hero = ({ heroData }: HeroProps) => {
   // Get screen width to determine if on mobile
   const screenWidth = window.innerWidth;
 
-  // Text Animation
+  // Zustand store for animation state
+  const { hasHeroAnimated, setHeroAnimated, isHeroHidden, hideHeroElements } =
+    useAnimationStore();
+
+  // Hero Animation
   useGSAP(() => {
-    gsap
-      .timeline()
-      .fromTo(
-        "#heading",
-        {
-          y: 100,
+    if (!hasHeroAnimated) {
+      gsap
+        .timeline()
+        .set("#explore-btn", {
           opacity: 0,
-        },
-        {
-          y: 0,
+        })
+        .fromTo(
+          "#hero-heading",
+          {
+            y: 100,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.5,
+            delay: screenWidth < 900 ? 2 : 3,
+          }
+        )
+        .fromTo(
+          "#hero-tagline",
+          {
+            xPercent: -100,
+            opacity: 0,
+          },
+          {
+            xPercent: 0,
+            opacity: 1,
+            duration: 0.3,
+          }
+        )
+        .to(".hero-grid-item", {
+          rotateY: "90deg",
+          opacity: 0,
+          borderBottom: "1px solid gray",
+          duration: 1,
+          delay: 0.2,
+          ease: "easeOut",
+        })
+        .to(["#explore-btn"], {
           opacity: 1,
+          visibility: "visible",
           duration: 0.5,
-          delay: screenWidth < 900 ? 2 : 3,
-        }
-      )
-      .fromTo(
-        "#tagline",
-        {
-          xPercent: -100,
-          opacity: 0,
-        },
-        {
-          xPercent: 0,
-          opacity: 1,
-          duration: 0.3,
-        }
-      )
-      .to(".grid-item", {
-        rotateY: "90deg",
-        opacity: 0,
-        borderBottom: "1px solid gray",
-        duration: 1,
-        delay: 0.2,
-        ease: "easeOut",
-      })
-      .set("#explore", {
-        opacity: 0,
-        visibility: "hidden",
-      })
-      .to(["#explore"], {
-        opacity: 1,
-        visibility: "visible",
-        duration: 0.5,
-      });
-  }, []);
+        })
+        .eventCallback("onComplete", () => {
+          setHeroAnimated(); // Mark the animation as complete
+          hideHeroElements(); // Persist the hidden state
+        });
+    }
+
+    // Cleanup on unmount
+    return () => {
+      gsap.globalTimeline.clear(); // Clear timelines
+    };
+  }, [hasHeroAnimated, setHeroAnimated]);
 
   return (
     <HeroWrapper id='hero-section' data-bg-color='bg-transparent'>
@@ -88,32 +103,40 @@ const Hero = ({ heroData }: HeroProps) => {
         </div>
 
         {/* Grid Overlay */}
-        <GridOverlay id='grid-overlay'>
-          {" "}
+        <GridOverlay
+          id='hero-grid-overlay'
+          // Show or hide the grid overlay
+          className={isHeroHidden ? "hidden-elements" : ""}
+        >
           {Array.from({ length: 100 }).map((_, index) => (
-            <GridItem className='grid-item' key={index} />
+            <GridItem
+              className={`hero-grid-item ${
+                isHeroHidden ? "hidden-elements" : ""
+              }`}
+              key={index}
+            />
           ))}
         </GridOverlay>
 
         {/* Explore Button */}
         <ExploreBtnContainer id='explore-container'>
-          <ExploreBtn id='explore' className='opacity-0 relative z-1'>
+          <ExploreBtn id='explore-btn' className='opacity-1 relative z-1'>
             Explore
           </ExploreBtn>
 
           {/* Hero Text */}
           <div id='text' className='flex flex-col py-4 px-4 overflow-hidden'>
             <h1
-              id='heading'
+              id='hero-heading'
               className='font-bold text-4xl leading-none text-white font-bebas text-shadow-sm text-shadow-black'
             >
               {heroData.heading}
             </h1>
             <p
-              id='tagline'
+              id='hero-tagline'
               className='text-white text-lg text-shadow-sm bg-gradient-to-r from-black to-transparent p-4 rounded-lg'
             >
-              <span id='tagline-text'>{heroData?.tagline || ""}</span>
+              <span id='hero-tagline-text'>{heroData?.tagline || ""}</span>
             </p>
           </div>
         </ExploreBtnContainer>

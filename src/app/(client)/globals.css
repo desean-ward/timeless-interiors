@@ -81,6 +81,10 @@ body {
   opacity: 0;
 }
 
+.hidden-elements {
+  display: none !important; /* Ensure no other styles override this */
+}
+
 .text-shadow {
   text-shadow: 6px 2px 4px black;
 }
