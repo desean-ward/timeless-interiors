@@ -34,6 +34,7 @@ export const ContentContainer = tw.div`
 
 export const ElementContainer = tw.div`
     text-white 
+    text-[1.25rem] 
     flex 
     flex-col
     justify-between  
@@ -44,6 +45,7 @@ export const ElementContainer = tw.div`
     border-white 
     border 
     rounded-xl
+    mb-4
 `;
 
 export const ElementHeading = tw.h2`
@@ -55,13 +57,13 @@ export const ElementHeading = tw.h2`
 
 export const CTALink = tw(Link)`
     border 
-    border-white 
+    border-white/50 
     font-bebas
     text-[tan] 
     text-xl 
     text-center 
     hover:bg-white 
     hover:text-black
-    rounded-xl
+    rounded-lg
     my-4
 `;

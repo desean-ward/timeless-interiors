@@ -25,13 +25,21 @@ const Blog = ({ postsData }: { postsData: PostType[] }) => {
       duration: 0.3,
       stagger: 0.1,
     });
+
+    gsap.from("#blog-title", {
+      opacity: 0,
+      y: 100,
+      duration: 0.5,
+      ease: "back.inOut",
+      delay: 0.5,
+    });
   }, []);
 
   return (
     <BlogWrapper>
       <BlogContainer>
         {/* Blog Title */}
-        <div id='title'>
+        <div id='blog-title'>
           <BlogTitle className='text-[tan]'>Our Blog</BlogTitle>
         </div>
 

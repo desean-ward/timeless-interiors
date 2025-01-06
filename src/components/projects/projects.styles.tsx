@@ -70,17 +70,16 @@ export const ProjectContainer = tw.div`
 
 export const LeftSideContent = tw.div`
     flex 
-    md:flex-row 
     flex-col 
-    gap-3 
-    sm:gap-6 
-    xl:items-center
+    justify-center
+    size-full
 `;
 
 export const RightSideContent = tw.div`
     flex 
     items-center
     sm:my-0 
+    text-[1.25rem]
 `;
 
 export const MarqueeImages = tw.div`

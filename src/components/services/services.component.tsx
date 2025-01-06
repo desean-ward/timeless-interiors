@@ -11,6 +11,8 @@ import {
 import { ContentType, ImageType } from "@/sanity/queries/page";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 type ServicesProps = {
   headingData: string;
@@ -34,10 +36,33 @@ const Services = ({
   ctaData,
   galleryData,
 }: ServicesProps) => {
+  useGSAP(() => {
+    gsap.from("#services-title", {
+      opacity: 0,
+      y: 100,
+      duration: 0.5,
+      ease: "back.inOut",
+      delay: 0.5,
+    });
+
+    gsap.from("#services-marquee", {
+      opacity: 0,
+      duration: 1,
+      ease: "back.inOut",
+    });
+
+    gsap.from(".service", {
+      opacity: 0,
+      duration: 0.3,
+      stagger: 0.1,
+      ease: "back.inOut",
+    });
+  }, []);
+
   return (
     <ServicesWrapper data-bg-color='bg-background'>
       <ServicesContainer>
-        <HeadingContainer>
+        <HeadingContainer id="services-title">
           <h1>{headingData}</h1>
         </HeadingContainer>
 
@@ -47,14 +72,14 @@ const Services = ({
             const element = contentData[key];
 
             return (
-              <ElementContainer key={index}>
+              <ElementContainer key={index} className="service">
                 <div>
                   {/* Element Heading */}
                   <ElementHeading>{element.heading}</ElementHeading>
                 </div>
 
                 {/* Element Text */}
-                <div className='text-sm'>{element.excerpt}</div>
+                <div>{element.excerpt}</div>
 
                 {/* Call to Action  */}
                 <CTALink href={ctaData.link} target='_blank'>
@@ -65,8 +90,8 @@ const Services = ({
           })}
 
           {/* Gallery Marquee */}
-          <div className='col-span-1 md:col-span-3'>
-            <Marquee className='h-full w-full' loop={50}>
+          <div id="services-marquee" className='col-span-1 md:col-span-3'>
+            <Marquee className='h-full w-full rounded-xl' loop={50}>
               {galleryData.imageUrls.map((image: ImageType, index: number) => {
                 return (
                   <div className='h-[450px] aspect-auto w-full' key={index}>

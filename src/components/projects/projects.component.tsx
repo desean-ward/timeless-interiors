@@ -15,6 +15,8 @@ import {
 import clsx from "clsx";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export const revalidate = 0;
 
@@ -27,11 +29,23 @@ type ProjectTypeProps = {
 };
 
 const Projects = ({ heroData, contentData }: ProjectTypeProps) => {
+  useGSAP(() => {
+    gsap.from("#projects-title", {
+      opacity: 0,
+      y: 100,
+      duration: 0.5,
+      ease: "back.inOut",
+      delay: 0.5,
+    });
+  }, []);
+
   return (
     <>
       <WorksWrapper data-bg-color='bg-background'>
         <WorksContainer>
-          <h1 className='text-[tan] text-6xl font-bebas'>{heroData.heading}</h1>
+          <h1 id='projects-title' className='text-[tan] text-6xl font-bebas'>
+            {heroData.heading}
+          </h1>
 
           {/* Hero Video */}
           <VideoContainer>
@@ -57,8 +71,7 @@ const Projects = ({ heroData, contentData }: ProjectTypeProps) => {
 
       <ProjectsSectionWrapper>
         {contentData.map((project, index: number) => {
-          const { location, imageUrls, excerpt, tagline, projectname } =
-            project;
+          const { location, imageUrls, excerpt, tagline } = project;
 
           // Generate unique id for each project
           const idx = "project-" + index;
@@ -78,7 +91,6 @@ const Projects = ({ heroData, contentData }: ProjectTypeProps) => {
                 {/* Left Side Content */}
 
                 <div>
-                  <h3 className='text-3xl font-bebas'>{projectname}</h3>
                   <LeftSideContent>
                     {/* Location */}
                     <span className='font-bold text-xl'>{location}</span>
@@ -86,7 +98,7 @@ const Projects = ({ heroData, contentData }: ProjectTypeProps) => {
                     {/* Tagline */}
                     <span
                       className={clsx(
-                        "border-2 italic rounded-xl px-2 py-2 max-w-fit mb-8 lg:mb-0",
+                        "italic mb-8 lg:mb-0 text-[1.25rem]",
                         index % 2 == 0
                           ? "bg-white text-black border-black/60"
                           : "bg-background text-white border-white/50"
