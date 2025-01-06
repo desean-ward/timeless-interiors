@@ -30,21 +30,6 @@ const ExpertiseComp = ({ expertiseData }: ExpertiseProps) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useGSAP(() => {
-    // Animate heading
-    gsap.from("#expertise-heading", {
-      opacity: 0,
-      y: 100,
-      duration: 1,
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: "#expertise-heading",
-        start: "top 80%",
-        end: "bottom 20%",
-        toggleActions: "play reverse play reverse",
-        markers: false,
-      },
-    });
-
     // Query all elements with class 'expertise'
     const expertise = document.querySelectorAll(".expertise");
 
@@ -84,12 +69,7 @@ const ExpertiseComp = ({ expertiseData }: ExpertiseProps) => {
   return (
     <ExpertiseWrapper id='expertise-section' data-bg-color='bg-background'>
       <ExpertiseContainer id='expertise-container'>
-        <div
-          id='expertise-heading'
-          className='flex flex-col justify-center items-center'
-        >
-          <h3 className='text-5xl font-bebas'>Our Expertise</h3>
-        </div>
+        
 
         <HoverSectionsContainer>
           {expertiseData.map((expertise, index) => {
@@ -101,7 +81,7 @@ const ExpertiseComp = ({ expertiseData }: ExpertiseProps) => {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <Link href='/projects'>
-                  <span className='text-white hover:text-gray-300 text-2xl relative z-10 font-bebas '>
+                  <span className='text-white hover:text-[tan] text-3xl text-shadow text-shadow-lg relative z-10 font-bebas '>
                     {hoveredIndex === index
                       ? "View Our Projects"
                       : expertise.heading}
@@ -118,6 +98,7 @@ const ExpertiseComp = ({ expertiseData }: ExpertiseProps) => {
             );
           })}
         </HoverSectionsContainer>
+        
       </ExpertiseContainer>
     </ExpertiseWrapper>
   );

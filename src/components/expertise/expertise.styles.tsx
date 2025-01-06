@@ -4,9 +4,8 @@ import tw from "tailwind-styled-components";
 export const ExpertiseWrapper = tw.section`
     bg-white 
     text-black
-    sm:h-screen 
+    h-screen 
     py-24
-    xl:pb-80
     relative
     w-full 
     flex 
@@ -21,23 +20,25 @@ export const ExpertiseContainer = tw.div`
 
 export const HoverSectionsContainer = tw.div`
     size-full 
+    absolute 
+    top-0 
+    left-0
     flex 
     gap-6 
     flex-col 
     lg:flex-row 
     lg:justify-between 
     items-center
-    overflow-hidden
 `;
 
 export const HoverSection = tw.div`
     w-full 
     flex 
     justify-center 
-    relative 
+    relative
     items-center 
     h-[330px] 
-    xl:h-[60vh]
+    xl:h-[80vh]
     group 
     lg:bg-background 
     lg:hover:bg-transparent 

@@ -35,7 +35,7 @@ export const ExploreBtn = tw.button`
     opacity-0
     border-2 
     font-bebas 
-    text-white 
+    text-white
     pt-1 
     hover:bg-white 
     hover:text-black 

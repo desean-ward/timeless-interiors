@@ -130,13 +130,13 @@ const Hero = ({ heroData }: HeroProps) => {
               id='hero-heading'
               className='font-bold text-4xl leading-none text-white font-bebas text-shadow-sm text-shadow-black'
             >
-              {heroData.heading}
+              Transforming <span className="text-[tan] text-shadow text-shadow-lg">Vision</span> Into Reality
             </h1>
             <p
               id='hero-tagline'
               className='text-white text-lg text-shadow-sm bg-gradient-to-r from-black to-transparent p-4 rounded-lg'
             >
-              <span id='hero-tagline-text'>{heroData?.tagline || ""}</span>
+              <span id='hero-tagline-text'>At Timeless <span className="text-[tan]">Interiors</span>, we bring your unique vision to life.</span>
             </p>
           </div>
         </ExploreBtnContainer>
