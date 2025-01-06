@@ -19,11 +19,14 @@ import footerLinks from "@/data/footerLinks.json";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
+import { Spotlight } from "../ui/spotlight";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const FooterComponent = () => {
   const [isHovered, setIsHovered] = useState<number | null>(null);
+
+  const [inView, setInview] = useState(false);
 
   useGSAP(() => {
     const footerlinks = document.querySelectorAll(".footer-link");
@@ -39,6 +42,9 @@ const FooterComponent = () => {
         end: "bottom bottom",
         toggleActions: "play none reverse none",
         markers: false,
+      },
+      onStart: () => {
+        setInview(true);
       },
     });
 
@@ -67,7 +73,13 @@ const FooterComponent = () => {
         markers: false,
       },
     });
-  });
+
+    // Cleanup on unmount
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      // gsap.globalTimeline.clear(); // Clear timelines
+    };
+  }, []);
 
   return (
     <footer
@@ -76,6 +88,12 @@ const FooterComponent = () => {
       data-bg-color='bg-background'
     >
       <FooterContainer id='footer-container'>
+        {inView && (
+          <Spotlight
+            className='-top-40 left-0 md:left-60 md:-top-20'
+            fill='tan'
+          />
+        )}
         <FooterContent>
           <div className='overflow-hidden'>
             <p
