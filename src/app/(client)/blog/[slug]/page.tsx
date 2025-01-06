@@ -29,7 +29,7 @@ const PostDetailPage = () => {
       <div className='absolute size-ful inset-0 flex items-center justify-center text-3xl bg-background backdrop-blur-lg z-50'>
         <Loader
           color="rgba(210, 180, 140, 1)"
-          size={50}
+          size={24}
           aria-label='Loading Spinner'
           data-testid='loader'
         />

@@ -45,7 +45,6 @@ export const PostTitle = tw.h1`
 export const AuthorAndDateContainer = tw.div`
     w-full 
     flex 
-    justify-center 
     md:justify-start 
     gap-2 
     text-white 

@@ -2,8 +2,6 @@ import Image from "next/image";
 import tw from "tailwind-styled-components";
 
 export const TiImageSectionWrapper = tw.section`
-    sticky 
-    top-0
     overflow-hidden
     w-full 
     flex 

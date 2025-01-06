@@ -11,7 +11,7 @@ const Loader = (props: LoaderProps) => {
   return (
     <div className="flex flex-col justify-center items-center gap-8">
       <RiseLoader color={color} size={size} aria-label='Loading Spinner' />
-      <p>Loading...</p>
+      
     </div>
   );
 };

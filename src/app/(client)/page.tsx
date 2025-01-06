@@ -11,7 +11,6 @@ export default async function Home() {
 
   const {
     Hero: heroData,
-    Content: contentData,
     SectionImageOverlay,
     Expertise,
     Gallery,
@@ -20,7 +19,7 @@ export default async function Home() {
   return (
     <main className='no-scrollbar w-screen'>
       <Hero heroData={heroData} />
-      <InfoSection1 infoSectionData={contentData} />
+      <InfoSection1 />
       <TiImageSection sectionImgOLData={SectionImageOverlay} />
       <MarqueeComponent marqueeData={Gallery} />
       <ExpertiseComp expertiseData={Expertise} />

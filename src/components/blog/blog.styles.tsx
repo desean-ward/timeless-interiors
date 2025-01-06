@@ -13,8 +13,8 @@ export const BlogWrapper = tw.section`
 `;
 
 export const BlogContainer = tw.div`
-    px-6 
-    sm:px-24 
+    px-8 
+    lg:px-24 
     size-full
 `;
 
@@ -22,7 +22,8 @@ export const BlogTitle = tw.h1`
     text-[tan] 
     text-6xl 
     font-bebas
-    text-balance
+    text-balance 
+    line-clamp-2
 `;
 
 export const BlogContent = tw.div`
@@ -63,15 +64,15 @@ export const PostSubHeader = tw.div`
     flex 
     gap-2 
     w-full
-    text-sm
+    text-md
     -mt-4
     italic
 `;
 
 export const SmallDescription = tw.div`
     line-clamp-2 
-    text-md 
-    text-black
+    text-[1.25rem] 
+    text-semibold
     mt-2
     mb-auto 
 `;

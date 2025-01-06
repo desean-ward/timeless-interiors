@@ -67,7 +67,7 @@ const PostDetails = ({
         </PostCategoryWrapper>
 
         {/* Post Title */}
-        <div className='my-6 w-full'>
+        <div className='my-6 w-full text-balance'>
           <PostTitle>
             {title}
           </PostTitle>
@@ -89,7 +89,7 @@ const PostDetails = ({
             alt={slug || "Post Image"}
             width={320}
             height={500}
-            className='rounded-lg my-8 aspect-video object-cover w-2/4 mx-auto border border-white/60'
+            className='rounded-lg my-8 aspect-video object-cover lg:w-2/4 mx-auto border border-white/60'
           />
         </div>
 

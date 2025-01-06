@@ -46,6 +46,9 @@ const FooterComponent = () => {
       onStart: () => {
         setInview(true);
       },
+      onReverseComplete: () => {
+        setInview(false);
+      }
     });
 
     gsap.from(footerlinks, {
