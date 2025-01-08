@@ -34,6 +34,7 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
       // Ensure smallImage and sm-words start hidden
       gsap.set(smallImage, { opacity: 0, scale: 0 });
       gsap.set(smWords, { opacity: 0, scaleX: 0, display: "none" });
+      gsap.set(["#ti-heading", "#timeless", "#interiors"], { opacity: 1 });
 
       // ScrollTrigger for pinning the main section
       const timeline = gsap.timeline({
@@ -153,8 +154,8 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
 
       // Cleanup on unmount
       return () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-        gsap.globalTimeline.clear(); // Clear timelines
+        // ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        // gsap.globalTimeline.clear(); // Clear timelines
       };
     }
   }, []);
@@ -181,12 +182,15 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
         {/* Heading */}
         <p
           id='ti-heading'
-          className='uppercase text-[10vh] md:text-[20vh] lg:text-[50vh] leading-none tracking-tighter font-behas  absolute h-full flex flex-col justify-center lg:top-10'
+          className='uppercase text-[10vh] md:text-[20vh] lg:text-[50vh] leading-none tracking-tighter font-behas  absolute h-full flex flex-col justify-center lg:top-10 opacity-100'
         >
-          <span id='timeless' className='text-primary'>
+          <span id='timeless' className='text-primary opacity-100'>
             {words[0]}
           </span>{" "}
-          <span id='interiors' className='text-[tan] text-shadow-lg'>
+          <span
+            id='interiors'
+            className='text-[tan] text-shadow-lg opacity-100'
+          >
             {words[1]}
           </span>
         </p>

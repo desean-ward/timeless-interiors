@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import {
   FooterBottom,
@@ -12,90 +12,83 @@ import {
   LinksContainer,
   NavLinks,
   SocialLinks,
-} from "./footer.styles";
+} from "./blog-footer.styles";
 import { FaGithub, FaGlobe, FaLinkedin } from "react-icons/fa";
 
 import footerLinks from "@/data/footerLinks.json";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
-import { Spotlight } from "../ui/spotlight";
-import { usePathname } from "next/navigation";
+// import useAnimationStore from "@/app/stores/animations";
+import { Spotlight } from "@/components/ui/spotlight";
 import useAnimationStore from "@/app/stores/animations";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FooterComponent = () => {
+const BlogFooterComponent = () => {
   // Social icon hovered
   const [isHovered, setIsHovered] = useState<number | null>(null);
 
   // Spotlight animation
   const [inView, setInView] = useState(false);
 
-  // Get the current path
-  const currentPath = usePathname();
+  const { triggerFooterRefresh, currentSlug } = useAnimationStore();
 
-  // Zustand trigger to reinitialize animations
-  // const { triggerFooterAnimation, toggleFooterAnimation, toggleRefresh } =
-  useAnimationStore();
+  // Flags to disable animations
+  const disableAnimations = true;
+
+  // TODO: ***** Find solutions to animations not triggering properly on dynamic routes ***** /
 
   useGSAP(() => {
-    const animateFooter = () => {
-      const footerlinks = document.querySelectorAll(".footer-link");
+    setInView(true);
+    if (disableAnimations) return;
 
-      // Let's Connect Scroll Trigger
-      const lcTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#footer-container",
-          start: "top 50%",
-          end: "bottom bottom",
-          toggleActions: "play none reverse none",
-          markers: false,
-        },
-      });
+    const footerlinks = document.querySelectorAll(".footer-link");
 
-      // Animate "Let's Connect"
-      lcTimeline.from("#lets-connect", {
-        y: 500,
-        opacity: 0,
-        duration: 1,
-        ease: "power4.out",
-        onStart: () => setInView(true),
-        onReverseComplete: () => setInView(false),
-      });
+    // Let's Connect Scroll Trigger
+    const lcTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#footer-container",
+        start: "top 70%",
+        end: "bottom bottom",
+        toggleActions: "play none reverse none",
+        markers: false,
+      },
+    });
 
-      // Footer Links ScrollTrigger
-      const flTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#footer-container",
-          start: "top 15%",
-          end: "bottom bottom",
-          toggleActions: "play none reverse none",
-          markers: false,
-        },
-      });
+    // Animate "Let's Connect"
+    lcTimeline.from("#lets-connect", {
+      y: 500,
+      opacity: 0,
+      duration: 1,
+      ease: "power4.out",
+      onStart: () => setInView(true),
+      onReverseComplete: () => setInView(false),
+    });
 
-      // Animate Footer Links
-      flTimeline.from(footerlinks, {
-        opacity: 0,
-        stagger: 0.2,
-        duration: 0.5,
-      });
+    // Footer Links ScrollTrigger
+    const flTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#footer-container",
+        start: "top 25%",
+        end: "bottom bottom",
+        toggleActions: "play none reverse none",
+        markers: false,
+      },
+    });
 
-      flTimeline.from(".footer-column", {
-        opacity: 0,
-        duration: 0.5,
-      });
-    };
+    // Animate Footer Links
+    flTimeline.from(footerlinks, {
+      opacity: 0,
+      stagger: 0.2,
+      duration: 0.5,
+    });
 
-    // Initialize footer animations
-    animateFooter();
-  }, [currentPath]);
-
-  // Set the Spotlight state whenever the route changes
-  useEffect(() => {
-    setInView(false);
-  }, [currentPath]);
+    flTimeline.from(".footer-column", {
+      opacity: 0,
+      duration: 0.5,
+    });
+  }, [currentSlug]);
 
   return (
     <footer
@@ -269,4 +262,4 @@ const FooterComponent = () => {
   );
 };
 
-export default FooterComponent;
+export default BlogFooterComponent;

@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import HeaderComponent from "@/components/header/header.component";
-import FooterComponent from "@/components/footer/footer.component";
+// import FooterComponent from "@/components/footer/footer.component";
+// import BlogFooterComponent from "@/components/blog-footer/blog-footer.component";
+import FooterWrapper from "@/components/footer-wrapper/footer-wrapper.component";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -24,7 +26,9 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
+  layoutContext?: { isBlog?: boolean };
 }>) {
+
   return (
     <html lang='en'>
       <body
@@ -32,7 +36,7 @@ export default function RootLayout({
       >
         <HeaderComponent />
         {children}
-        <FooterComponent />
+        <FooterWrapper />
       </body>
     </html>
   );

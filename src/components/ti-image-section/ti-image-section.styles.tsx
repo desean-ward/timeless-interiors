@@ -49,5 +49,5 @@ export const DescriptiveText = tw.p`
     text-[12rem]
     text-shadow 
     text-shadow-lg
-    opacity-0
+    hidden
 `

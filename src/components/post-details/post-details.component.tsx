@@ -14,6 +14,12 @@ import {
 import { default as imageUrlBuilder } from "@sanity/image-url";
 import Image from "next/image";
 import { PortableText } from "next-sanity";
+import { useEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+import useAnimationStore from "@/app/stores/animations";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Generates an image URL using the builder object
 const builder = imageUrlBuilder(client);
@@ -31,6 +37,7 @@ type PostDetailsProps = {
   categories: string[];
   publishedAt: string;
   content: any;
+  key: string;
 };
 
 const PostDetails = ({
@@ -41,36 +48,39 @@ const PostDetails = ({
   categories,
   publishedAt,
   content,
+  key,
 }: PostDetailsProps) => {
-  console.log("content: ", typeof content);
+  // const [key, setKey] = useState(slug);
+
   const fullDate = new Date(publishedAt).toDateString().split(" ");
   const day = fullDate[0];
   const date = new Date(publishedAt).toLocaleDateString();
   const time = new Date(publishedAt).toLocaleTimeString();
 
+  const { setCurrentSlug, toggleFooterRefresh } = useAnimationStore();
+
+  useEffect(() => {
+    // Update the current slug in the store
+    setCurrentSlug(slug);
+
+    // Trigger a refresh for the footer animations
+    toggleFooterRefresh();
+  }, [slug, setCurrentSlug, toggleFooterRefresh]);
+
   return (
-    <PostDetailsWrapper>
+    <PostDetailsWrapper key={key}>
       <PostDetailsContainer>
         <PostCategoryWrapper>
           {/* Post Categories */}
           <PostCategoryContainer>
             {categories?.map((category: string, index: number) => {
-              return (
-                <PostCategory
-                  key={index}
-                >
-                  {category}
-                </PostCategory>
-              );
+              return <PostCategory key={index}>{category}</PostCategory>;
             })}
           </PostCategoryContainer>
         </PostCategoryWrapper>
-
         {/* Post Title */}
         <div className='my-6 w-full text-balance'>
-          <PostTitle>
-            {title}
-          </PostTitle>
+          <PostTitle>{title}</PostTitle>
 
           {/* Post Author */}
           <AuthorAndDateContainer>
@@ -81,7 +91,6 @@ const PostDetails = ({
             </span>
           </AuthorAndDateContainer>
         </div>
-
         {/* Post Image */}
         <div>
           <Image
@@ -89,10 +98,9 @@ const PostDetails = ({
             alt={slug || "Post Image"}
             width={320}
             height={500}
-            className='rounded-lg my-8 aspect-video object-cover lg:w-2/4 mx-auto border border-white/60'
+            className='rounded-lg my-8 aspect-video object-cover lg:w-2/4 mx-auto border border-white/50'
           />
         </div>
-
         {/* Post Content */}
         <PostContent>
           <PortableText value={content} />

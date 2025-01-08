@@ -10,7 +10,7 @@ import {
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import useAnimationStore from "@/app/stores/heroAnimation";
+import useAnimationStore from "@/app/stores/animations";
 
 export const revalidate = 0;
 
