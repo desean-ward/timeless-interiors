@@ -27,6 +27,7 @@ export const VideoContainer = tw.div`
     flex 
     flex-col
     gap-4
+    rounded-xl
 `;
 
 export const ProjectsSectionWrapper = tw.section`

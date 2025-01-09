@@ -159,31 +159,31 @@ const BlogFooterComponent = () => {
 
                 <NavLinks>
                   <li className='no-underline hover:text-underline '>
-                    <Link href='/' className='text-blue-500'>
+                    <Link href='/' className='text-blue-500 hover:text-[tan]'>
                       Home
                     </Link>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <Link href='/blog' className='text-blue-500'>
+                    <Link href='/blog' className='text-blue-500 hover:text-[tan]'>
                       Blog
                     </Link>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <Link href='/Projects' className='text-blue-500'>
+                    <Link href='/projects' className='text-blue-500 hover:text-[tan]'>
                       Projects
                     </Link>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <Link href='/services' className='text-blue-500'>
+                    <Link href='/services' className='text-blue-500 hover:text-[tan]'>
                       Services
                     </Link>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <Link href='/gallery' className='text-blue-500'>
+                    <Link href='/gallery' className='text-blue-500 hover:text-[tan]'>
                       Gallery
                     </Link>
                   </li>
@@ -191,7 +191,7 @@ const BlogFooterComponent = () => {
                   <li className='no-underline hover:text-underline'>
                     <Link
                       href='mailto:dward@desean-ward.me'
-                      className='text-blue-500'
+                      className='text-blue-500 hover:text-[tan]'
                     >
                       Contact Us
                     </Link>
@@ -208,7 +208,7 @@ const BlogFooterComponent = () => {
                   <strong>📧 Email:</strong>{" "}
                   <a
                     href='mailto:dward@desean-ward.me'
-                    className='text-blue-500'
+                    className='text-blue-500 hover:text-[tan]'
                   >
                     contact@timelessinteriors.com
                   </a>
@@ -223,25 +223,25 @@ const BlogFooterComponent = () => {
                 <p>✨ Follow us</p>
                 <SocialLinks>
                   <li className='no-underline hover:text-underline'>
-                    <a href='#' className='text-blue-500'>
+                    <a href='#' className='text-blue-500 hover:text-[tan]'>
                       Facebook
                     </a>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <a href='#' className='text-blue-500'>
+                    <a href='#' className='text-blue-500 hover:text-[tan]'>
                       Instagram
                     </a>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <a href='#' className='text-blue-500'>
+                    <a href='#' className='text-blue-500 hover:text-[tan]'>
                       Pinterest
                     </a>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <a href='#' className='text-blue-500'>
+                    <a href='#' className='text-blue-500 hover:text-[tan]'>
                       LinkedIn
                     </a>
                   </li>
