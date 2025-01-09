@@ -9,7 +9,7 @@ const useScreenWidth = create(
         }),
         {
             name: "screenWidth-storage",
-            getStorage: () => localStorage,
+            storage: () => localStorage,
             storage: createJSONStorage(() => localStorage),
         }
     )
