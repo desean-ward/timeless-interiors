@@ -46,7 +46,12 @@ const MarqueeComponent = ({ marqueeData }: MarqueeProps) => {
         <div className='size-full flex justify-center items-center'>
           <Marquee className='size-full'>
             {marqueeData.imageUrls.map((image: ImageType, idx: number) => {
-              const screenWidth = window.innerWidth;
+              let screenWidth = 0;
+              
+              if (typeof window !== 'undefined') {
+                screenWidth = window.innerWidth;
+              }
+
               return (
                 <div
                   key={idx}

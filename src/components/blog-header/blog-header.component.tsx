@@ -39,10 +39,12 @@ const BlogHeaderComponent = () => {
 
   // Scroll To Top
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    if (typeof window !== undefined) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   // Listen for section change or pathname to determine the header's background color

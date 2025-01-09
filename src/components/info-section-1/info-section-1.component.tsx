@@ -39,7 +39,8 @@ const InfoSection1 = () => {
 
     // Recalculate on resize
     const handleResize = () => ScrollTrigger.refresh();
-    window.addEventListener("resize", handleResize);
+
+    if (typeof window !== undefined) window.addEventListener("resize", handleResize);
 
     // Cleanup on unmount
     return () => {

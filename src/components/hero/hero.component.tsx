@@ -28,7 +28,15 @@ type HeroProps = {
 
 const Hero = ({ heroData }: HeroProps) => {
   // Get screen width to determine if on mobile
-  const screenWidth = window.innerWidth;
+  let screenWidth;
+
+  if (typeof window !== "undefined") {
+    // We're in the browser
+    screenWidth = window.innerWidth;
+  } else {
+    // We're on the server
+    screenWidth = 0;
+  }
 
   // Zustand store for animation state
   const { hasHeroAnimated, setHeroAnimated, isHeroHidden, hideHeroElements } =
@@ -80,10 +88,14 @@ const Hero = ({ heroData }: HeroProps) => {
           visibility: "visible",
           duration: 0.5,
         })
-        .from("#hero-title", {
-          opacity: 0,
-          duration: 1,
-        }, "<")
+        .from(
+          "#hero-title",
+          {
+            opacity: 0,
+            duration: 1,
+          },
+          "<"
+        )
         .eventCallback("onComplete", () => {
           setHeroAnimated(); // Mark the animation as complete
           hideHeroElements(); // Persist the hidden state
@@ -126,7 +138,10 @@ const Hero = ({ heroData }: HeroProps) => {
 
         {/* Explore Button */}
         <ExploreBtnContainer id='explore-container'>
-          <ExploreBtn id='explore-btn' className={isHeroHidden ? "opacity-1" : ""}>
+          <ExploreBtn
+            id='explore-btn'
+            className={isHeroHidden ? "opacity-1" : ""}
+          >
             Explore
           </ExploreBtn>
 
@@ -157,8 +172,11 @@ const Hero = ({ heroData }: HeroProps) => {
         {/* Hero Title */}
         <HeroTitleWrapper>
           <HeroTitleContainer>
-            <h2 id="hero-title" className="font-emotional text-[7rem] underline">
-              Timeless <span className="text-[tan]">Interiors</span>
+            <h2
+              id='hero-title'
+              className='font-emotional text-[7rem] underline'
+            >
+              Timeless <span className='text-[tan]'>Interiors</span>
             </h2>
           </HeroTitleContainer>
         </HeroTitleWrapper>
