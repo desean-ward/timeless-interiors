@@ -28,7 +28,7 @@
 ## About The Project
 ![timeless-interiors](https://github.com/user-attachments/assets/55163fe3-8727-413c-8d60-7cbdb623d3eb)
 
-Timeless Interiors is mock Interior Design agency application.
+Timeless Interiors is mock Interior Design agency.
 
 
 This full-stack application was built to showcase my skills of animation using GSAP, and utilizing a headless CMS, Sanity.
@@ -36,16 +36,15 @@ This full-stack application was built to showcase my skills of animation using G
 
 ## Built With
 
-The application is built upon  NextJS, GSAP, TailwindCSS, and Sanity CMS.
+The application is built upon  NextJS, GSAP, TailwindCSS, Zustand, and Sanity CMS.
 
-<img src="https://github.com/desean-ward/dw-estates/assets/66344466/913d45b2-3ce4-4a19-814c-f3bb5193cb85" width="80" alt="" />
-<img src="https://github.com/desean-ward/dw-fazhionz/assets/66344466/87cc28ce-c96d-4f83-ab95-78c1e6b621ee" width="80" alt="" />
-<img src="https://github.com/desean-ward/dw-fazhionz/assets/66344466/beb8b147-4461-47a2-a707-2e540443b303" width="80" alt="" /> 
-<img src="https://github.com/deseanward/PS-Capstone/assets/139034534/4ab37a82-8541-4cc4-a9f3-1aaee9d07146" width="80" alt="" />
-<img src="https://github.com/deseanward/PS-Capstone/assets/139034534/75765da7-b173-4fba-991c-c1f2555d6010" width="80" alt="" />
-<img src="https://github.com/deseanward/PS-Capstone/assets/139034534/2e5d8e8e-732b-474e-8ded-2200b880ad4e" width="80" alt="" />
-<img src="https://github.com/desean-ward/dw-estates/assets/66344466/9f77fd16-55ff-4d67-8d39-546c129fc018" width="80" alt="" />
-<img src="https://github.com/desean-ward/dw-fazhionz/assets/66344466/8b0a58e5-6dea-4f17-be24-703b913dfee1" width="80" alt="" />
+<img src="https://github.com/desean-ward/dw-estates/assets/66344466/913d45b2-3ce4-4a19-814c-f3bb5193cb85" width="80" alt="" /> &nbsp;
+<img src="https://github.com/deseanward/PS-Capstone/assets/139034534/75765da7-b173-4fba-991c-c1f2555d6010" width="80" alt="" /> &nbsp;
+<img src="https://github.com/deseanward/PS-Capstone/assets/139034534/2e5d8e8e-732b-474e-8ded-2200b880ad4e" width="80" alt="" /> &nbsp;
+<img src="https://github.com/desean-ward/dw-estates/assets/66344466/9f77fd16-55ff-4d67-8d39-546c129fc018" width="80" alt="" /> &nbsp;
+<img src="https://github.com/user-attachments/assets/b2cf86de-e648-49c9-9a61-c44946cee58a" width="140" alt="" /> &nbsp;
+<img src="https://github.com/user-attachments/assets/a414629b-e2e6-4ec4-86aa-2e40ea62e5be" width="160" alt="" /> &nbsp;
+<img src="https://github.com/user-attachments/assets/77a25cee-f2c6-4604-b6a0-077faa638521" width="160" alt="" /> &nbsp;
 
 ## Roadmap
 
