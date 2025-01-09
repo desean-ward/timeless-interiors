@@ -88,7 +88,7 @@ const BlogFooterComponent = () => {
       opacity: 0,
       duration: 0.5,
     });
-  }, [currentSlug]);
+  }, [currentSlug, triggerFooterRefresh]);
 
   return (
     <footer
@@ -165,25 +165,37 @@ const BlogFooterComponent = () => {
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <Link href='/blog' className='text-blue-500 hover:text-[tan]'>
+                    <Link
+                      href='/blog'
+                      className='text-blue-500 hover:text-[tan]'
+                    >
                       Blog
                     </Link>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <Link href='/projects' className='text-blue-500 hover:text-[tan]'>
+                    <Link
+                      href='/projects'
+                      className='text-blue-500 hover:text-[tan]'
+                    >
                       Projects
                     </Link>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <Link href='/services' className='text-blue-500 hover:text-[tan]'>
+                    <Link
+                      href='/services'
+                      className='text-blue-500 hover:text-[tan]'
+                    >
                       Services
                     </Link>
                   </li>
                   {" | "}
                   <li className='no-underline hover:text-underline'>
-                    <Link href='/gallery' className='text-blue-500 hover:text-[tan]'>
+                    <Link
+                      href='/gallery'
+                      className='text-blue-500 hover:text-[tan]'
+                    >
                       Gallery
                     </Link>
                   </li>
