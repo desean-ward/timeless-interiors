@@ -60,7 +60,7 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
           "#timeless",
           {
             opacity: 0,
-            x: -100,
+            x: -200,
             duration: 1,
           },
           "<"
@@ -69,7 +69,7 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
           "#interiors",
           {
             opacity: 0,
-            x: 100,
+            x: 200,
             duration: 1,
           },
           "<"
@@ -182,7 +182,7 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
         {/* Heading */}
         <p
           id='ti-heading'
-          className='uppercase text-[10vh] md:text-[20vh] lg:text-[50vh] leading-none tracking-tighter font-behas  absolute h-full flex flex-col justify-center lg:top-10 opacity-100'
+          className='uppercase text-[10vh] md:text-[20vh] lg:text-[65vh] leading-none font-bebas absolute h-full flex flex-col justify-center lg:top-10 opacity-80 tracking-wider'
         >
           <span id='timeless' className='text-primary opacity-100'>
             {words[0]}
@@ -223,7 +223,7 @@ const TiImageSection = ({ sectionImgOLData }: ImageOverlayProps) => {
           />
           <div
             id='sm-words'
-            className=' font-bebas gap-2 text-5xl shadow-black p-8 shadow-xl rounded-xl backdrop-blur-lg hidden'
+            className='font-emotional gap-2 text-5xl shadow-black p-8 shadow-xl rounded-xl backdrop-blur-lg hidden'
           >
             <span id='timeless-sm' className='text-primary relative'>
               {words[0]}

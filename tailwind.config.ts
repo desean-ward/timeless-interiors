@@ -46,11 +46,11 @@ const config: Config = {
       keyframes: {
         spotlight: {
           "0%": {
-            opacity: '0',
+            opacity: "0",
             transform: "translate(-72%, -62%) scale(0.5)",
           },
           "100%": {
-            opacity: '1',
+            opacity: "1",
             transform: "translate(-50%,-40%) scale(1)",
           },
         },
@@ -100,6 +100,7 @@ const config: Config = {
       backgroundImage: {},
       fontFamily: {
         bebas: ["Bebas Neue", "sans-serif"],
+        emotional: ["var(--emotional-rescue)"],
       },
       fontSize: {
         sm: "clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem)",

@@ -5,6 +5,8 @@ import {
   GridItem,
   GridOverlay,
   HeroContainer,
+  HeroTitleContainer,
+  HeroTitleWrapper,
   HeroWrapper,
 } from "./hero.styles";
 import Image from "next/image";
@@ -78,6 +80,10 @@ const Hero = ({ heroData }: HeroProps) => {
           visibility: "visible",
           duration: 0.5,
         })
+        .from("#hero-title", {
+          opacity: 0,
+          duration: 1,
+        }, "<")
         .eventCallback("onComplete", () => {
           setHeroAnimated(); // Mark the animation as complete
           hideHeroElements(); // Persist the hidden state
@@ -85,9 +91,9 @@ const Hero = ({ heroData }: HeroProps) => {
     }
 
     // Cleanup on unmount
-    return () => {
-      gsap.globalTimeline.clear(); // Clear timelines
-    };
+    // return () => {
+    //   gsap.globalTimeline.clear(); // Clear timelines
+    // };
   }, [hasHeroAnimated, setHeroAnimated]);
 
   return (
@@ -147,6 +153,15 @@ const Hero = ({ heroData }: HeroProps) => {
             </p>
           </div>
         </ExploreBtnContainer>
+
+        {/* Hero Title */}
+        <HeroTitleWrapper>
+          <HeroTitleContainer>
+            <h2 id="hero-title" className="font-emotional text-[7rem] underline">
+              Timeless <span className="text-[tan]">Interiors</span>
+            </h2>
+          </HeroTitleContainer>
+        </HeroTitleWrapper>
       </HeroContainer>
     </HeroWrapper>
   );

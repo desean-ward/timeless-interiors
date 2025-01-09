@@ -3,7 +3,7 @@ import tw from "tailwind-styled-components";
 export const HeroWrapper = tw.section`
     h-screen 
     py-6 
-    sm:py-24
+    md:py-8
     max-h-[1120px] 
     sm:max-h-screen 
     w-full 
@@ -17,6 +17,7 @@ export const HeroContainer = tw.div`
 
 export const ExploreBtnContainer = tw.div`
     relative 
+    size-full
     flex 
     lg:flex-row
     lg:justify-between 
@@ -70,3 +71,17 @@ export const GridItem = tw.div`
     shadow-lg
     aspect-square
 `;
+
+export const HeroTitleWrapper = tw.div`
+    absolute 
+    inset-0 
+    -z-10
+`
+
+export const HeroTitleContainer = tw.div`
+    size-full 
+    flex 
+    justify-center 
+    items-center 
+    opacity-70
+`

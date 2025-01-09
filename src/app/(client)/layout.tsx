@@ -11,9 +11,16 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "../fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
+  weight: "100 900",
+});
+
+const emotional = localFont({
+  src: "../../app/fonts/emotional-rescue.ttf",
+  variable: "--emotional-rescue",
   weight: "100 900",
 });
 
@@ -32,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${emotional.variable} antialiased`}
       >
         <HeaderComponent />
         {children}
