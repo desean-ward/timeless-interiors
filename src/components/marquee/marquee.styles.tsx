@@ -10,6 +10,7 @@ export const MarqueeWrapper = tw.section`
     flex 
     justify-center 
     items-center 
+    relative 
 `;
 
 export const MarqueeContainer = tw.div`

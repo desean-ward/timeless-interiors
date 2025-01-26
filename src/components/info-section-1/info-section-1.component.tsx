@@ -32,7 +32,7 @@ const InfoSection1 = () => {
           markers: false,
         },
         opacity: 0,
-        y: 100,
+        y: 200,
         duration: 1,
       });
     }
@@ -68,7 +68,8 @@ const InfoSection1 = () => {
           <LeftContent id='left'>
             <p>
               At{" "}
-              <span className='italic font-semibold'>Timeless Interiors</span>,
+              <span className='italic font-semibold'>
+              Timeless Interiors</span>,
               we believe that elegance is the cornerstone of exceptional design.
               Our approach combines refined aesthetics with thoughtful
               functionality, crafting spaces that are as sophisticated as they

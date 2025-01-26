@@ -5,6 +5,7 @@ import HeaderComponent from "@/components/header/header.component";
 // import FooterComponent from "@/components/footer/footer.component";
 // import BlogFooterComponent from "@/components/blog-footer/blog-footer.component";
 import FooterWrapper from "@/components/footer-wrapper/footer-wrapper.component";
+import TransitionEffect from "@/components/transition-effect/transition-effect.component";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${emotional.variable} antialiased`}
       >
+        <TransitionEffect />
         <HeaderComponent />
         {children}
         <FooterWrapper />

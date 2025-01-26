@@ -1,4 +1,5 @@
 import Services from "@/components/services/services.component";
+import TransitionEffect from "@/components/transition-effect/transition-effect.component";
 import { getServicesPage } from "@/sanity/queries/page";
 
 const ServicesPage = async () => {
@@ -6,12 +7,16 @@ const ServicesPage = async () => {
   const { Heading, Content, Gallery, CallToAction } = data;
 
   return (
-    <Services
-      headingData={Heading}
-      contentData={Content}
-      galleryData={Gallery}
-      ctaData={CallToAction}
-    />
+    <>
+      <TransitionEffect />
+      
+      <Services
+        headingData={Heading}
+        contentData={Content}
+        galleryData={Gallery}
+        ctaData={CallToAction}
+      />
+    </>
   );
 };
 

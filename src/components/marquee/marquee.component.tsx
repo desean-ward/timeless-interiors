@@ -47,8 +47,8 @@ const MarqueeComponent = ({ marqueeData }: MarqueeProps) => {
           <Marquee className='size-full'>
             {marqueeData.imageUrls.map((image: ImageType, idx: number) => {
               let screenWidth = 0;
-              
-              if (typeof window !== 'undefined') {
+
+              if (typeof window !== "undefined") {
                 screenWidth = window.innerWidth;
               }
 
