@@ -217,7 +217,7 @@ const HeaderComponent = () => {
             }
           )
 
-          .set(".nav-link", { pointerEvents: "all" });
+          .set(".nav-link", { pointerEvents: "all" })
       }
     }
   }, []);
